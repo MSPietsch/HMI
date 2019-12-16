@@ -16,7 +16,7 @@ class MainWindow(QMainWindow):
         self.ui.actionTest.triggered.connect(lambda: print("TEST JA"))
 
     def fkt(self):
-        self.ui.label1.setText("Hallo ich bin Malte")
+        self.ui.label1.setText("Hallo ich bin Malte!")
         print("Test!")
 
 if __name__ == "__main__":
