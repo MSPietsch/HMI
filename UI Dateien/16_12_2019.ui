@@ -80,7 +80,7 @@
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
     <addaction name="separator"/>
-    <addaction name="actionSchlie_en"/>
+    <addaction name="actionClose"/>
    </widget>
    <addaction name="menuDatei"/>
   </widget>
@@ -88,7 +88,7 @@
   <action name="actionNew">
    <property name="icon">
     <iconset>
-     <normaloff>../icons/new_project_icon.png</normaloff>../icons/new_project_icon.png</iconset>
+     <normaloff>../gui/icons/new_project_icon.png</normaloff>../gui/icons/new_project_icon.png</iconset>
    </property>
    <property name="text">
     <string>Neues Projekt</string>
@@ -103,7 +103,8 @@
   <action name="actionOpen">
    <property name="icon">
     <iconset>
-     <normaloff>../icons/Open_project_icon.png</normaloff>../icons/Open_project_icon.png</iconset>
+     <normaloff>../gui/icons/Open_project_icon.png</normaloff>
+     <normalon>../gui/icons/Open_project_icon.png</normalon>../gui/icons/Open_project_icon.png</iconset>
    </property>
    <property name="text">
     <string>Projekt Öffnen</string>
@@ -118,7 +119,7 @@
   <action name="actionSave">
    <property name="icon">
     <iconset>
-     <normaloff>../icons/save_project_icon.png</normaloff>../icons/save_project_icon.png</iconset>
+     <normaloff>../gui/icons/save_project_icon.png</normaloff>../gui/icons/save_project_icon.png</iconset>
    </property>
    <property name="text">
     <string>Projekt Speichern</string>
@@ -130,9 +131,12 @@
     <string>Ctrl+S</string>
    </property>
   </action>
-  <action name="actionSchlie_en">
+  <action name="actionClose">
    <property name="text">
     <string>Schließen</string>
+   </property>
+   <property name="statusTip">
+    <string>Schließt das Programm.</string>
    </property>
   </action>
  </widget>
