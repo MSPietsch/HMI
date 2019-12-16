@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1082</width>
-    <height>762</height>
+    <width>1030</width>
+    <height>523</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,17 +17,17 @@
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>1081</width>
-      <height>731</height>
+      <x>-10</x>
+      <y>10</y>
+      <width>1031</width>
+      <height>471</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Myriad CAD</family>
       <pointsize>14</pointsize>
-      <underline>true</underline>
+      <underline>false</underline>
      </font>
     </property>
     <property name="frameShape">
@@ -39,15 +39,43 @@
     <widget class="QWidget" name="gridLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>290</x>
        <y>0</y>
-       <width>1081</width>
-       <height>731</height>
+       <width>451</width>
+       <height>391</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
+      <item row="3" column="1">
+       <widget class="QPushButton" name="btnOpen">
+        <property name="font">
+         <font>
+          <family>Myriad CAD</family>
+          <pointsize>12</pointsize>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="statusTip">
+         <string>Öffnet ein Projekt.</string>
+        </property>
+        <property name="text">
+         <string>    Projekt Öffnen Ctrl+O</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../icons/Open_project_icon.png</normaloff>../icons/Open_project_icon.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
        <widget class="QLabel" name="labelUber">
+        <property name="font">
+         <font>
+          <family>Myriad CAD</family>
+          <pointsize>14</pointsize>
+          <underline>true</underline>
+         </font>
+        </property>
         <property name="toolTip">
          <string/>
         </property>
@@ -56,6 +84,27 @@
         </property>
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;HAZOP - TOOL&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QPushButton" name="btnNew">
+        <property name="font">
+         <font>
+          <family>Myriad CAD</family>
+          <pointsize>12</pointsize>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="statusTip">
+         <string>Erstellt ein neues Projekt.</string>
+        </property>
+        <property name="text">
+         <string>    Neues Projekt Ctrl+N</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../icons/new_project_icon.png</normaloff>../icons/new_project_icon.png</iconset>
         </property>
        </widget>
       </item>
@@ -68,7 +117,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1082</width>
+     <width>1030</width>
      <height>26</height>
     </rect>
    </property>
