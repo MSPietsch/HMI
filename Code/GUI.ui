@@ -88,7 +88,7 @@
   <action name="actionNew">
    <property name="icon">
     <iconset>
-     <normaloff>../gui/icons/new_project_icon.png</normaloff>../gui/icons/new_project_icon.png</iconset>
+     <normaloff>../icons/new_project_icon.png</normaloff>../icons/new_project_icon.png</iconset>
    </property>
    <property name="text">
     <string>Neues Projekt</string>
@@ -103,8 +103,7 @@
   <action name="actionOpen">
    <property name="icon">
     <iconset>
-     <normaloff>../gui/icons/Open_project_icon.png</normaloff>
-     <normalon>../gui/icons/Open_project_icon.png</normalon>../gui/icons/Open_project_icon.png</iconset>
+     <normaloff>../icons/Open_project_icon.png</normaloff>../icons/Open_project_icon.png</iconset>
    </property>
    <property name="text">
     <string>Projekt Öffnen</string>
@@ -119,7 +118,7 @@
   <action name="actionSave">
    <property name="icon">
     <iconset>
-     <normaloff>../gui/icons/save_project_icon.png</normaloff>../gui/icons/save_project_icon.png</iconset>
+     <normaloff>../icons/save_project_icon.png</normaloff>../icons/save_project_icon.png</iconset>
    </property>
    <property name="text">
     <string>Projekt Speichern</string>
