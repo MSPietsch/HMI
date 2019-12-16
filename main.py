@@ -1,4 +1,4 @@
-from gui.test import Ui_MainWindow
+from gui.UI import Ui_MainWindow
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow
@@ -9,18 +9,18 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.__connect_buttons()
+     #  self.__connect_buttons()
 
-    def __connect_buttons(self):
-        self.ui.btn1.clicked.connect(self.fkt)
-        self.ui.actionTest.triggered.connect(lambda: print("TEST JA"))
+   # def __connect_buttons(self):
+    #    self.ui.btn1.clicked.connect(self.fkt)
+     #   self.ui.actionTest.triggered.connect(lambda: print("TEST JA"))
 
-    def fkt(self):
-        self.ui.label1.setText("Hallo ich bin der coole Malte!")
-        print("Test!")
+  #  def fkt(self):
+   #     self.ui.label1.setText("Hallo ich bin der coole Malte!")
+    #    print("Test!")
 
-    def malte(self):
-        print("Meine neue Fkt")
+   # def malte(self):
+    #    print("Meine neue Fkt")
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
