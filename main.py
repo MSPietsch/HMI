@@ -19,6 +19,9 @@ class MainWindow(QMainWindow):
         self.ui.label1.setText("Hallo ich bin Malte!")
         print("Test!")
 
+    def malte(self):
+        print("Meine neue Fkt")
+
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = MainWindow()
