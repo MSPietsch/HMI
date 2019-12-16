@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'GUI.ui'
+# Form implementation generated from reading ui file 'start.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.1
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,11 +13,15 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1030, 523)
+        MainWindow.resize(989, 511)
+        MainWindow.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../icons/HAZOP.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.frame = QtWidgets.QFrame(self.centralwidget)
-        self.frame.setGeometry(QtCore.QRect(0, 0, 1031, 471))
+        self.frame.setGeometry(QtCore.QRect(-10, 10, 1031, 471))
         font = QtGui.QFont()
         font.setFamily("Myriad CAD")
         font.setPointSize(14)
@@ -38,9 +42,9 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         font.setUnderline(False)
         self.btnOpen.setFont(font)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../icons/Open_project_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnOpen.setIcon(icon)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("../icons/Open_project_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnOpen.setIcon(icon1)
         self.btnOpen.setObjectName("btnOpen")
         self.gridLayout.addWidget(self.btnOpen, 3, 1, 1, 1)
         self.labelUber = QtWidgets.QLabel(self.gridLayoutWidget)
@@ -59,14 +63,14 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         font.setUnderline(False)
         self.btnNew.setFont(font)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../icons/new_project_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnNew.setIcon(icon1)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("../icons/new_project_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnNew.setIcon(icon2)
         self.btnNew.setObjectName("btnNew")
         self.gridLayout.addWidget(self.btnNew, 2, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1030, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 989, 26))
         self.menubar.setObjectName("menubar")
         self.menuDatei = QtWidgets.QMenu(self.menubar)
         self.menuDatei.setObjectName("menuDatei")
@@ -75,15 +79,15 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.actionNew = QtWidgets.QAction(MainWindow)
-        self.actionNew.setIcon(icon1)
+        self.actionNew.setIcon(icon2)
         self.actionNew.setObjectName("actionNew")
         self.actionOpen = QtWidgets.QAction(MainWindow)
-        self.actionOpen.setIcon(icon)
+        self.actionOpen.setIcon(icon1)
         self.actionOpen.setObjectName("actionOpen")
         self.actionSave = QtWidgets.QAction(MainWindow)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../icons/save_project_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionSave.setIcon(icon2)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("../icons/save_project_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionSave.setIcon(icon3)
         self.actionSave.setObjectName("actionSave")
         self.actionClose = QtWidgets.QAction(MainWindow)
         self.actionClose.setObjectName("actionClose")
