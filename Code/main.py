@@ -3,18 +3,23 @@ import os, sys
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename, askdirectory
 
-from gui.UI import Ui_MainWindow
+from gui.startWindow import Ui_MainWindow
+from gui.mainWidget import Ui_mainWidget
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
 
 
 ##
 class MainWindow(QMainWindow):
+    switch_window = QtCore.pyqtSignal()  # Signal wird gesendet, wenn Fenster geändert werden soll: Kann Parameter versenden
+
     def __init__(self):
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.__connect_buttons()
+        self.startFrame = self.ui.startFrame
+        self.mainWidget = MainWidget()
 
     def __connect_buttons(self):
         self.ui.btnNew.clicked.connect(self.newProject)
@@ -29,6 +34,7 @@ class MainWindow(QMainWindow):
         path = askopenfilename(initialdir="../", title="RI - Fließbild wählen",
                                filetypes=(("PDF Dateien", "*.pdf"), ("Alle Dateien", "*.*")))
         print(path)
+        self.switchWindow()
 
     def newProject(self):
         Tk().withdraw()  # nur ein Fenster wird geöffnet
@@ -41,6 +47,8 @@ class MainWindow(QMainWindow):
             Tk().withdraw()  # nur ein Fenster wird geöffnet
             name = askopenfilename(initialdir="../Hazops", title="RI - Fließschema wählen",
                                    filetypes=(("PDF Dateien", "*.pdf"), ("Alle Dateien", "*.*")))
+
+            self.switchWindow()
 
             # TODO Kopiere RI in den Pfad- ist aber auch schon Backend.. lieber mal mit PDF Reader etc vielleicht machen
         # try:
@@ -57,7 +65,7 @@ class MainWindow(QMainWindow):
             msg.setIcon(QMessageBox.Warning)
             msg.setStandardButtons(QMessageBox.Ok)
             x = msg.exec_()
-        if info == "save":      #TODO: Speicherfunktion einfügen
+        if info == "save":  # TODO: Speicherfunktion einfügen
             msg.setWindowTitle("Mitteilung")
             msg.setText("Platzhalter: Projekt wurde gespeichert!")
             msg.setStandardButtons(QMessageBox.Ok)
@@ -78,10 +86,40 @@ class MainWindow(QMainWindow):
             msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
             x = msg.exec_()
 
+    def switchWindow(self):
+        self.switch_window.emit()
+
+
+class MainWidget(QtWidgets.QWidget):
+    def __init__(self):
+        super(MainWidget, self).__init__()
+        self.ui = Ui_mainWidget()
+        self.ui.setupUi(self)
+        # self.__connect_buttons()
+
+
+class Controller:  # Verwaltet die verschiedenen Widgets
+
+    def __init__(self):
+        pass
+
+    def showStart(self):
+        self.startWindow = MainWindow()
+        self.startWindow.switch_window.connect(self.showMain)
+        self.startWindow.show()
+        print("startWindow erstellt.")
+
+    def showMain(self):
+        print("mainWidget erstellt")
+        self.startWindow.startFrame.hide()
+        print("startFrame versteckt")
+        self.startWindow.mainWidget.show()
+        print("mainWidget angezeigt")
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = MainWindow()
-    MainWindow.show()
+    controller = Controller()
+    controller.showStart()
     print("go")
     sys.exit(app.exec_())

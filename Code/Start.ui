@@ -21,7 +21,7 @@
     <normaloff>../icons/HAZOP.png</normaloff>../icons/HAZOP.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QFrame" name="frame">
+   <widget class="QFrame" name="startFrame">
     <property name="geometry">
      <rect>
       <x>-10</x>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Start.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -20,17 +20,17 @@ class Ui_MainWindow(object):
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.frame = QtWidgets.QFrame(self.centralwidget)
-        self.frame.setGeometry(QtCore.QRect(-10, 10, 1031, 471))
+        self.startFrame = QtWidgets.QFrame(self.centralwidget)
+        self.startFrame.setGeometry(QtCore.QRect(-10, 10, 1031, 471))
         font = QtGui.QFont()
         font.setFamily("Myriad CAD")
         font.setPointSize(14)
         font.setUnderline(False)
-        self.frame.setFont(font)
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName("frame")
-        self.gridLayoutWidget = QtWidgets.QWidget(self.frame)
+        self.startFrame.setFont(font)
+        self.startFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.startFrame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.startFrame.setObjectName("startFrame")
+        self.gridLayoutWidget = QtWidgets.QWidget(self.startFrame)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(290, 0, 451, 391))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
@@ -121,13 +121,3 @@ class Ui_MainWindow(object):
         self.actionSave.setShortcut(_translate("MainWindow", "Ctrl+S"))
         self.actionClose.setText(_translate("MainWindow", "Schließen"))
         self.actionClose.setStatusTip(_translate("MainWindow", "Schließt das Programm."))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
