@@ -13,11 +13,18 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_mainWidget(object):
     def setupUi(self, mainWidget):
         mainWidget.setObjectName("mainWidget")
-        mainWidget.resize(979, 638)
+        mainWidget.resize(1001, 450)
+        self.gridLayoutWidget = QtWidgets.QWidget(mainWidget)
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(0, 0, 1001, 451))
+        self.gridLayoutWidget.setObjectName("gridLayoutWidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setObjectName("gridLayout")
         self.RILabel = QtWidgets.QLabel(mainWidget)
-        self.RILabel.setGeometry(QtCore.QRect(4, 5, 971, 631))
+        self.RILabel.setGeometry(QtCore.QRect(-2, -2, 991, 461))
         self.RILabel.setText("")
-        self.RILabel.setPixmap(QtGui.QPixmap("../../../../Pictures/Handy/205153.jpg"))
+        self.RILabel.setPixmap(QtGui.QPixmap("RI_Fliesschema.png"))
+        self.RILabel.setScaledContents(True)
         self.RILabel.setObjectName("RILabel")
 
         self.retranslateUi(mainWidget)
