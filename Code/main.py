@@ -98,7 +98,7 @@ class MainWidget(QtWidgets.QWidget):
         # self.__connect_buttons()
 
 
-class Controller:  # Verwaltet die verschiedenen Widgets
+class Controller:  # Verwaltet die verschiedenen Widgets^
 
     def __init__(self):
         pass
