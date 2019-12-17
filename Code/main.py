@@ -11,7 +11,8 @@ from PyQt5.QtWidgets import QMainWindow, QMessageBox
 
 ##
 class MainWindow(QMainWindow):
-    switch_window = QtCore.pyqtSignal(str)  # Signal wird gesendet, wenn Fenster geändert werden soll: Kann Parameter versenden
+    switch_window = QtCore.pyqtSignal(
+        str)  # Signal wird gesendet, wenn Fenster geändert werden soll: Trägt pdf Pfad mit sich
 
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -31,7 +32,7 @@ class MainWindow(QMainWindow):
     def openProject(self):  # Fragt nach einer PDF Datei zum öffnen und speicher den Pfad in path
         Tk().withdraw()  # nur ein Fenster wird geöffnet
         path = askopenfilename(initialdir="../", title="RI - Fließbild wählen",
-                               filetypes=(("PNG Dateien", "*.png"), ("Alle Dateien", "*.*")))
+                               filetypes=(("PNG", "*.png"), ("Alle Dateien", "*.*")))
         print(path)
         self.switch_window.emit(path)
 
@@ -84,7 +85,11 @@ class MainWindow(QMainWindow):
             msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
             x = msg.exec_()
 
+
 class MainWidget(QtWidgets.QWidget):
+    rectList = []  # Hier kommen alle Rechtecke rein, die gemalt werden sollen
+    recti = 0
+
     def __init__(self):
         super(MainWidget, self).__init__()
         self.ui = Ui_mainWidget()
@@ -92,13 +97,13 @@ class MainWidget(QtWidgets.QWidget):
         self.begin = QtCore.QPoint()
         self.end = QtCore.QPoint()
         # self.__connect_buttons()
+
     def paintEvent(self, event):
         qp = QtGui.QPainter(self)
         br = QtGui.QBrush(QtGui.QColor(100, 10, 10, 40))
         qp.setBrush(br)
-        qp.drawRect(QtCore.QRect(self.begin, self.end))
-        begin = self.begin
-        end = self.end
+        for rect in self.rectList:  # Malt alle Rechtecke aus der Liste
+            qp.drawRect(rect)
 
     def mousePressEvent(self, event):
         self.begin = event.pos()
@@ -107,9 +112,18 @@ class MainWidget(QtWidgets.QWidget):
 
     def mouseMoveEvent(self, event):
         self.end = event.pos()
+        self.rectList.insert(self.recti, QtCore.QRect(self.begin,
+                                        self.end)) #Updatet die Rechtecke in der RectListe
         self.update()
 
-class Controller:  # Verwaltet die verschiedenen Widgets^
+    def mouseReleaseEvent(self, event):
+        # self.begin = event.pos()
+        # self.end = event.pos()
+        self.recti = self.recti + 1
+        self.update()
+
+
+class Controller:  # Verwaltet die verschiedenen Widgets
 
     def __init__(self):
         pass
@@ -123,8 +137,9 @@ class Controller:  # Verwaltet die verschiedenen Widgets^
     def showMain(self, path):
         self.mainWidget = MainWidget()
         self.startWindow.startFrame.hide()  # Startframe verbergen
-        self.startWindow.setCentralWidget(self.mainWidget)  # MLabelansicht ins Fenster stecken
+        self.startWindow.setCentralWidget(self.mainWidget)  # Labelansicht ins Fenster stecken
         self.mainWidget.ui.RILabel.setPixmap(QtGui.QPixmap(path))  # Bilddatei wird im Label angezeigt
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
