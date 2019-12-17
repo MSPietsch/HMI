@@ -11,7 +11,7 @@ from PyQt5.QtWidgets import QMainWindow, QMessageBox
 
 ##
 class MainWindow(QMainWindow):
-    switch_window = QtCore.pyqtSignal()  # Signal wird gesendet, wenn Fenster geändert werden soll: Kann Parameter versenden
+    switch_window = QtCore.pyqtSignal(str)  # Signal wird gesendet, wenn Fenster geändert werden soll: Kann Parameter versenden
 
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -31,9 +31,9 @@ class MainWindow(QMainWindow):
     def openProject(self):  # Fragt nach einer PDF Datei zum öffnen und speicher den Pfad in path
         Tk().withdraw()  # nur ein Fenster wird geöffnet
         path = askopenfilename(initialdir="../", title="RI - Fließbild wählen",
-                               filetypes=(("PDF Dateien", "*.pdf"), ("Alle Dateien", "*.*")))
+                               filetypes=(("PNG Dateien", "*.png"), ("Alle Dateien", "*.*")))
         print(path)
-        self.switchWindow()
+        self.switch_window.emit(path)
 
     def newProject(self):
         Tk().withdraw()  # nur ein Fenster wird geöffnet
@@ -44,10 +44,9 @@ class MainWindow(QMainWindow):
         if directory:
             # Falls ein Pfad ausgewählt wurde muss ein RI-Fließschema ausgewählt werden
             Tk().withdraw()  # nur ein Fenster wird geöffnet
-            name = askopenfilename(initialdir="../Hazops", title="RI - Fließschema wählen",
-                                   filetypes=(("PDF Dateien", "*.pdf"), ("Alle Dateien", "*.*")))
-
-            self.switchWindow()
+            path = askopenfilename(initialdir="../Hazops", title="RI - Fließschema wählen",
+                                   filetypes=(("PNG Dateien", "*.png"), ("Alle Dateien", "*.*")))
+            self.switch_window.emit(path)
 
             # TODO Dateihirarchie ausdenken
         # try:
@@ -85,10 +84,6 @@ class MainWindow(QMainWindow):
             msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
             x = msg.exec_()
 
-    def switchWindow(self):
-        self.switch_window.emit()
-
-
 class MainWidget(QtWidgets.QWidget):
     def __init__(self):
         super(MainWidget, self).__init__()
@@ -108,10 +103,11 @@ class Controller:  # Verwaltet die verschiedenen Widgets^
         self.startWindow.show()
         print("startWindow erstellt.")
 
-    def showMain(self):
+    def showMain(self, path):
         self.mainWidget = MainWidget()
         self.startWindow.startFrame.hide()
         self.startWindow.setCentralWidget(self.mainWidget)
+        self.mainWidget.ui.RILabel.setPixmap(QtGui.QPixmap(path))
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
