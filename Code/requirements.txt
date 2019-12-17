@@ -1,0 +1,4 @@
+Pyqt5
+PyQt5
+pip
+pyqt5-tools
