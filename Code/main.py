@@ -19,7 +19,6 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.__connect_buttons()
         self.startFrame = self.ui.startFrame
-        self.mainWidget = MainWidget()
 
     def __connect_buttons(self):
         self.ui.btnNew.clicked.connect(self.newProject)
@@ -50,7 +49,7 @@ class MainWindow(QMainWindow):
 
             self.switchWindow()
 
-            # TODO Kopiere RI in den Pfad- ist aber auch schon Backend.. lieber mal mit PDF Reader etc vielleicht machen
+            # TODO Dateihirarchie ausdenken
         # try:
         #     os.makedirs("../Hazops/Project_X")
         #
@@ -110,12 +109,9 @@ class Controller:  # Verwaltet die verschiedenen Widgets^
         print("startWindow erstellt.")
 
     def showMain(self):
-        print("mainWidget erstellt")
+        self.mainWidget = MainWidget()
         self.startWindow.startFrame.hide()
-        print("startFrame versteckt")
-        self.startWindow.mainWidget.show()
-        print("mainWidget angezeigt")
-
+        self.startWindow.setCentralWidget(self.mainWidget)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
