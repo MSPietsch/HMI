@@ -14,7 +14,7 @@
    <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Sooper Dooper HAZOP Tool</string>
   </property>
   <property name="windowIcon">
    <iconset>
