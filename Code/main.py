@@ -89,8 +89,25 @@ class MainWidget(QtWidgets.QWidget):
         super(MainWidget, self).__init__()
         self.ui = Ui_mainWidget()
         self.ui.setupUi(self)
+        self.begin = QtCore.QPoint()
+        self.end = QtCore.QPoint()
         # self.__connect_buttons()
+    def paintEvent(self, event):
+        qp = QtGui.QPainter(self)
+        br = QtGui.QBrush(QtGui.QColor(100, 10, 10, 40))
+        qp.setBrush(br)
+        qp.drawRect(QtCore.QRect(self.begin, self.end))
+        begin = self.begin
+        end = self.end
 
+    def mousePressEvent(self, event):
+        self.begin = event.pos()
+        self.end = event.pos()
+        self.update()
+
+    def mouseMoveEvent(self, event):
+        self.end = event.pos()
+        self.update()
 
 class Controller:  # Verwaltet die verschiedenen Widgets^
 
@@ -105,9 +122,9 @@ class Controller:  # Verwaltet die verschiedenen Widgets^
 
     def showMain(self, path):
         self.mainWidget = MainWidget()
-        self.startWindow.startFrame.hide()
-        self.startWindow.setCentralWidget(self.mainWidget)
-        self.mainWidget.ui.RILabel.setPixmap(QtGui.QPixmap(path))
+        self.startWindow.startFrame.hide()  # Startframe verbergen
+        self.startWindow.setCentralWidget(self.mainWidget)  # MLabelansicht ins Fenster stecken
+        self.mainWidget.ui.RILabel.setPixmap(QtGui.QPixmap(path))  # Bilddatei wird im Label angezeigt
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

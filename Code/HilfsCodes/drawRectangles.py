@@ -25,7 +25,7 @@ class MyWidget(QtWidgets.QWidget):
     def mouseMoveEvent(self, event):
         self.end = event.pos()
         self.update()
-
+    #
     # def mouseReleaseEvent(self, event):
     #     self.begin = event.pos()
     #     self.end = event.pos()
