@@ -21,19 +21,14 @@ class MainWindow(QMainWindow):
         self.ui.btnOpen.clicked.connect(self.openProject)
         self.ui.actionNew.triggered.connect(self.newProject)
         self.ui.actionOpen.triggered.connect(self.openProject)
-        self.ui.actionClose.triggered.connect(self.closeProject)
+        self.ui.actionClose.triggered.connect(lambda: self.showPopup("saveBeforeExit"))
+        self.ui.actionSave.triggered.connect(lambda: self.showPopup("save"))
 
-    #  def fkt(self):
-    #     self.ui.label1.setText("Hallo ich bin der coole Malte!")
-    #    print("Test!")
-
-    # TODO Funktionen für Buttons
-
-    def openProject(self):
+    def openProject(self):  # Fragt nach einer PDF Datei zum öffnen und speicher den Pfad in path
         Tk().withdraw()  # nur ein Fenster wird geöffnet
-        name = askopenfilename(initialdir="../Hazops", title="RI - Fließbild wählen",
+        path = askopenfilename(initialdir="../", title="RI - Fließbild wählen",
                                filetypes=(("PDF Dateien", "*.pdf"), ("Alle Dateien", "*.*")))
-        pass
+        print(path)
 
     def newProject(self):
         Tk().withdraw()  # nur ein Fenster wird geöffnet
@@ -46,30 +41,33 @@ class MainWindow(QMainWindow):
             Tk().withdraw()  # nur ein Fenster wird geöffnet
             name = askopenfilename(initialdir="../Hazops", title="RI - Fließschema wählen",
                                    filetypes=(("PDF Dateien", "*.pdf"), ("Alle Dateien", "*.*")))
+
             # TODO Kopiere RI in den Pfad- ist aber auch schon Backend.. lieber mal mit PDF Reader etc vielleicht machen
         # try:
         #     os.makedirs("../Hazops/Project_X")
         #
         # except FileExistsError:
         #     self.showPopup("folderExists")
-        pass
-
-    def closeProject(self):
-        self.showPopup("save")
 
     def showPopup(self, info):
         msg = QMessageBox()
         if info == "folderExists":
-            msg.setWindowTitle("Achtung!")
+            msg.setWindowTitle("Mitteilung")
             msg.setText("Dieser Ordner existiert bereits. Bitte wählen Sie einen anderen Projektnamen.")
             msg.setIcon(QMessageBox.Warning)
             msg.setStandardButtons(QMessageBox.Ok)
             x = msg.exec_()
-        if info == "save":
-            msg.setWindowTitle("Achtung!")
+        if info == "save":      #TODO: Speicherfunktion einfügen
+            msg.setWindowTitle("Mitteilung")
+            msg.setText("Platzhalter: Projekt wurde gespeichert!")
+            msg.setStandardButtons(QMessageBox.Ok)
+            x = msg.exec_()
+        if info == "saveBeforeExit":
+            msg.setWindowTitle("Achtung")
             msg.setText("Möchten Sie Ihr Projekt vor dem Schließen speichern?")
             msg.setIcon(QMessageBox.Question)  # Fragezeichenlogo
-            msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel)  # Yes/No/ Cancel- Buttons sollen erscheinen
+            msg.setStandardButtons(
+                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel)  # Yes/No/ Cancel- Buttons sollen erscheinen
             # Übersetzung der Buttons ins Deutsche
             buttonY = msg.button(QMessageBox.Yes)
             buttonY.setText('Ja')
@@ -77,8 +75,9 @@ class MainWindow(QMainWindow):
             buttonN.setText('Nein')
             buttonC = msg.button(QMessageBox.Cancel)
             buttonC.setText('Abbrechen')
-            msg.setDefaultButton(buttonC)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
+            msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
             x = msg.exec_()
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
