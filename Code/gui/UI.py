@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'start.ui'
+# Form implementation generated from reading ui file 'Start.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -103,7 +103,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Sooper Dooper HAZOP Tool"))
         self.btnOpen.setStatusTip(_translate("MainWindow", "Öffnet ein Projekt."))
         self.btnOpen.setText(_translate("MainWindow", "    Projekt Öffnen Ctrl+O"))
         self.labelUber.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:12pt;\">HAZOP - TOOL</span></p></body></html>"))
