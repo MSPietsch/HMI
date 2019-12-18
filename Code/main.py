@@ -33,8 +33,11 @@ class MainWindow(QMainWindow):
         Tk().withdraw()  # nur ein Fenster wird geöffnet
         path = askopenfilename(initialdir="../", title="RI - Fließbild wählen",
                                filetypes=(("PNG", "*.png"), ("Alle Dateien", "*.*")))
-        print(path)
-        self.switch_window.emit(path)
+        if path:
+            self.ui.actionAlle_Knoten_zeigen.setEnabled(True)
+            self.ui.actionSave.setEnabled(True)
+            print(path)
+            self.switch_window.emit(path)
 
     def newProject(self):
         Tk().withdraw()  # nur ein Fenster wird geöffnet
@@ -48,6 +51,8 @@ class MainWindow(QMainWindow):
             path = askopenfilename(initialdir="../Hazops", title="RI - Fließschema wählen",
                                    filetypes=(("PNG Dateien", "*.png"), ("Alle Dateien", "*.*")))
             self.switch_window.emit(path)
+            self.ui.actionAlle_Knoten_zeigen.setEnabled(True)
+            self.ui.actionSave.setEnabled(True)
 
             # TODO Dateihirarchie ausdenken
         # try:

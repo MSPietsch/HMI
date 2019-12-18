@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Start.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.1
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(989, 511)
+        MainWindow.resize(999, 512)
         MainWindow.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../icons/HAZOP.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -70,10 +70,12 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.btnNew, 2, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 989, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 999, 26))
         self.menubar.setObjectName("menubar")
         self.menuDatei = QtWidgets.QMenu(self.menubar)
         self.menuDatei.setObjectName("menuDatei")
+        self.menuAnsicht = QtWidgets.QMenu(self.menubar)
+        self.menuAnsicht.setObjectName("menuAnsicht")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -85,18 +87,25 @@ class Ui_MainWindow(object):
         self.actionOpen.setIcon(icon1)
         self.actionOpen.setObjectName("actionOpen")
         self.actionSave = QtWidgets.QAction(MainWindow)
+        self.actionSave.setEnabled(False)
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap("../icons/save_project_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionSave.setIcon(icon3)
         self.actionSave.setObjectName("actionSave")
         self.actionClose = QtWidgets.QAction(MainWindow)
         self.actionClose.setObjectName("actionClose")
+        self.actionAlle_Knoten_zeigen = QtWidgets.QAction(MainWindow)
+        self.actionAlle_Knoten_zeigen.setCheckable(True)
+        self.actionAlle_Knoten_zeigen.setEnabled(False)
+        self.actionAlle_Knoten_zeigen.setObjectName("actionAlle_Knoten_zeigen")
         self.menuDatei.addAction(self.actionNew)
         self.menuDatei.addAction(self.actionOpen)
         self.menuDatei.addAction(self.actionSave)
         self.menuDatei.addSeparator()
         self.menuDatei.addAction(self.actionClose)
+        self.menuAnsicht.addAction(self.actionAlle_Knoten_zeigen)
         self.menubar.addAction(self.menuDatei.menuAction())
+        self.menubar.addAction(self.menuAnsicht.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -110,6 +119,7 @@ class Ui_MainWindow(object):
         self.btnNew.setStatusTip(_translate("MainWindow", "Erstellt ein neues Projekt."))
         self.btnNew.setText(_translate("MainWindow", "    Neues Projekt Ctrl+N"))
         self.menuDatei.setTitle(_translate("MainWindow", "Datei"))
+        self.menuAnsicht.setTitle(_translate("MainWindow", "Ansicht"))
         self.actionNew.setText(_translate("MainWindow", "Neues Projekt"))
         self.actionNew.setStatusTip(_translate("MainWindow", "Erstellt ein neues Projekt."))
         self.actionNew.setShortcut(_translate("MainWindow", "Ctrl+N"))
@@ -121,3 +131,14 @@ class Ui_MainWindow(object):
         self.actionSave.setShortcut(_translate("MainWindow", "Ctrl+S"))
         self.actionClose.setText(_translate("MainWindow", "Schließen"))
         self.actionClose.setStatusTip(_translate("MainWindow", "Schließt das Programm."))
+        self.actionAlle_Knoten_zeigen.setText(_translate("MainWindow", "Alle Knoten zeigen"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())

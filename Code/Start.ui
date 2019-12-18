@@ -138,7 +138,14 @@
     <addaction name="separator"/>
     <addaction name="actionClose"/>
    </widget>
+   <widget class="QMenu" name="menuAnsicht">
+    <property name="title">
+     <string>Ansicht</string>
+    </property>
+    <addaction name="actionAlle_Knoten_zeigen"/>
+   </widget>
    <addaction name="menuDatei"/>
+   <addaction name="menuAnsicht"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionNew">
@@ -172,6 +179,9 @@
    </property>
   </action>
   <action name="actionSave">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset>
      <normaloff>../icons/save_project_icon.png</normaloff>../icons/save_project_icon.png</iconset>
@@ -194,14 +204,15 @@
     <string>Schließt das Programm.</string>
    </property>
   </action>
-  <action name="actionJa">
-   <property name="text">
-    <string>Ja</string>
+  <action name="actionAlle_Knoten_zeigen">
+   <property name="checkable">
+    <bool>true</bool>
    </property>
-  </action>
-  <action name="actionNein">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
-    <string>Nein</string>
+    <string>Alle Knoten zeigen</string>
    </property>
   </action>
  </widget>
