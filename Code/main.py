@@ -89,9 +89,10 @@ class MainWindow(QMainWindow):
 class MainWidget(QtWidgets.QWidget):
     rectList = [QtCore.QRect(0, 0, 0, 0)]  # Hier kommen alle Rechtecke rein, die gemalt werden sollen
     recti = 0
-    r = [0]
-    g = [0]
-    b = [0]
+    r = [random.randint(0, 255)]  # Listen mit dem Rotwert der Rechtecke wird erstellt, mit erstem Wert
+    g = [random.randint(0, 255)]  # Listen mit dem Gelbwert der Rechtecke wird erstellt, mit erstem Wert
+    b = [random.randint(0, 255)]  # Listen mit dem Blauwert der Rechtecke wird erstellt, mit erstem Wert
+
     def __init__(self):
         super(MainWidget, self).__init__()
         self.ui = Ui_mainWidget()
@@ -105,17 +106,17 @@ class MainWidget(QtWidgets.QWidget):
         # br = QtGui.QBrush(QtGui.QColor(r, g, b, 100))
         i = 0
         for rect in self.rectList:  # Malt alle Rechtecke aus der Liste
-            qp.setBrush(QtGui.QColor(self.r[i], self.g[i], self.b[i], 100))
-            qp.drawRect(rect)
-            i = i + 1
-
+            rectColor = QtGui.QColor(self.r[i], self.g[i], self.b[i], 100)
+            qp.setBrush(rectColor)  # Setzt die Farbe des Rechtecks aus den RGB Listen
+            qp.drawRect(rect)  # Malt Rechteck
+            i = i + 1  # Laufvariable für RGB Listen erhöht
 
     def mousePressEvent(self, event):
         self.begin = event.pos()
         self.end = event.pos()
-        self.r.insert(self.recti+1,random.randint(0,255))
-        self.g.insert(self.recti+1,random.randint(0,255))
-        self.b.insert(self.recti+1,random.randint(0,255))
+        self.r.insert(self.recti + 1, random.randint(0, 255))  # Neue Farbe für Rechteck erstellen
+        self.g.insert(self.recti + 1, random.randint(0, 255))
+        self.b.insert(self.recti + 1, random.randint(0, 255))
         self.update()
 
     def mouseMoveEvent(self, event):
@@ -125,8 +126,6 @@ class MainWidget(QtWidgets.QWidget):
         self.update()
 
     def mouseReleaseEvent(self, event):
-        # self.begin = event.pos()
-        # self.end = event.pos()
         self.recti = self.recti + 1
         self.rectList.append(QtCore.QRect(0, 0, 0, 0))
         self.update()
