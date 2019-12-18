@@ -126,10 +126,17 @@ class MainWidget(QtWidgets.QWidget):
         self.update()
 
     def mouseReleaseEvent(self, event):
+        # self.begin = event.pos()
+        # self.end = event.pos()
+        self.createRectBtn(self.rectList[self.recti])
         self.recti = self.recti + 1
         self.rectList.append(QtCore.QRect(0, 0, 0, 0))
         self.update()
 
+    def createRectBtn(self, rect):
+        self.btn1 = QtWidgets.QPushButton(self)
+        self.btn1.setGeometry(rect.getRect())
+        self.btn1.setObjectName("btn1")
 
 class Controller:  # Verwaltet die verschiedenen Widgets
 

@@ -14,8 +14,6 @@ class MyWidget(QtWidgets.QWidget):
         br = QtGui.QBrush(QtGui.QColor(100, 10, 10, 40))
         qp.setBrush(br)
         qp.drawRect(QtCore.QRect(self.begin, self.end))
-        begin = self.begin
-        end = self.end
 
     def mousePressEvent(self, event):
         self.begin = event.pos()

@@ -194,6 +194,16 @@
     <string>Schließt das Programm.</string>
    </property>
   </action>
+  <action name="actionJa">
+   <property name="text">
+    <string>Ja</string>
+   </property>
+  </action>
+  <action name="actionNein">
+   <property name="text">
+    <string>Nein</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
