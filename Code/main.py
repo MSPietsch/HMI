@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, random
 
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename, askdirectory
@@ -89,7 +89,9 @@ class MainWindow(QMainWindow):
 class MainWidget(QtWidgets.QWidget):
     rectList = [QtCore.QRect(0, 0, 0, 0)]  # Hier kommen alle Rechtecke rein, die gemalt werden sollen
     recti = 0
-
+    r = [0]
+    g = [0]
+    b = [0]
     def __init__(self):
         super(MainWidget, self).__init__()
         self.ui = Ui_mainWidget()
@@ -100,14 +102,20 @@ class MainWidget(QtWidgets.QWidget):
 
     def paintEvent(self, event):
         qp = QtGui.QPainter(self)
-        br = QtGui.QBrush(QtGui.QColor(100, 10, 10, 40))
-        qp.setBrush(br)
+        # br = QtGui.QBrush(QtGui.QColor(r, g, b, 100))
+        i = 0
         for rect in self.rectList:  # Malt alle Rechtecke aus der Liste
+            qp.setBrush(QtGui.QColor(self.r[i], self.g[i], self.b[i], 100))
             qp.drawRect(rect)
+            i = i + 1
+
 
     def mousePressEvent(self, event):
         self.begin = event.pos()
         self.end = event.pos()
+        self.r.insert(self.recti+1,random.randint(0,255))
+        self.g.insert(self.recti+1,random.randint(0,255))
+        self.b.insert(self.recti+1,random.randint(0,255))
         self.update()
 
     def mouseMoveEvent(self, event):
