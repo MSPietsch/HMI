@@ -87,7 +87,7 @@ class MainWindow(QMainWindow):
 
 
 class MainWidget(QtWidgets.QWidget):
-    rectList = []  # Hier kommen alle Rechtecke rein, die gemalt werden sollen
+    rectList = [QtCore.QRect(0, 0, 0, 0)]  # Hier kommen alle Rechtecke rein, die gemalt werden sollen
     recti = 0
 
     def __init__(self):
@@ -112,14 +112,15 @@ class MainWidget(QtWidgets.QWidget):
 
     def mouseMoveEvent(self, event):
         self.end = event.pos()
-        self.rectList.insert(self.recti, QtCore.QRect(self.begin,
-                                        self.end)) #Updatet die Rechtecke in der RectListe
+        self.rectList[self.recti] = QtCore.QRect(self.begin,
+                                                 self.end)  # Updatet die Rechtecke in der RectListe
         self.update()
 
     def mouseReleaseEvent(self, event):
         # self.begin = event.pos()
         # self.end = event.pos()
         self.recti = self.recti + 1
+        self.rectList.append(QtCore.QRect(0, 0, 0, 0))
         self.update()
 
 
