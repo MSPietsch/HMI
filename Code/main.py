@@ -2,7 +2,7 @@ import os, sys, random
 
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename, askdirectory
-
+from gui.nodeEdit import Ui_nodeEdit
 from gui.startWindow import Ui_MainWindow
 from gui.mainWidget import Ui_mainWidget
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -94,6 +94,7 @@ class MainWindow(QMainWindow):
 class MainWidget(QtWidgets.QWidget):
     rectList = [QtCore.QRect(0, 0, 0, 0)]  # Hier kommen alle Rechtecke rein, die gemalt werden sollen
     recti = 0
+
     r = [random.randint(0, 255)]  # Listen mit dem Rotwert der Rechtecke wird erstellt, mit erstem Wert
     g = [random.randint(0, 255)]  # Listen mit dem Gelbwert der Rechtecke wird erstellt, mit erstem Wert
     b = [random.randint(0, 255)]  # Listen mit dem Blauwert der Rechtecke wird erstellt, mit erstem Wert
@@ -141,8 +142,24 @@ class MainWidget(QtWidgets.QWidget):
     def createRectBtn(self, rect):
         self.btn1 = QtWidgets.QPushButton(self)
         self.btn1.resize(rect.width(), rect.height())
-        self.btn1.move(rect.getCoords()[0],rect.getCoords()[1])
+        self.btn1.move(rect.getCoords()[0], rect.getCoords()[1])
         self.btn1.setObjectName("btn1")
+
+
+class NodeEdit(QtWidgets.QWidget):
+    def __init__(self):
+        super(NodeEdit, self).__init__()
+        self.ui = Ui_nodeEdit()
+        self.ui.setupUi(self)
+        # self.__connect_buttons()
+
+  #  def __connect_buttons(self):
+
+
+# self.ui.btnMaus1.clicked.connect(self.pass)
+# self.ui.btnMaus2.clicked.connect(self.pass)
+# self.ui.btnBin.clicked.connect(self.pass)
+
 
 class Controller:  # Verwaltet die verschiedenen Widgets
 
@@ -157,9 +174,12 @@ class Controller:  # Verwaltet die verschiedenen Widgets
 
     def showMain(self, path):
         self.mainWidget = MainWidget()
+        self.mainWidget.ui.nodeEdit = NodeEdit()
         self.startWindow.startFrame.hide()  # Startframe verbergen
         self.startWindow.setCentralWidget(self.mainWidget)  # Labelansicht ins Fenster stecken
         self.mainWidget.ui.RILabel.setPixmap(QtGui.QPixmap(path))  # Bilddatei wird im Label angezeigt
+        self.mainWidget.ui.nodeEdit.show()
+        self.mainWidget.ui.nodeEdit.move(self.startWindow.pos())
 
 
 if __name__ == "__main__":
