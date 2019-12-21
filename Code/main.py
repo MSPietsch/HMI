@@ -140,10 +140,12 @@ class MainWidget(QtWidgets.QWidget):
         self.update()
 
     def createRectBtn(self, rect):
-        self.btn1 = QtWidgets.QPushButton(self)
-        self.btn1.resize(rect.width(), rect.height())
-        self.btn1.move(rect.getCoords()[0], rect.getCoords()[1])
+        self.btn1 = QtWidgets.QPushButton(self)  # erstelle Button
+        self.btn1.resize(rect.width(), rect.height())  # passe die Buttongröße auf Rechtecksgröße an
+        self.btn1.move(rect.getCoords()[0], rect.getCoords()[1])  # Bewege Button auf die Stelle des Rechtecks
         self.btn1.setObjectName("btn1")
+        self.btn1.show()
+        self.btn1.setVisible(True)
 
 
 class NodeEdit(QtWidgets.QWidget):
