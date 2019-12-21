@@ -26,6 +26,7 @@ class MainWindow(QMainWindow):
         self.ui.btnOpen.clicked.connect(self.openProject)
         self.ui.actionNew.triggered.connect(self.newProject)
         self.ui.actionOpen.triggered.connect(self.openProject)
+        self.ui.actionAlle_Knoten_zeigen.changed.connect(self.showNodes)
         self.ui.actionClose.triggered.connect(lambda: self.showPopup("saveBeforeExit"))
         self.ui.actionSave.triggered.connect(lambda: self.showPopup("save"))
 
@@ -61,6 +62,7 @@ class MainWindow(QMainWindow):
         # except FileExistsError:
         #     self.showPopup("folderExists")
 
+
     def showPopup(self, info):
         msg = QMessageBox()
         if info == "folderExists":
@@ -90,6 +92,16 @@ class MainWindow(QMainWindow):
             msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
             x = msg.exec_()
 
+    def showNodes(self):
+        # TODO: Male Rechtecke oder mache sie unsichtbar. Funktioniert hier noch nicht
+        if self.ui.actionAlle_Knoten_zeigen.isChecked():
+            print('Knotencheckt')
+        else:
+            qp = QtGui.QPainter(self)
+            for rect in MainWidget.rectList:
+                rectColor = QtGui.QColor(100, 0, 0, 100)
+                qp.setBrush(rectColor)  # Setzt die Farbe des Rechtecks aus den RGB Listen
+                qp.drawRect(rect)
 
 class MainWidget(QtWidgets.QWidget):
     rectList = [QtCore.QRect(0, 0, 0, 0)]  # Hier kommen alle Rechtecke rein, die gemalt werden sollen
@@ -132,18 +144,18 @@ class MainWidget(QtWidgets.QWidget):
         self.update()
 
     def mouseReleaseEvent(self, event):
-        self.createRectBtn(self.rectList[self.recti])
+        # self.createRectBtn(self.rectList[self.recti])
         self.recti = self.recti + 1
         self.rectList.append(QtCore.QRect(0, 0, 0, 0))
         self.update()
 
-    def createRectBtn(self, rect):
-        self.btn1 = QtWidgets.QPushButton(self)  # erstelle Button
-        self.btn1.resize(rect.width(), rect.height())  # passe die Buttongröße auf Rechtecksgröße an
-        self.btn1.move(rect.getCoords()[0], rect.getCoords()[1])  # Bewege Button auf die Stelle des Rechtecks
-        self.btn1.setObjectName("btn1")
-        self.btn1.show()
-        self.btn1.setVisible(True)
+    # def createRectBtn(self, rect):
+    #     self.btn1 = QtWidgets.QPushButton(self)  # erstelle Button
+    #     self.btn1.resize(rect.width(), rect.height())  # passe die Buttongröße auf Rechtecksgröße an
+    #     self.btn1.move(rect.getCoords()[0], rect.getCoords()[1])  # Bewege Button auf die Stelle des Rechtecks
+    #     self.btn1.setObjectName("btn1")
+    #     self.btn1.setVisible(False)
+    #     self.btn1.show()
 
 
 class NodeEdit(QtWidgets.QWidget):
@@ -180,6 +192,7 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.mainWidget.ui.RILabel.setPixmap(QtGui.QPixmap(path))  # Bilddatei wird im Label angezeigt
         self.mainWidget.ui.nodeEdit.show()
         self.mainWidget.ui.nodeEdit.move(self.startWindow.pos())
+
 
 
 if __name__ == "__main__":
