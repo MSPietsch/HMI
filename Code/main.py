@@ -132,8 +132,6 @@ class MainWidget(QtWidgets.QWidget):
         self.update()
 
     def mouseReleaseEvent(self, event):
-        # self.begin = event.pos()
-        # self.end = event.pos()
         self.createRectBtn(self.rectList[self.recti])
         self.recti = self.recti + 1
         self.rectList.append(QtCore.QRect(0, 0, 0, 0))
