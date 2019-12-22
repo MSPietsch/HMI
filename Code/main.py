@@ -105,7 +105,6 @@ class MainWidget(QtWidgets.QWidget):
         self.ui.setupUi(self)
         self.begin = QtCore.QPoint()
         self.end = QtCore.QPoint()
-        # self.__connect_buttons()
 
     def paintEvent(self, event):
         qp = QtGui.QPainter(self)
@@ -144,6 +143,7 @@ class MainWidget(QtWidgets.QWidget):
         self.btn1.setObjectName("btn1")
         self.btn1.show()
         self.btn1.setVisible(True)
+        self.btn1.setFlat(True) #Macht den Button durchsichtig
 
 
 class NodeEdit(QtWidgets.QWidget):
@@ -151,6 +151,8 @@ class NodeEdit(QtWidgets.QWidget):
         super(NodeEdit, self).__init__()
         self.ui = Ui_nodeEdit()
         self.ui.setupUi(self)
+        self.show()
+        self.move(200, 300) #Positioniert den Knoteneditor
         # self.__connect_buttons()
 
   #  def __connect_buttons(self):
@@ -174,12 +176,10 @@ class Controller:  # Verwaltet die verschiedenen Widgets
 
     def showMain(self, path):
         self.mainWidget = MainWidget()
-        self.mainWidget.ui.nodeEdit = NodeEdit()
         self.startWindow.startFrame.hide()  # Startframe verbergen
         self.startWindow.setCentralWidget(self.mainWidget)  # Labelansicht ins Fenster stecken
         self.mainWidget.ui.RILabel.setPixmap(QtGui.QPixmap(path))  # Bilddatei wird im Label angezeigt
-        self.mainWidget.ui.nodeEdit.show()
-        self.mainWidget.ui.nodeEdit.move(self.startWindow.pos())
+        self.nodeEdit = NodeEdit()   #Erzeugt einen Knoteneditor
 
 
 if __name__ == "__main__":
