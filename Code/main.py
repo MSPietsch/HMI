@@ -20,6 +20,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.__connect_buttons()
         self.startFrame = self.ui.startFrame
+        self.nodeEdit = NodeEdit()   #Erzeugt einen Knoteneditor
 
     def __connect_buttons(self):
         self.ui.btnNew.clicked.connect(self.newProject)
@@ -28,6 +29,10 @@ class MainWindow(QMainWindow):
         self.ui.actionOpen.triggered.connect(self.openProject)
         self.ui.actionClose.triggered.connect(lambda: self.showPopup("saveBeforeExit"))
         self.ui.actionSave.triggered.connect(lambda: self.showPopup("save"))
+
+    def closeEvent(self, event): #Überschreibt was passiert, wenn das Fenster geschlossen wird
+        self.showPopup("saveBeforeExit")    #Fragt, ob gespeichert werden soll
+        self.nodeEdit.close()               #Schließt auch den Knoteneditor, auch wenn er versteckt ist
 
     def openProject(self):  # Fragt nach einer PDF Datei zum öffnen und speicher den Pfad in path
         Tk().withdraw()  # nur ein Fenster wird geöffnet
@@ -74,7 +79,8 @@ class MainWindow(QMainWindow):
             msg.setText("Platzhalter: Projekt wurde gespeichert!")
             msg.setStandardButtons(QMessageBox.Ok)
             x = msg.exec_()
-        if info == "saveBeforeExit":
+        if info == "saveBeforeExit":    # Hier sollte noch definiert werden was die Buttons tun
+                                        #https://stackoverflow.com/questions/40622095/pyqt5-closeevent-method ALS BEISPIEl
             msg.setWindowTitle("Achtung")
             msg.setText("Möchten Sie Ihr Projekt vor dem Schließen speichern?")
             msg.setIcon(QMessageBox.Question)  # Fragezeichenlogo
@@ -151,8 +157,6 @@ class NodeEdit(QtWidgets.QWidget):
         super(NodeEdit, self).__init__()
         self.ui = Ui_nodeEdit()
         self.ui.setupUi(self)
-        self.show()
-        self.move(200, 300) #Positioniert den Knoteneditor
         # self.__connect_buttons()
 
   #  def __connect_buttons(self):
@@ -179,8 +183,8 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.startWindow.startFrame.hide()  # Startframe verbergen
         self.startWindow.setCentralWidget(self.mainWidget)  # Labelansicht ins Fenster stecken
         self.mainWidget.ui.RILabel.setPixmap(QtGui.QPixmap(path))  # Bilddatei wird im Label angezeigt
-        self.nodeEdit = NodeEdit()   #Erzeugt einen Knoteneditor
-
+        self.startWindow.nodeEdit.show()
+        self.startWindow.nodeEdit.move(200, 300) #Positioniert den Knoteneditor
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
