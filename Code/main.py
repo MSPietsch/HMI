@@ -9,7 +9,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
 
 
-##
 class MainWindow(QMainWindow):
     switch_window = QtCore.pyqtSignal(
         str)  # Signal wird gesendet, wenn Fenster geändert werden soll: Trägt pdf Pfad mit sich
@@ -20,7 +19,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.__connect_buttons()
         self.startFrame = self.ui.startFrame
-        self.nodeEdit = NodeEdit()   #Erzeugt einen Knoteneditor
+        self.nodeEdit = NodeEdit()  # Erzeugt einen Knoteneditor
 
     def __connect_buttons(self):
         self.ui.btnNew.clicked.connect(self.newProject)
@@ -30,9 +29,9 @@ class MainWindow(QMainWindow):
         self.ui.actionClose.triggered.connect(lambda: self.showPopup("saveBeforeExit"))
         self.ui.actionSave.triggered.connect(lambda: self.showPopup("save"))
 
-    def closeEvent(self, event): #Überschreibt was passiert, wenn das Fenster geschlossen wird
-        self.showPopup("saveBeforeExit")    #Fragt, ob gespeichert werden soll
-        self.nodeEdit.close()               #Schließt auch den Knoteneditor, auch wenn er versteckt ist
+    def closeEvent(self, event):  # Überschreibt was passiert, wenn das Fenster geschlossen wird
+        self.showPopup("saveBeforeExit")  # Fragt, ob gespeichert werden soll
+        self.nodeEdit.close()  # Schließt auch den Knoteneditor, auch wenn er versteckt ist
 
     def openProject(self):  # Fragt nach einer PDF Datei zum öffnen und speicher den Pfad in path
         Tk().withdraw()  # nur ein Fenster wird geöffnet
@@ -79,8 +78,8 @@ class MainWindow(QMainWindow):
             msg.setText("Platzhalter: Projekt wurde gespeichert!")
             msg.setStandardButtons(QMessageBox.Ok)
             x = msg.exec_()
-        if info == "saveBeforeExit":    # Hier sollte noch definiert werden was die Buttons tun
-                                        #https://stackoverflow.com/questions/40622095/pyqt5-closeevent-method ALS BEISPIEl
+        if info == "saveBeforeExit":  # Hier sollte noch definiert werden was die Buttons tun
+            # https://stackoverflow.com/questions/40622095/pyqt5-closeevent-method ALS BEISPIEl
             msg.setWindowTitle("Achtung")
             msg.setText("Möchten Sie Ihr Projekt vor dem Schließen speichern?")
             msg.setIcon(QMessageBox.Question)  # Fragezeichenlogo
@@ -112,6 +111,10 @@ class MainWidget(QtWidgets.QWidget):
         self.begin = QtCore.QPoint()
         self.end = QtCore.QPoint()
 
+    def passMainWindow(self,
+                       win):  # Funktioniert wird von Controller aufgerufen, damit das mainWidget dast startWindow hat
+        self.win = win
+
     def paintEvent(self, event):
         qp = QtGui.QPainter(self)
         # br = QtGui.QBrush(QtGui.QColor(r, g, b, 100))
@@ -140,6 +143,7 @@ class MainWidget(QtWidgets.QWidget):
         self.createRectBtn(self.rectList[self.recti])
         self.recti = self.recti + 1
         self.rectList.append(QtCore.QRect(0, 0, 0, 0))
+        self.win.nodeEdit.rectSignal.emit()  # schickt ein Signal an den NodeEdit
         self.update()
 
     def createRectBtn(self, rect):
@@ -149,26 +153,74 @@ class MainWidget(QtWidgets.QWidget):
         self.btn1.setObjectName("btn1")
         self.btn1.show()
         self.btn1.setVisible(True)
-        self.btn1.setFlat(True) #Macht den Button durchsichtig
+        self.btn1.setFlat(True)  # Macht den Button durchsichtig
 
 
-class NodeEdit(QtWidgets.QWidget):
+class NodeEdit(QMainWindow):
+    rectSignal = QtCore.pyqtSignal()  # Signal wird von gesendet, wenn ein Rechteck erstellt wurde
+
     def __init__(self):
         super(NodeEdit, self).__init__()
         self.ui = Ui_nodeEdit()
         self.ui.setupUi(self)
-        # self.__connect_buttons()
+        self.rectSignal.connect(self.onRectCreate)
+        self.__connect_buttons()
 
-  #  def __connect_buttons(self):
+    def __connect_buttons(self):    #Legt fest welche Funktionen mit welchem Button verknüpft sind
+        self.ui.btn1.clicked.connect(self.onBtn1)
+        self.ui.btn2.clicked.connect(self.onBtn2)
+        self.ui.btn3.clicked.connect(self.onBtn3)
+        self.ui.btnOk.clicked.connect(self.onBtnOk)
+        self.ui.btnBin.clicked.connect(self.onBtnBin)
+        self.ui.btnAbort.clicked.connect(self.onBtnAbort)
+
+    #Funktionen für die Buttons des Knoteneditors
+    def onBtn1(self):
+        print("1")
+        self.widget.
+        pass
+
+    def onBtn2(self):
+        print("2")
+        pass
+
+    def onBtn3(self):
+        print("3")
+        pass
+
+    def onBtnBin(self):
+        print("Bin")
+        pass
+
+    def onBtnOk(self):
+        print("Ok")
+        pass
+
+    def onBtnAbort(self):
+        print("Abbruch")
+        pass
+
+    def passWidget(self, widget):
+        self.widget = widget
+
+    def onRectCreate(self):  # Funktion wird aufgerufen, wenn in mainWidget ein Rechteck erstellt wurde
+        if self.widget.recti > 0:   #Wenn es mindestens ein Rechteck existiert
+            self.ui.btn2.setEnabled(True)  # Buttons enablen
+            self.ui.btn3.setEnabled(True)
+            self.ui.btnOk.setEnabled(True)
+        else:
+            self.ui.btn2.setEnabled(False)  # Buttons disablen, wenn es keine Rechtecke gibt
+            self.ui.btn3.setEnabled(False)
+            self.ui.btnOk.setEnabled(False)
 
 
+#  def __connect_buttons(self):
 # self.ui.btnMaus1.clicked.connect(self.pass)
 # self.ui.btnMaus2.clicked.connect(self.pass)
 # self.ui.btnBin.clicked.connect(self.pass)
 
 
 class Controller:  # Verwaltet die verschiedenen Widgets
-
     def __init__(self):
         pass
 
@@ -176,19 +228,20 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.startWindow = MainWindow()
         self.startWindow.switch_window.connect(self.showMain)
         self.startWindow.show()
-        print("startWindow erstellt.")
 
     def showMain(self, path):
         self.mainWidget = MainWidget()
+        self.mainWidget.passMainWindow(self.startWindow)    #Übergibt das Hauptfenster an das mainWidget
+        self.startWindow.nodeEdit.passWidget(self.mainWidget)      #Übergibt das mainWidget an den nodeEdit
         self.startWindow.startFrame.hide()  # Startframe verbergen
         self.startWindow.setCentralWidget(self.mainWidget)  # Labelansicht ins Fenster stecken
         self.mainWidget.ui.RILabel.setPixmap(QtGui.QPixmap(path))  # Bilddatei wird im Label angezeigt
         self.startWindow.nodeEdit.show()
-        self.startWindow.nodeEdit.move(200, 300) #Positioniert den Knoteneditor
+        self.startWindow.nodeEdit.move(200, 300)  # Positioniert den Knoteneditor
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     controller = Controller()
     controller.showStart()
-    print("go")
     sys.exit(app.exec_())
