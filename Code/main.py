@@ -98,9 +98,10 @@ class MainWindow(QMainWindow):
 
 class MainWidget(QtWidgets.QWidget):
     rectList = [QtCore.QRect(0, 0, 0, 0)]  # Hier kommen alle Rechtecke rein, die gemalt werden sollen
+    rectBtnList = []    #Liste mit allen Buttons
     recti = 0
     enableDrawNode = False  #Vorerst können keine Rechtecke gemalt werden
-    enableDeleteNode = False #Flag zum Löschen von Knoten
+    enableDeleteNode = False  #Flag zum Löschen von Knoten
 
     r = [random.randint(0, 255)]  # Listen mit dem Rotwert der Rechtecke wird erstellt, mit erstem Wert
     g = [random.randint(0, 255)]  # Listen mit dem Gelbwert der Rechtecke wird erstellt, mit erstem Wert
@@ -127,10 +128,9 @@ class MainWidget(QtWidgets.QWidget):
             qp.drawRect(rect)  # Malt Rechteck
             i = i + 1  # Laufvariable für RGB Listen erhöht
 
-    #TODO: Wenn ein rectBtn gedrückt gehalten wird und dann versucht wird ein neues Rechteck zu zeichnen, dann crasht das Programm
-    #       ,da kein begin Punkt festgelegt wird wenn ein Button gedrückt wurde
     def mousePressEvent(self, event):
         if self.enableDrawNode:
+            print("Ja")
             self.begin = event.pos()
             self.end = event.pos()
             self.r.insert(self.recti + 1, random.randint(0, 255))  # Neue Farbe für Rechteck erstellen
@@ -158,14 +158,18 @@ class MainWidget(QtWidgets.QWidget):
         self.update()
 
     def createRectBtn(self, rect):
-        self.btn1 = QtWidgets.QPushButton(self)  # erstelle Button
-        self.btn1.resize(rect.width(), rect.height())  # passe die Buttongröße auf Rechtecksgröße an
-        self.btn1.move(rect.getCoords()[0], rect.getCoords()[1])  # Bewege Button auf die Stelle des Rechtecks
-        self.btn1.setObjectName("btn1")
-        self.btn1.show()
-        self.btn1.setVisible(True)
-        self.btn1.setFlat(True)  # Macht den Button durchsichtig
+        self.rectBtnList.append(QtWidgets.QPushButton(self))  # erstelle Button
+        i = len(self.rectBtnList) - 1
+        self.rectBtnList[i].resize(rect.width(), rect.height())  # passe die Buttongröße auf Rechtecksgröße an
+        self.rectBtnList[i].move(rect.getCoords()[0], rect.getCoords()[1])  # Bewege Button auf die Stelle des Rechtecks
+        self.rectBtnList[i].setObjectName("btn1")
+        self.rectBtnList[i].setVisible(True)
+        self.rectBtnList[i].setFlat(True)  # Macht den Button durchsichtig
+        self.rectBtnList[i].clicked.connect(lambda: self.openWizard(i))
+        self.rectBtnList[i].hide()   # Btn erstmal hiden und erst wenn Ok gedrückt wird shown, sonst crasht das Programm
 
+    def openWizard(self, i):
+        print(i)
 
 class NodeEdit(QMainWindow):
     rectSignal = QtCore.pyqtSignal()  # Signal wird von gesendet, wenn ein Rechteck erstellt wurde
@@ -189,6 +193,8 @@ class NodeEdit(QMainWindow):
     def onBtn1(self):
         self.widget.enableDrawNode = True
         self.widget.enableDeleteNode = False
+        for btn in self.widget.rectBtnList:         #Alle Buttons während dem Malen disablen, damit das Programm nicht crasht
+            btn.hide()
 
     def onBtn2(self):
         print("2")
@@ -203,6 +209,10 @@ class NodeEdit(QMainWindow):
         self.widget.enableDeleteNode = True
 
     def onBtnOk(self):
+        self.widget.enableDrawNode = False
+        self.widget.enableDeleteNode = False
+        for btn in self.widget.rectBtnList:         #Schaltet jetzt erst die Buttons an, damit die beim Malen nicht geklickt werden -> Crash
+            btn.show()
         print("Ok")
         pass
 

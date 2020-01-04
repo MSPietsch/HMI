@@ -51,7 +51,7 @@
       <cursorShape>ArrowCursor</cursorShape>
      </property>
      <property name="focusPolicy">
-      <enum>Qt::ClickFocus</enum>
+      <enum>Qt::StrongFocus</enum>
      </property>
      <property name="statusTip">
       <string>Markiert einen Hauptknoten.</string>
@@ -62,9 +62,6 @@
      <property name="icon">
       <iconset>
        <normaloff>../icons/cursor_icon.png</normaloff>../icons/cursor_icon.png</iconset>
-     </property>
-     <property name="checkable">
-      <bool>false</bool>
      </property>
      <property name="checked">
       <bool>false</bool>
