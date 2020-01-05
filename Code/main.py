@@ -99,7 +99,8 @@ class MainWindow(QMainWindow):
 class MainWidget(QtWidgets.QWidget):
     rectList = [QtCore.QRect(0, 0, 0, 0)]  # Hier kommen alle Rechtecke rein, die gemalt werden sollen
     rectBtnList = []    #Liste mit allen Buttons
-    recti = 0
+    recti = 0 #Variable für Anzahl der Rechtecke
+    nodei = 0 #Variable für tatsächliche Knoten Haupt und Nebenknoten haben die gleiche Zahl
     enableDrawNode = False  #Vorerst können keine Rechtecke gemalt werden
     enableDeleteNode = False  #Flag zum Löschen von Knoten
 
@@ -133,7 +134,7 @@ class MainWidget(QtWidgets.QWidget):
             print("Ja")
             self.begin = event.pos()
             self.end = event.pos()
-            self.r.insert(self.recti + 1, random.randint(0, 255))  # Neue Farbe für Rechteck erstellen
+            self.r.insert(self.recti + 1, random.randint(0, 255))  # Farbe neu oder wie andere Knotenrechtecke
             self.g.insert(self.recti + 1, random.randint(0, 255))
             self.b.insert(self.recti + 1, random.randint(0, 255))
         self.update()
@@ -151,9 +152,13 @@ class MainWidget(QtWidgets.QWidget):
             self.rectList.append(QtCore.QRect(0, 0, 0, 0))
             self.win.nodeEdit.rectSignal.emit()  # schickt ein Signal an den NodeEdit
         if self.enableDeleteNode:
+            i = 0
             for rect in self.rectList:      #Geht alle Rechtecke durch um zu prüfen, welches gelöscht werden soll
                 if rect.contains(event.pos()):
                     rect.setCoords(0,0,0,0) #Löscht das Rechteck nicht, sondern macht es nur ganz klein, damit die Farbliste nicht durcheinander gebracht wird
+                    self.rectBtnList[i].setGeometry(0,0,0,0)
+                    break
+                i = i + 1
                     #TODO: Machen, dass auch noch der btn verschwindet
         self.update()
 
@@ -166,7 +171,7 @@ class MainWidget(QtWidgets.QWidget):
         self.rectBtnList[i].setVisible(True)
         self.rectBtnList[i].setFlat(True)  # Macht den Button durchsichtig
         self.rectBtnList[i].clicked.connect(lambda: self.openWizard(i))
-        self.rectBtnList[i].hide()   # Btn erstmal hiden und erst wenn Ok gedrückt wird shown, sonst crasht das Programm
+        self.rectBtnList[i].hide()   # Btn erstmal hiden und erst wenn Ok gedrückt wird shown, sonst crasht das Programm beim Malen
 
     def openWizard(self, i):
         print(i)
@@ -207,37 +212,38 @@ class NodeEdit(QMainWindow):
     def onBtnBin(self):
         self.widget.enableDrawNode = False
         self.widget.enableDeleteNode = True
+        for btn in self.widget.rectBtnList:         #Alle Buttons disablen, damit die Buttons nicht gedrückt werden
+            btn.hide()
 
     def onBtnOk(self):
+        self.widget.nodei = self.widget.nodei + 1   #Knoten abschließen und einen neuen Knoten eröffnen TODO: Damit wollte ich schaffen, dass Nebenknoten und Hauptknoten einander zugehörig sind, anders auch möglich
         self.widget.enableDrawNode = False
         self.widget.enableDeleteNode = False
+        self.ui.btnOk.setEnabled(False)
+        self.ui.btn1.setEnabled(True)
         for btn in self.widget.rectBtnList:         #Schaltet jetzt erst die Buttons an, damit die beim Malen nicht geklickt werden -> Crash
             btn.show()
-        print("Ok")
-        pass
 
     def onBtnAbort(self):
         print("Abbruch")
-        pass
+        self.hide()
 
     def passWidget(self, widget):
         self.widget = widget
 
     def onRectCreate(self):  # Funktion wird aufgerufen, wenn in mainWidget ein Rechteck erstellt wurde
+        self.ui.btn1.setEnabled(False) #Disablen, damit nur ein Knoten erstmal gezeichnet wird
+        self.widget.enableDrawNode = False
         if self.widget.recti > 0:  # Wenn es mindestens ein Rechteck existiert
             self.ui.btn2.setEnabled(True)  # Buttons enablen
             self.ui.btn3.setEnabled(True)
             self.ui.btnOk.setEnabled(True)
+            self.ui.btnBin.setEnabled(True)
         else:
             self.ui.btn2.setEnabled(False)  # Buttons disablen, wenn es keine Rechtecke gibt
             self.ui.btn3.setEnabled(False)
             self.ui.btnOk.setEnabled(False)
-
-
-#  def __connect_buttons(self):
-# self.ui.btnMaus1.clicked.connect(self.pass)
-# self.ui.btnMaus2.clicked.connect(self.pass)
-# self.ui.btnBin.clicked.connect(self.pass)
+            self.ui.btnBin.setEnabled(False)
 
 
 class Controller:  # Verwaltet die verschiedenen Widgets
