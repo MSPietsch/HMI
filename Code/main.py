@@ -95,13 +95,16 @@ class MainWindow(QMainWindow):
             msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
             x = msg.exec_()
 
+# ---------------------------------------------------------------- #
+#                        Hauptfenster
+# ---------------------------------------------------------------- #
 class MainWidget(QtWidgets.QWidget):
     rectList = [QtCore.QRect(0, 0, 0, 0)]  # Hier kommen alle Rechtecke rein, die gemalt werden sollen
-    rectBtnList = []    #Liste mit allen Buttons
-    recti = 0 #Variable für Anzahl der Rechtecke
-    nodei = 0 #Variable für tatsächliche Knoten Haupt und Nebenknoten haben die gleiche Zahl
-    enableDrawNode = False  #Vorerst können keine Rechtecke gemalt werden
-    enableDeleteNode = False  #Flag zum Löschen von Knoten
+    rectBtnList = []  # Liste mit allen Buttons
+    recti = 0  # Variable für Anzahl der Rechtecke
+    nodei = 0  # Variable für tatsächliche Knoten Haupt und Nebenknoten haben die gleiche Zahl
+    enableDrawNode = False  # Vorerst können keine Rechtecke gemalt werden
+    enableDeleteNode = False  # Flag zum Löschen von Knoten
 
     r = [random.randint(0, 255)]  # Listen mit dem Rotwert der Rechtecke wird erstellt, mit erstem Wert
     g = [random.randint(0, 255)]  # Listen mit dem Gelbwert der Rechtecke wird erstellt, mit erstem Wert
@@ -146,19 +149,20 @@ class MainWidget(QtWidgets.QWidget):
 
     def mouseReleaseEvent(self, event):
         if self.enableDrawNode:
-            self.createRectBtn(self.rectList[self.recti])
+            self.createRectBtn(self.rectList[self.recti])  # Rechteckbutton erstellen
             self.recti = self.recti + 1
             self.rectList.append(QtCore.QRect(0, 0, 0, 0))
             self.win.nodeEdit.rectSignal.emit()  # schickt ein Signal an den NodeEdit
         if self.enableDeleteNode:
             i = 0
-            for rect in self.rectList:      #Geht alle Rechtecke durch um zu prüfen, welches gelöscht werden soll
+            for rect in self.rectList:  # Geht alle Rechtecke durch um zu prüfen, welches gelöscht werden soll
                 if rect.contains(event.pos()):
-                    rect.setCoords(0,0,0,0) #Löscht das Rechteck nicht, sondern macht es nur ganz klein, damit die Farbliste nicht durcheinander gebracht wird
-                    self.rectBtnList[i].setGeometry(0,0,0,0)
+                    rect.setCoords(0, 0, 0,
+                                   0)  # Löscht das Rechteck nicht, sondern macht es nur ganz klein, damit die Farbliste nicht durcheinander gebracht wird
+                    self.rectBtnList[i].setGeometry(0, 0, 0, 0)
                     break
                 i = i + 1
-                    #TODO: Machen, dass auch noch der btn verschwindet
+                # TODO: Machen, dass auch noch der btn verschwindet
         self.update()
 
     def createRectBtn(self, rect):
@@ -170,20 +174,32 @@ class MainWidget(QtWidgets.QWidget):
         self.rectBtnList[i].setVisible(True)
         self.rectBtnList[i].setFlat(True)  # Macht den Button durchsichtig
         self.rectBtnList[i].clicked.connect(lambda: self.openWizard(i))
-        self.rectBtnList[i].hide()   # Btn erstmal hiden und erst wenn Ok gedrückt wird shown, sonst crasht das Programm beim Malen
+        self.rectBtnList[
+            i].hide()  # Btn erstmal hiden und erst wenn Ok gedrückt wird shown, sonst crasht das Programm beim Malen
 
     def openWizard(self, i):
         print(i)
 
+# ---------------------------------------------------------------- #
+#                         Node-Editor
+# ---------------------------------------------------------------- #
 class NodeEdit(QMainWindow):
     rectSignal = QtCore.pyqtSignal()  # Signal wird von gesendet, wenn ein Rechteck erstellt wurde
+    rectPos = QtCore.QRect(0, 0, 0, 0)
+    def paintEvent(self, event):
+        rectColor = QtGui.QColor(28,134,238, 200 )
+        qp = QtGui.QPainter(self)
+        qp.setBrush(rectColor)  # Setzt die Farbe des Rechtecks aus den RGB Listen
+        qp.drawRect(self.rectPos)  # Malt Rechteck
 
     def __init__(self):
-        QMainWindow.__init__(self, None, QtCore.Qt.WindowStaysOnTopHint)    #Lässt den Knoteneditor immer im Vordergrund stehen
+        QMainWindow.__init__(self, None,
+                             QtCore.Qt.WindowStaysOnTopHint)  # Lässt den Knoteneditor immer im Vordergrund stehen
         self.ui = Ui_nodeEdit()
         self.ui.setupUi(self)
         self.rectSignal.connect(self.onRectCreate)
         self.__connect_buttons()
+
 
     def __connect_buttons(self):  # Legt fest welche Funktionen mit welchem Button verknüpft sind
         self.ui.btn1.clicked.connect(self.onBtn1)
@@ -195,35 +211,48 @@ class NodeEdit(QMainWindow):
 
     # Funktionen für die Buttons des Knoteneditors
     def onBtn1(self):
+        self.rectPos = QtCore.QRect(19, 19, 42, 42)
+        self.update()
         self.widget.enableDrawNode = True
         self.widget.enableDeleteNode = False
-        for btn in self.widget.rectBtnList:         #Alle Buttons während dem Malen disablen, damit das Programm nicht crasht
+        for btn in self.widget.rectBtnList:  # Alle Buttons während dem Malen disablen, damit das Programm nicht crasht
             btn.hide()
 
     def onBtn2(self):
         print("2")
+        self.rectPos = QtCore.QRect(69, 74, 42, 42)
+        self.update()
         pass
 
     def onBtn3(self):
         print("3")
+        self.rectPos = QtCore.QRect(19, 129, 42, 42)
+        self.update()
         pass
 
     def onBtnBin(self):
+        self.rectPos = QtCore.QRect(19, 199, 42, 42)
+        self.update()
         self.widget.enableDrawNode = False
         self.widget.enableDeleteNode = True
-        for btn in self.widget.rectBtnList:         #Alle Buttons disablen, damit die Buttons nicht gedrückt werden
+        for btn in self.widget.rectBtnList:  # Alle Buttons disablen, damit die Buttons nicht gedrückt werden
             btn.hide()
 
     def onBtnOk(self):
-        self.widget.nodei = self.widget.nodei + 1   #Knoten abschließen und einen neuen Knoten eröffnen TODO: Damit wollte ich schaffen, dass Nebenknoten und Hauptknoten einander zugehörig sind, anders auch möglich
+        self.rectPos = QtCore.QRect(0,0,0,0) # Markierungsrechteck wird verschoben
+        self.update()
+        self.widget.nodei = self.widget.nodei + 1  # Knoten abschließen und einen neuen Knoten eröffnen
+        # TODO: Damit wollte ich schaffen, dass Nebenknoten und Hauptknoten einander zugehörig sind, anders auch möglich
         self.widget.enableDrawNode = False
         self.widget.enableDeleteNode = False
         self.ui.btnOk.setEnabled(False)
         self.ui.btn1.setEnabled(True)
-        for btn in self.widget.rectBtnList:         #Schaltet jetzt erst die Buttons an, damit die beim Malen nicht geklickt werden -> Crash
+        for btn in self.widget.rectBtnList:  # Schaltet jetzt erst die Buttons an, damit die beim Malen nicht geklickt werden -> Crash
             btn.show()
 
     def onBtnAbort(self):
+        self.rectPos = QtCore.QRect(0,0,0,0) # Markierungsrechteck wird verschoben
+        self.update()
         print("Abbruch")
         self.hide()
 
@@ -231,7 +260,7 @@ class NodeEdit(QMainWindow):
         self.widget = widget
 
     def onRectCreate(self):  # Funktion wird aufgerufen, wenn in mainWidget ein Rechteck erstellt wurde
-        self.ui.btn1.setEnabled(False) #Disablen, damit nur ein Knoten erstmal gezeichnet wird
+        self.ui.btn1.setEnabled(False)  # Disablen, damit nur ein Knoten erstmal gezeichnet wird
         self.widget.enableDrawNode = False
         if self.widget.recti > 0:  # Wenn es mindestens ein Rechteck existiert
             self.ui.btn2.setEnabled(True)  # Buttons enablen
