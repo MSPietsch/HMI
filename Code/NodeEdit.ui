@@ -51,7 +51,7 @@
       <cursorShape>ArrowCursor</cursorShape>
      </property>
      <property name="focusPolicy">
-      <enum>Qt::StrongFocus</enum>
+      <enum>Qt::ClickFocus</enum>
      </property>
      <property name="statusTip">
       <string>Markiert einen Hauptknoten.</string>
@@ -216,7 +216,7 @@
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>70</x>
        <y>125</y>
        <width>171</width>
        <height>51</height>
@@ -235,7 +235,7 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>70</x>
+       <x>20</x>
        <y>130</y>
        <width>41</width>
        <height>41</height>
