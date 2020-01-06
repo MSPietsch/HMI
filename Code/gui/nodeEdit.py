@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'NodeEdit.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.1
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -59,6 +59,7 @@ class Ui_nodeEdit(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.btnBin = QtWidgets.QPushButton(self.widget)
+        self.btnBin.setEnabled(False)
         self.btnBin.setGeometry(QtCore.QRect(20, 200, 41, 41))
         self.btnBin.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.btnBin.setFocusPolicy(QtCore.Qt.ClickFocus)
@@ -125,7 +126,7 @@ class Ui_nodeEdit(object):
         self.label_3.setText(_translate("nodeEdit", "Knoten entfernen"))
         self.label_4.setText(_translate("nodeEdit", "Referenzpunkt setzen"))
         self.btn3.setStatusTip(_translate("nodeEdit", "Setzt einen Referenzpunkt."))
-        self.btnOk.setText(_translate("nodeEdit", "Ok"))
+        self.btnOk.setText(_translate("nodeEdit", "Anwenden"))
         self.btnAbort.setText(_translate("nodeEdit", "Abbrechen"))
 
 
