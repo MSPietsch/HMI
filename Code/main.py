@@ -120,15 +120,15 @@ class MainWidget(QtWidgets.QWidget):
                        win):  # Funktioniert wird von Controller aufgerufen, damit das mainWidget dast startWindow hat
         self.win = win
 
-    def paintEvent(self, event): #TODO: Wenn der Haken bei Alle Knoten anzeigen raus ist, dann sollen die Rechtecke trotzdem bei Mouseover sichtbar sein
-        #TODO: Keine Rechtecke malen die oben in der Ecke sind
+    def paintEvent(self, event): #TODO: Wenn der Haken bei Alle Knoten anzeigen raus ist, dann sollen die Rechtecke trotzdem bei Mouseover sichtbar
         qp = QtGui.QPainter(self)
         # br = QtGui.QBrush(QtGui.QColor(r, g, b, 100))
         for node in self.nodeList:  # Malt alle Rechtecke aus den Knoten aus der Liste
             qp.setBrush(
                 QtGui.QColor(node.rectColor[0], node.rectColor[1], node.rectColor[2], 100))  # Setzt die Farbe des Rechtecks aus der rectColor Liste des Knotens
             for rect in node.rect:
-                qp.drawRect(rect)  # Malt Rechtecke
+                if rect.x() >= 0:    #Rechtecke nur malen, wenn sie nicht verkleinert sind
+                    qp.drawRect(rect)  # Malt Rechtecke
 
     def mousePressEvent(self, event):
         if self.enableDrawNode:
@@ -151,13 +151,17 @@ class MainWidget(QtWidgets.QWidget):
             self.recti = self.recti + 1
             self.win.nodeEdit.rectSignal.emit()  # schickt ein Signal an den NodeEdit
         if self.enableDeleteNode:
-            for node in self.nodeList:  # Geht alle  Nodes durch
+            for node in self.nodeList[::-1]:  # Geht alle  Nodes durch
                 for rect in node.rect:  # Geht alle Rechtecke durch um zu prüfen, welches gelöscht werden soll
                     if rect.contains(event.pos()):
                         node.hideRects()
                         for g in node.btnList:
                             self.rectBtnList[g].setGeometry(0, 0, 0, 0)
+                            self.rectBtnList[g].setEnabled(False)
                         break
+                else:
+                    continue
+                break
         self.update()
 
     def createRectBtn(self, node):

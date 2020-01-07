@@ -16,7 +16,7 @@ class Node():
 
     def hideRects(self):
         for rec in self.rect:
-            rec.setCoords(0, 0, 0, 0)
+            rec.setCoords(-1, 0, 0, 0)
 
     def setIndizes(self, i):
         self.btnList.append(i)
