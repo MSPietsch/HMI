@@ -5,8 +5,9 @@ from tkinter.filedialog import askopenfilename, askdirectory
 from gui.nodeEdit import Ui_nodeEdit
 from gui.startWindow import Ui_MainWindow
 from gui.mainWidget import Ui_mainWidget
+from gui.wizard import Ui_Wizard
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMainWindow, QMessageBox
+from PyQt5.QtWidgets import QMainWindow, QMessageBox, QWizard
 from node import Node
 
 
@@ -108,7 +109,6 @@ class MainWidget(QtWidgets.QWidget):
     enableDrawNode = False  # Vorerst können keine Rechtecke gemalt werden
     enableDeleteNode = False  # Flag zum Löschen von Knoten
 
-
     def __init__(self):
         super(MainWidget, self).__init__()
         self.ui = Ui_mainWidget()
@@ -120,14 +120,16 @@ class MainWidget(QtWidgets.QWidget):
                        win):  # Funktioniert wird von Controller aufgerufen, damit das mainWidget dast startWindow hat
         self.win = win
 
-    def paintEvent(self, event): #TODO: Wenn der Haken bei Alle Knoten anzeigen raus ist, dann sollen die Rechtecke trotzdem bei Mouseover sichtbar
+    def paintEvent(self,
+                   event):  # TODO: Wenn der Haken bei Alle Knoten anzeigen raus ist, dann sollen die Rechtecke trotzdem bei Mouseover sichtbar
         qp = QtGui.QPainter(self)
         # br = QtGui.QBrush(QtGui.QColor(r, g, b, 100))
         for node in self.nodeList:  # Malt alle Rechtecke aus den Knoten aus der Liste
             qp.setBrush(
-                QtGui.QColor(node.rectColor[0], node.rectColor[1], node.rectColor[2], 100))  # Setzt die Farbe des Rechtecks aus der rectColor Liste des Knotens
+                QtGui.QColor(node.rectColor[0], node.rectColor[1], node.rectColor[2],
+                             100))  # Setzt die Farbe des Rechtecks aus der rectColor Liste des Knotens
             for rect in node.rect:
-                if rect.x() >= 0:    #Rechtecke nur malen, wenn sie nicht verkleinert sind
+                if rect.x() >= 0:  # Rechtecke nur malen, wenn sie nicht verkleinert sind
                     qp.drawRect(rect)  # Malt Rechtecke
 
     def mousePressEvent(self, event):
@@ -182,6 +184,7 @@ class MainWidget(QtWidgets.QWidget):
 
     def openWizard(self, i):
         print(i)
+        self.win.switch_window.emit(str(i))
 
 
 # ---------------------------------------------------------------- #
@@ -192,12 +195,6 @@ class NodeEdit(QMainWindow):
     rectSignal = QtCore.pyqtSignal()  # Signal wird von gesendet, wenn ein Rechteck erstellt wurde
     rectPos = QtCore.QRect(0, 0, 0, 0)
 
-    def paintEvent(self, event):
-        rectColor = QtGui.QColor(28, 134, 238, 200)
-        qp = QtGui.QPainter(self)
-        qp.setBrush(rectColor)  # Setzt die Farbe des Rechtecks aus den RGB Listen
-        qp.drawRect(self.rectPos)  # Malt Rechteck
-
     def __init__(self):
         QMainWindow.__init__(self, None,
                              QtCore.Qt.WindowStaysOnTopHint)  # Lässt den Knoteneditor immer im Vordergrund stehen
@@ -205,6 +202,12 @@ class NodeEdit(QMainWindow):
         self.ui.setupUi(self)
         self.rectSignal.connect(self.onRectCreate)
         self.__connect_buttons()
+
+    def paintEvent(self, event):
+        rectColor = QtGui.QColor(28, 134, 238, 200)
+        qp = QtGui.QPainter(self)
+        qp.setBrush(rectColor)  # Setzt die Farbe des Rechtecks aus den RGB Listen
+        qp.drawRect(self.rectPos)  # Malt Rechteck
 
     def __connect_buttons(self):  # Legt fest welche Funktionen mit welchem Button verknüpft sind
         self.ui.btn1.clicked.connect(self.onBtn1)
@@ -230,7 +233,7 @@ class NodeEdit(QMainWindow):
         self.update()
         pass
 
-    def onBtn3(self):       #TODO: Referenzpunkt soll doch nicht drin sein, sonder siehe todo bei paintEvent
+    def onBtn3(self):  # TODO: Referenzpunkt soll doch nicht drin sein, sonder siehe todo bei paintEvent
         print("3")
         self.rectPos = QtCore.QRect(19, 129, 42, 42)
         self.update()
@@ -288,6 +291,19 @@ class NodeEdit(QMainWindow):
             self.ui.btnBin.setEnabled(False)
 
 
+class Wizard(QWizard):
+    def __init__(self):
+        QWizard.__init__(self, None,
+                         QtCore.Qt.WindowStaysOnTopHint)  # Lässt den wizard immer im Vordergrund stehen
+        self.ui = Ui_Wizard()
+        self.ui.setupUi(self)
+        self.setButtonText(QWizard.NextButton, 'Weiter')
+        self.setButtonText(QWizard.BackButton, 'Zurück')
+        self.setButtonText(QWizard.CancelButton, 'Abbrechen')
+        # self.setButtonText(QWizard.CustomButton1, 'Keine Safeguards')
+
+
+
 class Controller:  # Verwaltet die verschiedenen Widgets
     def __init__(self):
         pass
@@ -296,6 +312,8 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.startWindow = MainWindow()
         self.startWindow.switch_window.connect(self.showMain)
         self.startWindow.show()
+
+
 
     def showMain(self, path):
         self.mainWidget = MainWidget()
@@ -306,7 +324,12 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.mainWidget.ui.RILabel.setPixmap(QtGui.QPixmap(path))  # Bilddatei wird im Label angezeigt
         self.startWindow.nodeEdit.show()
         self.startWindow.nodeEdit.move(200, 300)  # Positioniert den Knoteneditor
+        self.startWindow.switch_window.disconnect()
+        self.startWindow.switch_window.connect(self.showWizard)
 
+    def showWizard(self, i):
+        self.wizard = Wizard()
+        self.wizard.show()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

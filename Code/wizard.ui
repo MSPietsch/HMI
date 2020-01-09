@@ -10,17 +10,17 @@
     <x>0</x>
     <y>0</y>
     <width>682</width>
-    <height>526</height>
+    <height>435</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Hazop Designer</string>
   </property>
   <property name="wizardStyle">
-   <enum>QWizard::AeroStyle</enum>
+   <enum>QWizard::ModernStyle</enum>
   </property>
   <property name="options">
-   <set>QWizard::HaveCustomButton1|QWizard::HelpButtonOnRight</set>
+   <set>QWizard::HelpButtonOnRight|QWizard::IndependentPages|QWizard::NoBackButtonOnStartPage</set>
   </property>
   <property name="titleFormat">
    <enum>Qt::PlainText</enum>
@@ -40,8 +40,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>641</width>
-      <height>371</height>
+      <width>681</width>
+      <height>381</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -57,7 +57,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>10</y>
+       <y>0</y>
        <width>591</width>
        <height>31</height>
       </rect>
@@ -76,8 +76,8 @@
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>250</x>
-       <y>105</y>
+       <x>270</x>
+       <y>140</y>
        <width>291</width>
        <height>31</height>
       </rect>
@@ -94,8 +94,8 @@
     <widget class="QTextEdit" name="textEdit">
      <property name="geometry">
       <rect>
-       <x>250</x>
-       <y>150</y>
+       <x>270</x>
+       <y>180</y>
        <width>331</width>
        <height>41</height>
       </rect>
@@ -104,8 +104,8 @@
     <widget class="QWidget" name="verticalLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>70</y>
+       <x>50</x>
+       <y>90</y>
        <width>332</width>
        <height>241</height>
       </rect>
@@ -205,7 +205,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>651</width>
+      <width>681</width>
       <height>381</height>
      </rect>
     </property>
@@ -459,8 +459,8 @@
    <widget class="QFrame" name="frame_3">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>10</x>
+      <y>10</y>
       <width>651</width>
       <height>371</height>
      </rect>
@@ -573,7 +573,7 @@
        <x>100</x>
        <y>60</y>
        <width>451</width>
-       <height>41</height>
+       <height>51</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -664,10 +664,24 @@ p, li { white-space: pre-wrap; }
       <enum>Qt::Vertical</enum>
      </property>
     </widget>
+    <widget class="QCheckBox" name="checkBox_21">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>310</y>
+       <width>171</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Keine Safeguards</string>
+     </property>
+    </widget>
     <zorder>line_3</zorder>
     <zorder>line_4</zorder>
     <zorder>horizontalLayoutWidget_2</zorder>
     <zorder>horizontalLayoutWidget_3</zorder>
+    <zorder>checkBox_21</zorder>
    </widget>
   </widget>
  </widget>
