@@ -19,9 +19,9 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.nodeEdit = NodeEdit()  # Erzeugt einen Knoteneditor
         self.__connect_buttons()
         self.startFrame = self.ui.startFrame
-        self.nodeEdit = NodeEdit()  # Erzeugt einen Knoteneditor
 
     def __connect_buttons(self):
         self.ui.btnNew.clicked.connect(self.newProject)
@@ -30,6 +30,7 @@ class MainWindow(QMainWindow):
         self.ui.actionOpen.triggered.connect(self.openProject)
         self.ui.actionClose.triggered.connect(lambda: self.showPopup("saveBeforeExit"))
         self.ui.actionSave.triggered.connect(lambda: self.showPopup("save"))
+        self.ui.actionKnoteneditor.triggered.connect(self.nodeEdit.show)
 
     def closeEvent(self, event):  # Überschreibt was passiert, wenn das Fenster geschlossen wird
         self.showPopup("saveBeforeExit")  # Fragt, ob gespeichert werden soll
@@ -125,14 +126,14 @@ class MainWidget(QtWidgets.QWidget):
     def paintEvent(self,
                    event):  # TODO: Wenn der Haken bei Alle Knoten anzeigen raus ist, dann sollen die Rechtecke trotzdem bei Mouseover sichtbar
         qp = QtGui.QPainter(self)
-        # br = QtGui.QBrush(QtGui.QColor(r, g, b, 100))
-        for node in self.nodeList:  # Malt alle Rechtecke aus den Knoten aus der Liste
-            qp.setBrush(
-                QtGui.QColor(node.rectColor[0], node.rectColor[1], node.rectColor[2],
-                             100))  # Setzt die Farbe des Rechtecks aus der rectColor Liste des Knotens
-            for rect in node.rect:
-                if rect.x() >= 0:  # Rechtecke nur malen, wenn sie nicht verkleinert sind
-                    qp.drawRect(rect)  # Malt Rechtecke
+        if self.win.ui.actionAlle_Knoten_zeigen.isChecked():
+            for node in self.nodeList:  # Malt alle Rechtecke aus den Knoten aus der Liste
+                qp.setBrush(
+                    QtGui.QColor(node.rectColor[0], node.rectColor[1], node.rectColor[2],
+                                 100))  # Setzt die Farbe des Rechtecks aus der rectColor Liste des Knotens
+                for rect in node.rect:
+                    if rect.x() >= 0:  # Rechtecke nur malen, wenn sie nicht verkleinert sind
+                        qp.drawRect(rect)  # Malt Rechtecke
 
     def mousePressEvent(self, event):
         if self.enableDrawNode:
@@ -346,10 +347,12 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.startWindow.switch_window.disconnect()
         self.startWindow.switch_window.connect(self.showWizard)
         self.mainWidget.enableDrawNode = True
+        self.startWindow.ui.actionAlle_Knoten_zeigen.triggered.connect(self.mainWidget.repaint)
 
     def showWizard(self, i):
         self.wizard = Wizard()
         self.wizard.show()
+        self.startWindow.nodeEdit.hide()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

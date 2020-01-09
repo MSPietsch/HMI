@@ -228,7 +228,7 @@
   </action>
   <action name="actionKnoteneditor">
    <property name="text">
-    <string>Knoteneditor</string>
+    <string>Knoteneditor öffnen</string>
    </property>
    <property name="toolTip">
     <string>Knoteneditor</string>
