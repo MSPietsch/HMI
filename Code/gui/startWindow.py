@@ -139,7 +139,7 @@ class Ui_MainWindow(object):
         self.actionAlle_Knoten_zeigen.setText(_translate("MainWindow", "Alle Knoten zeigen"))
         self.actionAlle_Knoten_zeigen.setStatusTip(_translate("MainWindow", "Zeigt Knotenrahmen permanent an."))
         self.actionAlle_Knoten_zeigen.setShortcut(_translate("MainWindow", "Ctrl+H"))
-        self.actionKnoteneditor.setText(_translate("MainWindow", "Knoteneditor"))
+        self.actionKnoteneditor.setText(_translate("MainWindow", "Knoteneditor öffnen"))
         self.actionKnoteneditor.setToolTip(_translate("MainWindow", "Knoteneditor"))
         self.actionKnoteneditor.setStatusTip(_translate("MainWindow", "Öffnet den Knoteneditor."))
         self.actionKnoteneditor.setShortcut(_translate("MainWindow", "Ctrl+K"))
