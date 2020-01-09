@@ -140,8 +140,10 @@
    </widget>
    <widget class="QMenu" name="menuAnsicht">
     <property name="title">
-     <string>Ansicht</string>
+     <string>Knoten</string>
     </property>
+    <addaction name="actionKnoteneditor"/>
+    <addaction name="separator"/>
     <addaction name="actionAlle_Knoten_zeigen"/>
    </widget>
    <addaction name="menuDatei"/>
@@ -208,11 +210,34 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
    <property name="enabled">
     <bool>false</bool>
    </property>
    <property name="text">
     <string>Alle Knoten zeigen</string>
+   </property>
+   <property name="statusTip">
+    <string>Zeigt Knotenrahmen permanent an.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+  </action>
+  <action name="actionKnoteneditor">
+   <property name="text">
+    <string>Knoteneditor</string>
+   </property>
+   <property name="toolTip">
+    <string>Knoteneditor</string>
+   </property>
+   <property name="statusTip">
+    <string>Öffnet den Knoteneditor.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+K</string>
    </property>
   </action>
  </widget>
