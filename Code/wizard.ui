@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>682</width>
-    <height>532</height>
+    <height>526</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,13 @@
    <enum>QWizard::AeroStyle</enum>
   </property>
   <property name="options">
-   <set>QWizard::HaveCustomButton1|QWizard::HaveHelpButton|QWizard::HelpButtonOnRight|QWizard::IndependentPages</set>
+   <set>QWizard::HaveCustomButton1|QWizard::HelpButtonOnRight</set>
+  </property>
+  <property name="titleFormat">
+   <enum>Qt::PlainText</enum>
+  </property>
+  <property name="subTitleFormat">
+   <enum>Qt::PlainText</enum>
   </property>
   <widget class="QWizardPage" name="wizardPage1">
    <property name="enabled">
@@ -498,6 +504,12 @@
       </item>
       <item>
        <widget class="Line" name="line">
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="lineWidth">
+         <number>3</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -515,6 +527,12 @@
       </item>
       <item>
        <widget class="Line" name="line_2">
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="lineWidth">
+         <number>3</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -599,11 +617,23 @@ p, li { white-space: pre-wrap; }
     <widget class="Line" name="line_3">
      <property name="geometry">
       <rect>
-       <x>190</x>
+       <x>180</x>
        <y>100</y>
-       <width>3</width>
+       <width>20</width>
        <height>61</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>3</number>
      </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -623,6 +653,12 @@ p, li { white-space: pre-wrap; }
        <weight>75</weight>
        <bold>true</bold>
       </font>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>3</number>
      </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
