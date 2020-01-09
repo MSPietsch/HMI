@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Start.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -96,13 +96,18 @@ class Ui_MainWindow(object):
         self.actionClose.setObjectName("actionClose")
         self.actionAlle_Knoten_zeigen = QtWidgets.QAction(MainWindow)
         self.actionAlle_Knoten_zeigen.setCheckable(True)
+        self.actionAlle_Knoten_zeigen.setChecked(False)
         self.actionAlle_Knoten_zeigen.setEnabled(False)
         self.actionAlle_Knoten_zeigen.setObjectName("actionAlle_Knoten_zeigen")
+        self.actionKnoteneditor = QtWidgets.QAction(MainWindow)
+        self.actionKnoteneditor.setObjectName("actionKnoteneditor")
         self.menuDatei.addAction(self.actionNew)
         self.menuDatei.addAction(self.actionOpen)
         self.menuDatei.addAction(self.actionSave)
         self.menuDatei.addSeparator()
         self.menuDatei.addAction(self.actionClose)
+        self.menuAnsicht.addAction(self.actionKnoteneditor)
+        self.menuAnsicht.addSeparator()
         self.menuAnsicht.addAction(self.actionAlle_Knoten_zeigen)
         self.menubar.addAction(self.menuDatei.menuAction())
         self.menubar.addAction(self.menuAnsicht.menuAction())
@@ -119,7 +124,7 @@ class Ui_MainWindow(object):
         self.btnNew.setStatusTip(_translate("MainWindow", "Erstellt ein neues Projekt."))
         self.btnNew.setText(_translate("MainWindow", "    Neues Projekt Ctrl+N"))
         self.menuDatei.setTitle(_translate("MainWindow", "Datei"))
-        self.menuAnsicht.setTitle(_translate("MainWindow", "Ansicht"))
+        self.menuAnsicht.setTitle(_translate("MainWindow", "Knoten"))
         self.actionNew.setText(_translate("MainWindow", "Neues Projekt"))
         self.actionNew.setStatusTip(_translate("MainWindow", "Erstellt ein neues Projekt."))
         self.actionNew.setShortcut(_translate("MainWindow", "Ctrl+N"))
@@ -132,6 +137,12 @@ class Ui_MainWindow(object):
         self.actionClose.setText(_translate("MainWindow", "Schließen"))
         self.actionClose.setStatusTip(_translate("MainWindow", "Schließt das Programm."))
         self.actionAlle_Knoten_zeigen.setText(_translate("MainWindow", "Alle Knoten zeigen"))
+        self.actionAlle_Knoten_zeigen.setStatusTip(_translate("MainWindow", "Zeigt Knotenrahmen permanent an."))
+        self.actionAlle_Knoten_zeigen.setShortcut(_translate("MainWindow", "Ctrl+H"))
+        self.actionKnoteneditor.setText(_translate("MainWindow", "Knoteneditor"))
+        self.actionKnoteneditor.setToolTip(_translate("MainWindow", "Knoteneditor"))
+        self.actionKnoteneditor.setStatusTip(_translate("MainWindow", "Öffnet den Knoteneditor."))
+        self.actionKnoteneditor.setShortcut(_translate("MainWindow", "Ctrl+K"))
 
 
 if __name__ == "__main__":

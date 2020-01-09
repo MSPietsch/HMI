@@ -108,6 +108,8 @@ class MainWidget(QtWidgets.QWidget):
     nodei = 0  # Variable für tatsächliche Knoten Haupt und Nebenknoten haben die gleiche Zahl
     enableDrawNode = False  # Vorerst können keine Rechtecke gemalt werden
     enableDeleteNode = False  # Flag zum Löschen von Knoten
+    enableDrawNebennode =  False #Flag zum Malen von Nebenknoten
+
 
     def __init__(self):
         super(MainWidget, self).__init__()
@@ -139,6 +141,10 @@ class MainWidget(QtWidgets.QWidget):
             self.end = event.pos()
             # Neuen Knoten erstellen
             self.nodeList.append(Node())
+        elif self.enableDrawNebennode:
+            print("neben")
+            self.begin = event.pos()
+            self.end = event.pos()
         self.update()
 
     def mouseMoveEvent(self, event):
@@ -146,10 +152,15 @@ class MainWidget(QtWidgets.QWidget):
             self.end = event.pos()
             self.nodeList[self.nodei].rect[self.recti] = QtCore.QRect(self.begin,
                                                                       self.end)  # Updatet die Rechtecke in der RectListe
+        elif self.enableDrawNebennode:
+            self.end = event.pos()
+            self.nodeList[self.nodei].addRect(self.recti)
+            self.nodeList[self.nodei].rect[self.recti] = QtCore.QRect(self.begin,
+                                                                      self.end)  # Updatet die Rechtecke in der RectListe
         self.update()
 
     def mouseReleaseEvent(self, event):
-        if self.enableDrawNode:
+        if self.enableDrawNode or self.enableDrawNebennode:
             self.recti = self.recti + 1
             self.win.nodeEdit.rectSignal.emit()  # schickt ein Signal an den NodeEdit
         if self.enableDeleteNode:
@@ -202,6 +213,7 @@ class NodeEdit(QMainWindow):
         self.ui.setupUi(self)
         self.rectSignal.connect(self.onRectCreate)
         self.__connect_buttons()
+        self.rectPos = QtCore.QRect(19, 19, 42, 42) #Hauptknoten erstellen
 
     def paintEvent(self, event):
         rectColor = QtGui.QColor(28, 134, 238, 200)
@@ -222,6 +234,7 @@ class NodeEdit(QMainWindow):
         self.rectPos = QtCore.QRect(19, 19, 42, 42)
         self.update()
         self.widget.enableDrawNode = True
+        self.widget.enableDrawNebennode = False
         self.widget.enableDeleteNode = False
         self.ui.btnBin.setEnabled(False)
         for btn in self.widget.rectBtnList:  # Alle Buttons während dem Malen disablen, damit das Programm nicht crasht
@@ -247,6 +260,7 @@ class NodeEdit(QMainWindow):
         self.rectPos = QtCore.QRect(19, 199, 42, 42)
         self.update()
         self.widget.enableDrawNode = False
+        self.widget.enableDrawNebenode = False
         self.widget.enableDeleteNode = True
         for btn in self.widget.rectBtnList:  # Alle Buttons disablen, damit die Buttons nicht gedrückt werden
             btn.hide()
@@ -257,6 +271,7 @@ class NodeEdit(QMainWindow):
         self.rectPos = QtCore.QRect(0, 0, 0, 0)  # Markierungsrechteck wird verschoben
         self.update()
         self.widget.enableDrawNode = False
+        self.widget.enableDrawNebennode = False
         self.widget.enableDeleteNode = False
         self.ui.btnOk.setEnabled(False)
         self.ui.btn1.setEnabled(True)
@@ -280,6 +295,9 @@ class NodeEdit(QMainWindow):
     def onRectCreate(self):  # Funktion wird aufgerufen, wenn in mainWidget ein Rechteck erstellt wurde
         self.ui.btn1.setEnabled(False)  # Disablen, damit nur ein Knoten erstmal gezeichnet wird
         self.widget.enableDrawNode = False
+        self.widget.enableDrawNebennode = True
+        self.rectPos = QtCore.QRect(69, 74, 42, 42)
+        self.repaint()
         if self.widget.recti > 0:  # Wenn es mindestens ein Rechteck existiert
             self.ui.btn2.setEnabled(True)  # Buttons enablen
             self.ui.btn3.setEnabled(True)
@@ -318,6 +336,7 @@ class Controller:  # Verwaltet die verschiedenen Widgets
     def showMain(self, path):
         self.mainWidget = MainWidget()
         self.mainWidget.passMainWindow(self.startWindow)  # Übergibt das Hauptfenster an das mainWidget
+        self.startWindow.ui.actionAlle_Knoten_zeigen.setChecked(True)
         self.startWindow.nodeEdit.passWidget(self.mainWidget)  # Übergibt das mainWidget an den nodeEdit
         self.startWindow.startFrame.hide()  # Startframe verbergen
         self.startWindow.setCentralWidget(self.mainWidget)  # Labelansicht ins Fenster stecken
@@ -326,6 +345,7 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.startWindow.nodeEdit.move(200, 300)  # Positioniert den Knoteneditor
         self.startWindow.switch_window.disconnect()
         self.startWindow.switch_window.connect(self.showWizard)
+        self.mainWidget.enableDrawNode = True
 
     def showWizard(self, i):
         self.wizard = Wizard()

@@ -54,7 +54,7 @@
       <enum>Qt::ClickFocus</enum>
      </property>
      <property name="statusTip">
-      <string>Markiert einen Hauptknoten.</string>
+      <string>Markiert einen neuen Knoten.</string>
      </property>
      <property name="text">
       <string/>
@@ -127,7 +127,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Hauptknoten markieren</string>
+      <string>Knoten markieren</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_2">
@@ -296,7 +296,7 @@
       <item>
        <widget class="QPushButton" name="btnAbort">
         <property name="text">
-         <string>Abbrechen</string>
+         <string>Schließen</string>
         </property>
        </widget>
       </item>

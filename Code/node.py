@@ -11,12 +11,13 @@ class Node():
         self.rect.append(QtCore.QRect(0, 0, 0, 0))
         self.rectColor = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
 
-    def setRect(self, rect):
-        self.rect.append(rect)
-
     def hideRects(self):
         for rec in self.rect:
             rec.setCoords(-1, 0, 0, 0)
+
+    def addRect(self, recti):
+        if recti == len(self.rect):
+            self.rect.append(QtCore.QRect(0, 0, 0, 0))
 
     def setIndizes(self, i):
         self.btnList.append(i)
