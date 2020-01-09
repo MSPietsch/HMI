@@ -310,6 +310,9 @@ class NodeEdit(QMainWindow):
 
 
 class Wizard(QWizard):
+    PageParam = 1
+    PageLeitwort = 2
+    PageSafeguard = 3
     def __init__(self):
         QWizard.__init__(self, None,
                          QtCore.Qt.WindowStaysOnTopHint)  # Lässt den wizard immer im Vordergrund stehen
@@ -318,8 +321,7 @@ class Wizard(QWizard):
         self.setButtonText(QWizard.NextButton, 'Weiter')
         self.setButtonText(QWizard.BackButton, 'Zurück')
         self.setButtonText(QWizard.CancelButton, 'Abbrechen')
-        # self.setButtonText(QWizard.CustomButton1, 'Keine Safeguards')
-
+        self.setWindowTitle("Sooper Dooper Wizard")
 
 
 class Controller:  # Verwaltet die verschiedenen Widgets
@@ -330,8 +332,6 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.startWindow = MainWindow()
         self.startWindow.switch_window.connect(self.showMain)
         self.startWindow.show()
-
-
 
     def showMain(self, path):
         self.mainWidget = MainWidget()
