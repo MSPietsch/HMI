@@ -100,6 +100,7 @@ class Ui_MainWindow(object):
         self.actionAlle_Knoten_zeigen.setEnabled(False)
         self.actionAlle_Knoten_zeigen.setObjectName("actionAlle_Knoten_zeigen")
         self.actionKnoteneditor = QtWidgets.QAction(MainWindow)
+        self.actionKnoteneditor.setEnabled(False)
         self.actionKnoteneditor.setObjectName("actionKnoteneditor")
         self.menuDatei.addAction(self.actionNew)
         self.menuDatei.addAction(self.actionOpen)
@@ -142,7 +143,7 @@ class Ui_MainWindow(object):
         self.actionKnoteneditor.setText(_translate("MainWindow", "Knoteneditor öffnen"))
         self.actionKnoteneditor.setToolTip(_translate("MainWindow", "Knoteneditor"))
         self.actionKnoteneditor.setStatusTip(_translate("MainWindow", "Öffnet den Knoteneditor."))
-        self.actionKnoteneditor.setShortcut(_translate("MainWindow", "Ctrl+K"))
+        self.actionKnoteneditor.setShortcut(_translate("MainWindow", "Ctrl+E"))
 
 
 if __name__ == "__main__":

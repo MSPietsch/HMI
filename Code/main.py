@@ -36,6 +36,7 @@ class MainWindow(QMainWindow):
         self.ui.actionAlle_Knoten_zeigen.setChecked(True)
         self.nodeEdit.show()
         self.nodeEdit.widget.toggleRects()
+        self.nodeEdit.onBtn1()
 
     def closeEvent(self, event):  # Überschreibt was passiert, wenn das Fenster geschlossen wird
         self.showPopup("saveBeforeExit")  # Fragt, ob gespeichert werden soll
@@ -47,6 +48,7 @@ class MainWindow(QMainWindow):
                                filetypes=(("PNG", "*.png"), ("Alle Dateien", "*.*")))
         if path:
             self.ui.actionAlle_Knoten_zeigen.setEnabled(True)
+            self.ui.actionKnoteneditor.setEnabled(True)
             self.ui.actionSave.setEnabled(True)
             print(path)
             self.switch_window.emit(path)
@@ -64,6 +66,7 @@ class MainWindow(QMainWindow):
                                    filetypes=(("PNG Dateien", "*.png"), ("Alle Dateien", "*.*")))
             self.switch_window.emit(path)
             self.ui.actionAlle_Knoten_zeigen.setEnabled(True)
+            self.ui.actionKnoteneditor.setEnabled(True)
             self.ui.actionSave.setEnabled(True)
 
             # TODO Dateihirarchie ausdenken
@@ -279,7 +282,6 @@ class NodeEdit(QMainWindow):
     def __connect_buttons(self):  # Legt fest welche Funktionen mit welchem Button verknüpft sind
         self.ui.btn1.clicked.connect(self.onBtn1)
         self.ui.btn2.clicked.connect(self.onBtn2)
-        self.ui.btn3.clicked.connect(self.onBtn3)
         self.ui.btnOk.clicked.connect(self.onBtnOk)
         self.ui.btnBin.clicked.connect(self.onBtnBin)
         self.ui.btnAbort.clicked.connect(self.onBtnAbort)
@@ -301,16 +303,9 @@ class NodeEdit(QMainWindow):
         self.update()
         pass
 
-    def onBtn3(self):  # TODO: Referenzpunkt soll doch nicht drin sein, sonder siehe todo bei paintEvent
-        print("3")
-        self.rectPos = QtCore.QRect(19, 129, 42, 42)
-        self.update()
-        pass
-
     def onBtnBin(self):
         self.ui.btnOk.setEnabled(False)
         self.ui.btn2.setEnabled(False)
-        self.ui.btn3.setEnabled(False)
         self.ui.btnOk.setEnabled(False)
         self.rectPos = QtCore.QRect(19, 199, 42, 42)
         self.update()
@@ -331,7 +326,6 @@ class NodeEdit(QMainWindow):
         self.ui.btnOk.setEnabled(False)
         self.ui.btn1.setEnabled(True)
         self.ui.btn2.setEnabled(False)
-        self.ui.btn3.setEnabled(False)
         self.ui.btnBin.setEnabled(True)
         self.ui.btnOk.setEnabled(False)
         for btn in self.widget.rectBtnList:  # Schaltet jetzt erst die Buttons an, damit die beim Malen nicht geklickt werden -> Crash
@@ -355,11 +349,9 @@ class NodeEdit(QMainWindow):
         self.repaint()
         if self.widget.recti > 0:  # Wenn es mindestens ein Rechteck existiert
             self.ui.btn2.setEnabled(True)  # Buttons enablen
-            self.ui.btn3.setEnabled(True)
             self.ui.btnOk.setEnabled(True)
         else:
             self.ui.btn2.setEnabled(False)  # Buttons disablen, wenn es keine Rechtecke gibt
-            self.ui.btn3.setEnabled(False)
             self.ui.btnOk.setEnabled(False)
             self.ui.btnBin.setEnabled(False)
 

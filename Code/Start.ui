@@ -227,6 +227,9 @@
    </property>
   </action>
   <action name="actionKnoteneditor">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Knoteneditor öffnen</string>
    </property>
@@ -237,7 +240,7 @@
     <string>Öffnet den Knoteneditor.</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+K</string>
+    <string>Ctrl+E</string>
    </property>
   </action>
  </widget>
