@@ -357,6 +357,7 @@ class NodeEdit(QMainWindow):
 
 
 class Wizard(QWizard):
+    restartflag = 0
     ParamPage = 0
     LeitwortPage = 1
     CauseConsequencePage = 2
@@ -370,23 +371,28 @@ class Wizard(QWizard):
         self.setButtonText(QWizard.BackButton, 'Zurück')
         self.setButtonText(QWizard.CancelButton, 'Abbrechen')
         self.setWindowTitle("Sooper Dooper Wizard")
+        QWizard.NextButton.clicked.connect(lambda: self.setRestartFlag)
+
+    def setRestartFlag(self):
+        self.restartflag = 0
+
 
     def nextId(self):
         id = self.currentId()
-
-        if id == self.ParamPage:
-
-            return self.LeitwortPage
-        if id == self.LeitwortPage:
-            return self.SafeguardPage
-        if id == self.CauseConsequencePage:
-            self.setStartId(self.LeitwortPage)
-            self.restart()
-            return self.LeitwortPage
-        if id == self.SafeguardPage:
-            return self.LeitwortPage
+        if self.restartflag == 0:
+            if id == self.ParamPage:
+                self.setStartId(self.LeitwortPage)
+                self.restartflag = 1
+                self.restart()
+                return self.LeitwortPage
+            if id == self.LeitwortPage:
+                self.setStartId(self.LeitwortPage)
+                return self.CauseConsequencePage
+            else:
+                return self.CauseConsequencePage
         else:
-            return -1
+            return self.startId()
+
 
 class Controller:  # Verwaltet die verschiedenen Widgets
     def __init__(self):
