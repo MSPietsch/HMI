@@ -7,7 +7,7 @@ from gui.startWindow import Ui_MainWindow
 from gui.mainWidget import Ui_mainWidget
 from gui.wizard import Ui_Wizard
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMainWindow, QMessageBox, QWizard
+from PyQt5.QtWidgets import QMainWindow, QMessageBox, QWizard, QFileDialog
 from node import Node
 
 
@@ -39,7 +39,7 @@ class MainWindow(QMainWindow):
 
     def closeEvent(self, event):  # Überschreibt was passiert, wenn das Fenster geschlossen wird
         self.showPopup("saveBeforeExit")  # Fragt, ob gespeichert werden soll
-        self.nodeEdit.close()  # Schließt auch den Knoteneditor, auch wenn er versteckt ist
+
 
     def openProject(self):  # Fragt nach einer PDF Datei zum öffnen und speicher den Pfad in path
         Tk().withdraw()  # nur ein Fenster wird geöffnet
@@ -75,6 +75,10 @@ class MainWindow(QMainWindow):
 
     def showPopup(self, info):
         msg = QMessageBox()
+        icon = QtGui.QIcon()  # Zeige Logo oben links
+        icon.addPixmap(QtGui.QPixmap("../icons/HAZOP.png"), QtGui.QIcon.Normal,
+                       QtGui.QIcon.Off)  # Zeige Logo oben links
+        msg.setWindowIcon(icon)  # Zeige Logo oben links
         if info == "folderExists":
             msg.setWindowTitle("Mitteilung")
             msg.setText("Dieser Ordner existiert bereits. Bitte wählen Sie einen anderen Projektnamen.")
@@ -96,13 +100,27 @@ class MainWindow(QMainWindow):
             # Übersetzung der Buttons ins Deutsche
             buttonY = msg.button(QMessageBox.Yes)
             buttonY.setText('Ja')
+            buttonY.clicked.connect(lambda: QFileDialog.getSaveFileName(self,"Speichern unter"))
             buttonN = msg.button(QMessageBox.No)
             buttonN.setText('Nein')
             buttonC = msg.button(QMessageBox.Cancel)
             buttonC.setText('Abbrechen')
             msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
             x = msg.exec_()
-
+        if info == "deleteNodes":
+            msg.setWindowTitle("Knoten löschen")
+            msg.setText("Möchten Sie alle zu diesem Knoten gehörigen Knoten entfernen?")
+            msg.setIcon(QMessageBox.Question)  # Fragezeichenlogo
+            msg.setStandardButtons(
+                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel)  # Yes/No/ Cancel- Buttons sollen erscheinen
+            buttonY = msg.button(QMessageBox.Yes)
+            buttonY.setText('Ja')
+            buttonN = msg.button(QMessageBox.No)
+            buttonN.setText('Nein, nur diesen Knoten')
+            buttonC = msg.button(QMessageBox.Cancel)
+            buttonC.setText('Abbrechen')
+            msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
+            x = msg.exec_()
 
 class PushButton(QtWidgets.QPushButton):
     def __init__(self, *args, **kwargs):
@@ -186,6 +204,7 @@ class MainWidget(QtWidgets.QWidget):
             self.recti = self.recti + 1
             self.win.nodeEdit.rectSignal.emit()  # schickt ein Signal an den NodeEdit
         if self.enableDeleteNode:
+            self.win.showPopup("deleteNodes")
             for node in self.nodeList[::-1]:  # Geht alle  Nodes durch
                 for rect in node.rect:  # Geht alle Rechtecke durch um zu prüfen, welches gelöscht werden soll
                     if rect.contains(event.pos()):
@@ -246,6 +265,10 @@ class NodeEdit(QMainWindow):
         self.rectSignal.connect(self.onRectCreate)
         self.__connect_buttons()
         self.rectPos = QtCore.QRect(19, 19, 42, 42) #Hauptknoten erstellen
+        icon = QtGui.QIcon()  # Zeige Logo oben links
+        icon.addPixmap(QtGui.QPixmap("../icons/HAZOP.png"), QtGui.QIcon.Normal,
+                       QtGui.QIcon.Off)  # Zeige Logo oben links
+        self.setWindowIcon(icon)  # Zeige Logo oben links
 
     def paintEvent(self, event):
         rectColor = QtGui.QColor(28, 134, 238, 200)
@@ -342,10 +365,10 @@ class NodeEdit(QMainWindow):
 
 
 class Wizard(QWizard):
-    PageParam = 1
-    PageLeitwort = 2
-    PageSafeguard = 3
-
+    ParamPage = 0
+    LeitwortPage = 1
+    CauseConsequencePage = 2
+    SafeguardPage = 3
     def __init__(self):
         QWizard.__init__(self, None,
                          QtCore.Qt.WindowStaysOnTopHint)  # Lässt den wizard immer im Vordergrund stehen
@@ -356,6 +379,22 @@ class Wizard(QWizard):
         self.setButtonText(QWizard.CancelButton, 'Abbrechen')
         self.setWindowTitle("Sooper Dooper Wizard")
 
+    def nextId(self):
+        id = self.currentId()
+
+        if id == self.ParamPage:
+
+            return self.LeitwortPage
+        if id == self.LeitwortPage:
+            return self.SafeguardPage
+        if id == self.CauseConsequencePage:
+            self.setStartId(self.LeitwortPage)
+            self.restart()
+            return self.LeitwortPage
+        if id == self.SafeguardPage:
+            return self.LeitwortPage
+        else:
+            return -1
 
 class Controller:  # Verwaltet die verschiedenen Widgets
     def __init__(self):
