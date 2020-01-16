@@ -125,25 +125,23 @@ class MainWidget(QtWidgets.QWidget):
 
     def paintEvent(self,
                    event):  # TODO: Wenn der Haken bei Alle Knoten anzeigen raus ist, dann sollen die Rechtecke trotzdem bei Mouseover sichtbar
-        qp = QtGui.QPainter(self)
-        if self.win.ui.actionAlle_Knoten_zeigen.isChecked():
-            for node in self.nodeList:  # Malt alle Rechtecke aus den Knoten aus der Liste
+        qp = QtGui.QPainter(self)   #TODO: Man soll die Rechtecke die man zeichnet auch sehen, wenn der Haken draußen ist
+        for node in self.nodeList:  # Malt alle Rechtecke aus den Knoten aus der Liste
+            if node.show:
                 qp.setBrush(
                     QtGui.QColor(node.rectColor[0], node.rectColor[1], node.rectColor[2],
-                                 100))  # Setzt die Farbe des Rechtecks aus der rectColor Liste des Knotens
+                                    100))  # Setzt die Farbe des Rechtecks aus der rectColor Liste des Knotens
                 for rect in node.rect:
                     if rect.x() >= 0:  # Rechtecke nur malen, wenn sie nicht verkleinert sind
                         qp.drawRect(rect)  # Malt Rechtecke
 
     def mousePressEvent(self, event):
         if self.enableDrawNode:
-            print("Ja")
             self.begin = event.pos()
             self.end = event.pos()
             # Neuen Knoten erstellen
             self.nodeList.append(Node())
         elif self.enableDrawNebennode:
-            print("neben")
             self.begin = event.pos()
             self.end = event.pos()
         self.update()
@@ -158,6 +156,15 @@ class MainWidget(QtWidgets.QWidget):
             self.nodeList[self.nodei].addRect(self.recti)
             self.nodeList[self.nodei].rect[self.recti] = QtCore.QRect(self.begin,
                                                                       self.end)  # Updatet die Rechtecke in der RectListe
+        if not self.win.ui.actionAlle_Knoten_zeigen.isChecked():
+            print(event.pos())
+            for node in self.nodeList:
+                for rect in node.rect:
+                    if rect.contains(event.pos()):
+                        print("True")
+                        node.show = True
+                    else:
+                        node.show = False
         self.update()
 
     def mouseReleaseEvent(self, event):
@@ -193,6 +200,15 @@ class MainWidget(QtWidgets.QWidget):
             self.rectBtnList[
                 i].hide()  # Btn erstmal hiden und erst wenn Ok gedrückt wird shown, sonst crasht das Programm beim Malen
             node.setIndizes(i)
+
+    def toggleRects(self):  #Wird aufgerufen, wenn bei Rechteckezeigen ein Häkchen verändert wird
+        if self.win.ui.actionAlle_Knoten_zeigen.isChecked():
+            for node in self.nodeList:
+                node.show = True
+        else:
+            for node in self.nodeList:
+                node.show = False
+        self.repaint()
 
     def openWizard(self, i):
         print(i)
@@ -347,7 +363,7 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.startWindow.switch_window.disconnect()
         self.startWindow.switch_window.connect(self.showWizard)
         self.mainWidget.enableDrawNode = True
-        self.startWindow.ui.actionAlle_Knoten_zeigen.triggered.connect(self.mainWidget.repaint)
+        self.startWindow.ui.actionAlle_Knoten_zeigen.triggered.connect(self.mainWidget.toggleRects)
 
     def showWizard(self, i):
         self.wizard = Wizard()

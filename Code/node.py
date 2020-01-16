@@ -10,6 +10,7 @@ class Node():
         self.rect = []
         self.rect.append(QtCore.QRect(0, 0, 0, 0))
         self.rectColor = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
+        self.show = True
 
     def hideRects(self):
         for rec in self.rect:
