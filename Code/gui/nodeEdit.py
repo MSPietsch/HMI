@@ -99,7 +99,7 @@ class Ui_nodeEdit(object):
 
     def retranslateUi(self, nodeEdit):
         _translate = QtCore.QCoreApplication.translate
-        nodeEdit.setWindowTitle(_translate("nodeEdit", "Knoteneditor"))
+        nodeEdit.setWindowTitle(_translate("nodeEdit", "Editor"))
         self.btn1.setStatusTip(_translate("nodeEdit", "Markiert einen neuen Knoten."))
         self.btn2.setStatusTip(_translate("nodeEdit", "Markiert einen Nebenknoten."))
         self.label.setText(_translate("nodeEdit", "Knoten markieren"))
