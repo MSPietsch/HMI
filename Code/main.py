@@ -30,7 +30,12 @@ class MainWindow(QMainWindow):
         self.ui.actionOpen.triggered.connect(self.openProject)
         self.ui.actionClose.triggered.connect(lambda: self.showPopup("saveBeforeExit"))
         self.ui.actionSave.triggered.connect(lambda: self.showPopup("save"))
-        self.ui.actionKnoteneditor.triggered.connect(self.nodeEdit.show)
+        self.ui.actionKnoteneditor.triggered.connect(self.showNodeEdit)
+
+    def showNodeEdit(self): #Wird aufgerufen, wenn der Knoteneditor geöffnet werden soll
+        self.ui.actionAlle_Knoten_zeigen.setChecked(True)
+        self.nodeEdit.show()
+        self.nodeEdit.widget.toggleRects()
 
     def closeEvent(self, event):  # Überschreibt was passiert, wenn das Fenster geschlossen wird
         self.showPopup("saveBeforeExit")  # Fragt, ob gespeichert werden soll
@@ -99,6 +104,25 @@ class MainWindow(QMainWindow):
             x = msg.exec_()
 
 
+class PushButton(QtWidgets.QPushButton):
+    def __init__(self, *args, **kwargs):
+        QtWidgets.QPushButton.__init__(self, *args, **kwargs)
+
+    def passWins(self, nod, wi):
+        self.node = nod
+        self.win = wi
+
+    def enterEvent(self, event):
+        if not self.win.ui.actionAlle_Knoten_zeigen.isChecked():
+            self.node.show = True
+        self.win.nodeEdit.widget.update()
+
+    def leaveEvent(self, event):
+        if not self.win.ui.actionAlle_Knoten_zeigen.isChecked():
+            self.node.show = False
+        self.win.nodeEdit.widget.update()
+
+
 # ---------------------------------------------------------------- #
 #                        Hauptfenster
 # ---------------------------------------------------------------- #
@@ -109,7 +133,7 @@ class MainWidget(QtWidgets.QWidget):
     nodei = 0  # Variable für tatsächliche Knoten Haupt und Nebenknoten haben die gleiche Zahl
     enableDrawNode = False  # Vorerst können keine Rechtecke gemalt werden
     enableDeleteNode = False  # Flag zum Löschen von Knoten
-    enableDrawNebennode =  False #Flag zum Malen von Nebenknoten
+    enableDrawNebennode = False #Flag zum Malen von Nebenknoten
 
 
     def __init__(self):
@@ -119,8 +143,7 @@ class MainWidget(QtWidgets.QWidget):
         self.begin = QtCore.QPoint()
         self.end = QtCore.QPoint()
 
-    def passMainWindow(self,
-                       win):  # Funktioniert wird von Controller aufgerufen, damit das mainWidget dast startWindow hat
+    def passMainWindow(self, win):  # Funktioniert wird von Controller aufgerufen, damit das mainWidget dast startWindow hat
         self.win = win
 
     def paintEvent(self,
@@ -156,15 +179,6 @@ class MainWidget(QtWidgets.QWidget):
             self.nodeList[self.nodei].addRect(self.recti)
             self.nodeList[self.nodei].rect[self.recti] = QtCore.QRect(self.begin,
                                                                       self.end)  # Updatet die Rechtecke in der RectListe
-        if not self.win.ui.actionAlle_Knoten_zeigen.isChecked():
-            print(event.pos())
-            for node in self.nodeList:
-                for rect in node.rect:
-                    if rect.contains(event.pos()):
-                        print("True")
-                        node.show = True
-                    else:
-                        node.show = False
         self.update()
 
     def mouseReleaseEvent(self, event):
@@ -187,8 +201,9 @@ class MainWidget(QtWidgets.QWidget):
 
     def createRectBtn(self, node):
         for rect in node.rect:
-            self.rectBtnList.append(QtWidgets.QPushButton(self))  # erstelle neuen Button
+            self.rectBtnList.append(PushButton(self))  # erstelle neuen Button
             i = len(self.rectBtnList) - 1
+            self.rectBtnList[i].passWins(node, self.win)
             self.rectBtnList[i].resize(rect.width(), rect.height())  # passe die Buttongröße auf Rechtecksgröße an
             self.rectBtnList[i].move(rect.getCoords()[0],
                                      rect.getCoords()[1])  # Bewege Button auf die Stelle des Rechtecks
@@ -330,6 +345,7 @@ class Wizard(QWizard):
     PageParam = 1
     PageLeitwort = 2
     PageSafeguard = 3
+
     def __init__(self):
         QWizard.__init__(self, None,
                          QtCore.Qt.WindowStaysOnTopHint)  # Lässt den wizard immer im Vordergrund stehen
