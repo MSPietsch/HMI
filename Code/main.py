@@ -5,9 +5,12 @@ from tkinter.filedialog import askopenfilename, askdirectory
 from gui.nodeEdit import Ui_nodeEdit
 from gui.startWindow import Ui_MainWindow
 from gui.mainWidget import Ui_mainWidget
-from gui.wizard import Ui_Wizard
+from gui.wizard_1 import Ui_wizard_1
+from gui.wizard_2 import Ui_wizard_2
+from gui.wizard_3 import Ui_wizard_3
+from gui.wizard_4 import Ui_wizard_4
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMainWindow, QMessageBox, QWizard, QFileDialog
+from PyQt5.QtWidgets import QMainWindow, QMessageBox, QFileDialog
 from node import Node
 
 
@@ -252,6 +255,8 @@ class MainWidget(QtWidgets.QWidget):
         self.win.switch_window.emit(str(i))
 
 
+
+
 # ---------------------------------------------------------------- #
 #                         Node-Editor
 # ---------------------------------------------------------------- #
@@ -354,44 +359,59 @@ class NodeEdit(QMainWindow):
             self.ui.btn2.setEnabled(False)  # Buttons disablen, wenn es keine Rechtecke gibt
             self.ui.btnOk.setEnabled(False)
             self.ui.btnBin.setEnabled(False)
-
-
-class Wizard(QWizard):
-    restartflag = 0
-    ParamPage = 0
-    LeitwortPage = 1
-    CauseConsequencePage = 2
-    SafeguardPage = 3
+#TODO Ich habe versucht die nächsten Wizard Windows zu zeigen... klappt nicht.
+class Wizard_1(QMainWindow):
     def __init__(self):
-        QWizard.__init__(self, None,
-                         QtCore.Qt.WindowStaysOnTopHint)  # Lässt den wizard immer im Vordergrund stehen
-        self.ui = Ui_Wizard()
+        QMainWindow.__init__(self, None,
+                             QtCore.Qt.WindowStaysOnTopHint)  # Lässt den Knoteneditor immer im Vordergrund stehen
+        self.ui = Ui_wizard_1()
         self.ui.setupUi(self)
-        self.setButtonText(QWizard.NextButton, 'Weiter')
-        self.setButtonText(QWizard.BackButton, 'Zurück')
-        self.setButtonText(QWizard.CancelButton, 'Abbrechen')
         self.setWindowTitle("Sooper Dooper Wizard")
-        QWizard.NextButton.clicked.connect(lambda: self.setRestartFlag)
+        self.ui.weiterButton.clicked.connect(lambda: self.win.switch_window.emit("2"))
 
-    def setRestartFlag(self):
-        self.restartflag = 0
-
-
-    def nextId(self):
-        id = self.currentId()
-        if self.restartflag == 0:
-            if id == self.ParamPage:
-                self.setStartId(self.LeitwortPage)
-                self.restartflag = 1
-                self.restart()
-                return self.LeitwortPage
-            if id == self.LeitwortPage:
-                self.setStartId(self.LeitwortPage)
-                return self.CauseConsequencePage
-            else:
-                return self.CauseConsequencePage
-        else:
-            return self.startId()
+class Wizard_2(QMainWindow):
+    def __init__(self):
+        QMainWindow.__init__(self, None,
+                             QtCore.Qt.WindowStaysOnTopHint)  # Lässt den Knoteneditor immer im Vordergrund stehen
+        self.ui = Ui_wizard_2()
+        self.ui.setupUi(self)
+        self.setWindowTitle("Sooper Dooper Wizard")
+# class Wizard(QWizard):
+#     restartflag = 0
+#     ParamPage = 0
+#     LeitwortPage = 1
+#     CauseConsequencePage = 2
+#     SafeguardPage = 3
+#     def __init__(self):
+#         QWizard.__init__(self, None,
+#                          QtCore.Qt.WindowStaysOnTopHint)  # Lässt den wizard immer im Vordergrund stehen
+#         self.ui = Ui_Wizard()
+#         self.ui.setupUi(self)
+#         self.setButtonText(QWizard.NextButton, 'Weiter')
+#         self.setButtonText(QWizard.BackButton, 'Zurück')
+#         self.setButtonText(QWizard.CancelButton, 'Abbrechen')
+#         self.setWindowTitle("Sooper Dooper Wizard")
+#         self.QWizard.NextButton.clicked.connect(lambda: self.setRestartFlag)
+#
+#     def setRestartFlag(self):
+#         self.restartflag = 0
+#
+#
+#     def nextId(self):
+#         id = self.currentId()
+#         if self.restartflag == 0:
+#             if id == self.ParamPage:
+#                 self.setStartId(self.LeitwortPage)
+#                 self.restartflag = 1
+#                 self.restart()
+#                 return self.LeitwortPage
+#             if id == self.LeitwortPage:
+#                 self.setStartId(self.LeitwortPage)
+#                 return self.CauseConsequencePage
+#             else:
+#                 return self.CauseConsequencePage
+#         else:
+#             return self.startId()
 
 
 class Controller:  # Verwaltet die verschiedenen Widgets
@@ -419,7 +439,14 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.startWindow.ui.actionAlle_Knoten_zeigen.triggered.connect(self.mainWidget.toggleRects)
 
     def showWizard(self, i):
-        self.wizard = Wizard()
+        self.wizard = Wizard_1()
+        self.wizard.show()
+        self.startWindow.switch_window.disconnect()
+        self.startWindow.switch_window.connect(self.showWizard_2)
+        self.startWindow.nodeEdit.hide()
+
+    def showWizard_2(self, i):
+        self.wizard = Wizard_2()
         self.wizard.show()
         self.startWindow.nodeEdit.hide()
 
