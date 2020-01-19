@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>449</height>
+    <width>650</width>
+    <height>440</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>681</width>
-     <height>451</height>
+     <width>650</width>
+     <height>440</height>
     </rect>
    </property>
    <property name="font">
@@ -39,8 +39,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
+      <x>15</x>
+      <y>15</y>
       <width>591</width>
       <height>31</height>
      </rect>
@@ -239,7 +239,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>40</y>
+      <y>50</y>
       <width>621</width>
       <height>61</height>
      </rect>
@@ -269,9 +269,9 @@
    <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>380</x>
       <y>380</y>
-      <width>251</width>
+      <width>260</width>
       <height>61</height>
      </rect>
     </property>
@@ -279,7 +279,7 @@
      <item>
       <widget class="QPushButton" name="zuruckButton">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="text">
         <string>Zurück</string>
@@ -303,7 +303,7 @@
      <rect>
       <x>0</x>
       <y>370</y>
-      <width>641</width>
+      <width>650</width>
       <height>16</height>
      </rect>
     </property>
