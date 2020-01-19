@@ -210,10 +210,11 @@ class MainWidget(QtWidgets.QWidget):
             self.recti = self.recti + 1
             self.win.nodeEdit.rectSignal.emit()  # schickt ein Signal an den NodeEdit
         if self.enableDeleteNode:
-            self.win.showPopup("deleteNodes")
             for node in self.nodeList[::-1]:  # Geht alle  Nodes durch
                 for rect in node.rect:  # Geht alle Rechtecke durch um zu prüfen, welches gelöscht werden soll
                     if rect.contains(event.pos()):
+                        if len(node.rect) > 1:
+                            self.win.showPopup("deleteNodes")
                         node.hideRects()
                         for g in node.btnList:
                             self.rectBtnList[g].setGeometry(0, 0, 0, 0)
@@ -312,7 +313,7 @@ class NodeEdit(QMainWindow):
         self.ui.btnOk.setEnabled(False)
         self.ui.btn2.setEnabled(False)
         self.ui.btnOk.setEnabled(False)
-        self.rectPos = QtCore.QRect(19, 199, 42, 42)
+        self.rectPos = QtCore.QRect(19, 159, 42, 42)
         self.update()
         self.widget.enableDrawNode = False
         self.widget.enableDrawNebenode = False
@@ -336,6 +337,7 @@ class NodeEdit(QMainWindow):
         for btn in self.widget.rectBtnList:  # Schaltet jetzt erst die Buttons an, damit die beim Malen nicht geklickt werden -> Crash
             btn.show()
         self.widget.recti = 0
+        #self.onBtn1()  #Wenn Anwenden geklickt wird, dann wird sofort weiter gezeichent. Problem: BinBtn wird nie enabled
 
     def onBtnAbort(self):
         self.rectPos = QtCore.QRect(0, 0, 0, 0)  # Markierungsrechteck wird verschoben
@@ -359,23 +361,30 @@ class NodeEdit(QMainWindow):
             self.ui.btn2.setEnabled(False)  # Buttons disablen, wenn es keine Rechtecke gibt
             self.ui.btnOk.setEnabled(False)
             self.ui.btnBin.setEnabled(False)
+
+
 #TODO Ich habe versucht die nächsten Wizard Windows zu zeigen... klappt nicht.
 class Wizard_1(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self, None,
-                             QtCore.Qt.WindowStaysOnTopHint)  # Lässt den Knoteneditor immer im Vordergrund stehen
+                             QtCore.Qt.WindowStaysOnTopHint)  # Lässt den Wizard immer im Vordergrund stehen
         self.ui = Ui_wizard_1()
         self.ui.setupUi(self)
         self.setWindowTitle("Sooper Dooper Wizard")
         self.ui.weiterButton.clicked.connect(lambda: self.win.switch_window.emit("2"))
 
+    def passMain(self, mainWindow):
+        self.win = mainWindow
+
+
 class Wizard_2(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self, None,
-                             QtCore.Qt.WindowStaysOnTopHint)  # Lässt den Knoteneditor immer im Vordergrund stehen
+                             QtCore.Qt.WindowStaysOnTopHint)  # Lässt den Wizard immer im Vordergrund stehen
         self.ui = Ui_wizard_2()
         self.ui.setupUi(self)
         self.setWindowTitle("Sooper Dooper Wizard")
+
 # class Wizard(QWizard):
 #     restartflag = 0
 #     ParamPage = 0
@@ -440,6 +449,7 @@ class Controller:  # Verwaltet die verschiedenen Widgets
 
     def showWizard(self, i):
         self.wizard = Wizard_1()
+        self.wizard.passMain(self.startWindow)
         self.wizard.show()
         self.startWindow.switch_window.disconnect()
         self.startWindow.switch_window.connect(self.showWizard_2)
