@@ -377,49 +377,51 @@ class Wizard_1(QMainWindow):
     def openNextWizard(self, i):
         print(i)
         self.win.switch_window.emit(str(i))
+        #self.win.switch_window.disconnect()
+        #self.win.switch_window.connect(lambda: self.contr.showWizard_3("3")) #Was soll der neue Button des neuen Wizards machen.. Wizard 1 muss Wizard 2 sagen, dass sein Button Wizard 3 öffnen soll
 
-    def passMain(self, mainWindow):
+    def passMain(self, mainWindow, controller):
         self.win = mainWindow
+        self.contr = controller
 
-class Wizard_2(QMainWindow):
+class Wizard_2(QtWidgets.QWidget):
     def __init__(self):
-        QMainWindow.__init__(self, None,
-                             QtCore.Qt.WindowStaysOnTopHint)  # Lässt den Wizard immer im Vordergrund stehen
+        super(Wizard_2, self).__init__()
         self.ui = Ui_wizard_2()
         self.ui.setupUi(self)
-        self.setWindowTitle("Sooper Dooper Wizard")
-        # self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard("3"))
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard("3"))
 
     def openNextWizard(self, i):
         print(i)
         self.win.switch_window.emit(str(i))
+        #self.win.switch_window.disconnect()
+        #self.win.switch_window.connect(lambda: self.contr.showWizard_4(""))
 
-    def passMain(self, mainWindow):
+
+    def passMain(self, mainWindow, controller):
         self.win = mainWindow
+        self.contr = controller
 
-class Wizard_3(QMainWindow):
+class Wizard_3(QtWidgets.QWidget):
     def __init__(self):
-        QMainWindow.__init__(self, None,
-                             QtCore.Qt.WindowStaysOnTopHint)  # Lässt den Wizard immer im Vordergrund stehen
+        super(Wizard_3, self).__init__()
         self.ui = Ui_wizard_3()
         self.ui.setupUi(self)
-        self.setWindowTitle("Sooper Dooper Wizard")
         self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
 
     def openNextWizard(self, i):
         print(i)
         self.win.switch_window.emit(str(i))
 
-    def passMain(self, mainWindow):
+    def passMain(self, mainWindow, controller):
         self.win = mainWindow
+        self.contr = controller
 
-class Wizard_4(QMainWindow):
+class Wizard_4(QtWidgets.QWidget):
     def __init__(self):
-        QMainWindow.__init__(self, None,
-                             QtCore.Qt.WindowStaysOnTopHint)  # Lässt den Wizard immer im Vordergrund stehen
+        super(Wizard_4, self).__init__()
         self.ui = Ui_wizard_4()
         self.ui.setupUi(self)
-        self.setWindowTitle("Sooper Dooper Wizard")
         self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
 
 
@@ -454,29 +456,34 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.mainWidget.enableDrawNode = True
         self.startWindow.ui.actionAlle_Knoten_zeigen.triggered.connect(self.mainWidget.toggleRects)
 
+
     def showWizard(self, i):
         self.wizard = Wizard_1()
-        self.wizard.passMain(self.startWindow)
+        self.wizard.passMain(self.startWindow, self)
         self.wizard.show()
         self.startWindow.switch_window.disconnect()
         self.startWindow.switch_window.connect(self.showWizard_2)
         self.startWindow.nodeEdit.hide()
 
+
     def showWizard_2(self, i):
         self.wizard2 = Wizard_2()
-        self.wizard2.passMain(self.startWindow)
+        self.wizard2.passMain(self.startWindow, self)
+        self.wizard.setCentralWidget(self.wizard2)
+        self.wizard.ui.frame.hide()
         self.wizard2.show()
         self.startWindow.switch_window.disconnect()
         self.startWindow.switch_window.connect(self.showWizard_3)
-        self.wizard.hide()
 
 
     def showWizard_3(self, i):
         self.wizard3 = Wizard_3()
+        self.wizard3.passMain(self.startWindow, self)
+        self.wizard.setCentralWidget(self.wizard3)
+        self.wizard2.hide()
         self.startWindow.switch_window.disconnect()
         self.startWindow.switch_window.connect(self.showWizard_4)
         self.wizard3.show()
-        self.wizard2.hide()
 
     def showWizard_4(self, i):
         self.wizard.hide()
