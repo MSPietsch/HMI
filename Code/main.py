@@ -377,12 +377,9 @@ class Wizard_1(QMainWindow):
     def openNextWizard(self, i):
         print(i)
         self.win.switch_window.emit(str(i))
-        #self.win.switch_window.disconnect()
-        #self.win.switch_window.connect(lambda: self.contr.showWizard_3("3")) #Was soll der neue Button des neuen Wizards machen.. Wizard 1 muss Wizard 2 sagen, dass sein Button Wizard 3 öffnen soll
 
-    def passMain(self, mainWindow, controller):
+    def passMain(self, mainWindow):
         self.win = mainWindow
-        self.contr = controller
 
 class Wizard_2(QtWidgets.QWidget):
     def __init__(self):
@@ -394,13 +391,10 @@ class Wizard_2(QtWidgets.QWidget):
     def openNextWizard(self, i):
         print(i)
         self.win.switch_window.emit(str(i))
-        #self.win.switch_window.disconnect()
-        #self.win.switch_window.connect(lambda: self.contr.showWizard_4(""))
 
 
-    def passMain(self, mainWindow, controller):
+    def passMain(self, mainWindow):
         self.win = mainWindow
-        self.contr = controller
 
 class Wizard_3(QtWidgets.QWidget):
     def __init__(self):
@@ -413,9 +407,8 @@ class Wizard_3(QtWidgets.QWidget):
         print(i)
         self.win.switch_window.emit(str(i))
 
-    def passMain(self, mainWindow, controller):
+    def passMain(self, mainWindow):
         self.win = mainWindow
-        self.contr = controller
 
 class Wizard_4(QtWidgets.QWidget):
     def __init__(self):
@@ -459,7 +452,7 @@ class Controller:  # Verwaltet die verschiedenen Widgets
 
     def showWizard(self, i):
         self.wizard = Wizard_1()
-        self.wizard.passMain(self.startWindow, self)
+        self.wizard.passMain(self.startWindow)
         self.wizard.show()
         self.startWindow.switch_window.disconnect()
         self.startWindow.switch_window.connect(self.showWizard_2)
@@ -468,7 +461,7 @@ class Controller:  # Verwaltet die verschiedenen Widgets
 
     def showWizard_2(self, i):
         self.wizard2 = Wizard_2()
-        self.wizard2.passMain(self.startWindow, self)
+        self.wizard2.passMain(self.startWindow)
         self.wizard.setCentralWidget(self.wizard2)
         self.wizard.ui.frame.hide()
         self.wizard2.show()
@@ -478,7 +471,7 @@ class Controller:  # Verwaltet die verschiedenen Widgets
 
     def showWizard_3(self, i):
         self.wizard3 = Wizard_3()
-        self.wizard3.passMain(self.startWindow, self)
+        self.wizard3.passMain(self.startWindow)
         self.wizard.setCentralWidget(self.wizard3)
         self.wizard2.hide()
         self.startWindow.switch_window.disconnect()
