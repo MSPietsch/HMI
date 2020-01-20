@@ -35,7 +35,7 @@ class MainWindow(QMainWindow):
         self.ui.actionSave.triggered.connect(lambda: self.showPopup("save"))
         self.ui.actionKnoteneditor.triggered.connect(self.showNodeEdit)
 
-    def showNodeEdit(self): #Wird aufgerufen, wenn der Knoteneditor geöffnet werden soll
+    def showNodeEdit(self):  # Wird aufgerufen, wenn der Knoteneditor geöffnet werden soll
         self.ui.actionAlle_Knoten_zeigen.setChecked(True)
         self.nodeEdit.show()
         self.nodeEdit.widget.toggleRects()
@@ -43,7 +43,6 @@ class MainWindow(QMainWindow):
 
     def closeEvent(self, event):  # Überschreibt was passiert, wenn das Fenster geschlossen wird
         self.showPopup("saveBeforeExit")  # Fragt, ob gespeichert werden soll
-
 
     def openProject(self):  # Fragt nach einer PDF Datei zum öffnen und speicher den Pfad in path
         Tk().withdraw()  # nur ein Fenster wird geöffnet
@@ -106,7 +105,7 @@ class MainWindow(QMainWindow):
             # Übersetzung der Buttons ins Deutsche
             buttonY = msg.button(QMessageBox.Yes)
             buttonY.setText('Ja')
-            buttonY.clicked.connect(lambda: QFileDialog.getSaveFileName(self,"Speichern unter"))
+            buttonY.clicked.connect(lambda: QFileDialog.getSaveFileName(self, "Speichern unter"))
             buttonN = msg.button(QMessageBox.No)
             buttonN.setText('Nein')
             buttonC = msg.button(QMessageBox.Cancel)
@@ -127,6 +126,7 @@ class MainWindow(QMainWindow):
             buttonC.setText('Abbrechen')
             msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
             x = msg.exec_()
+
 
 class PushButton(QtWidgets.QPushButton):
     def __init__(self, *args, **kwargs):
@@ -157,8 +157,7 @@ class MainWidget(QtWidgets.QWidget):
     nodei = 0  # Variable für tatsächliche Knoten Haupt und Nebenknoten haben die gleiche Zahl
     enableDrawNode = False  # Vorerst können keine Rechtecke gemalt werden
     enableDeleteNode = False  # Flag zum Löschen von Knoten
-    enableDrawNebennode = False #Flag zum Malen von Nebenknoten
-
+    enableDrawNebennode = False  # Flag zum Malen von Nebenknoten
 
     def __init__(self):
         super(MainWidget, self).__init__()
@@ -167,17 +166,19 @@ class MainWidget(QtWidgets.QWidget):
         self.begin = QtCore.QPoint()
         self.end = QtCore.QPoint()
 
-    def passMainWindow(self, win):  # Funktioniert wird von Controller aufgerufen, damit das mainWidget dast startWindow hat
+    def passMainWindow(self,
+                       win):  # Funktioniert wird von Controller aufgerufen, damit das mainWidget dast startWindow hat
         self.win = win
 
     def paintEvent(self,
                    event):  # TODO: Wenn der Haken bei Alle Knoten anzeigen raus ist, dann sollen die Rechtecke trotzdem bei Mouseover sichtbar
-        qp = QtGui.QPainter(self)   #TODO: Man soll die Rechtecke die man zeichnet auch sehen, wenn der Haken draußen ist
+        qp = QtGui.QPainter(
+            self)  # TODO: Man soll die Rechtecke die man zeichnet auch sehen, wenn der Haken draußen ist
         for node in self.nodeList:  # Malt alle Rechtecke aus den Knoten aus der Liste
             if node.show:
                 qp.setBrush(
                     QtGui.QColor(node.rectColor[0], node.rectColor[1], node.rectColor[2],
-                                    100))  # Setzt die Farbe des Rechtecks aus der rectColor Liste des Knotens
+                                 100))  # Setzt die Farbe des Rechtecks aus der rectColor Liste des Knotens
                 for rect in node.rect:
                     if rect.x() >= 0:  # Rechtecke nur malen, wenn sie nicht verkleinert sind
                         qp.drawRect(rect)  # Malt Rechtecke
@@ -242,7 +243,7 @@ class MainWidget(QtWidgets.QWidget):
                 i].hide()  # Btn erstmal hiden und erst wenn Ok gedrückt wird shown, sonst crasht das Programm beim Malen
             node.setIndizes(i)
 
-    def toggleRects(self):  #Wird aufgerufen, wenn bei Rechteckezeigen ein Häkchen verändert wird
+    def toggleRects(self):  # Wird aufgerufen, wenn bei Rechteckezeigen ein Häkchen verändert wird
         if self.win.ui.actionAlle_Knoten_zeigen.isChecked():
             for node in self.nodeList:
                 node.show = True
@@ -254,8 +255,6 @@ class MainWidget(QtWidgets.QWidget):
     def openWizard(self, i):
         print(i)
         self.win.switch_window.emit(str(i))
-
-
 
 
 # ---------------------------------------------------------------- #
@@ -273,7 +272,7 @@ class NodeEdit(QMainWindow):
         self.ui.setupUi(self)
         self.rectSignal.connect(self.onRectCreate)
         self.__connect_buttons()
-        self.rectPos = QtCore.QRect(19, 19, 42, 42) #Hauptknoten erstellen
+        self.rectPos = QtCore.QRect(19, 19, 42, 42)  # Hauptknoten erstellen
         icon = QtGui.QIcon()  # Zeige Logo oben links
         icon.addPixmap(QtGui.QPixmap("../icons/HAZOP.png"), QtGui.QIcon.Normal,
                        QtGui.QIcon.Off)  # Zeige Logo oben links
@@ -337,7 +336,7 @@ class NodeEdit(QMainWindow):
         for btn in self.widget.rectBtnList:  # Schaltet jetzt erst die Buttons an, damit die beim Malen nicht geklickt werden -> Crash
             btn.show()
         self.widget.recti = 0
-        #self.onBtn1()  #Wenn Anwenden geklickt wird, dann wird sofort weiter gezeichent. Problem: BinBtn wird nie enabled
+        # self.onBtn1()  #Wenn Anwenden geklickt wird, dann wird sofort weiter gezeichent. Problem: BinBtn wird nie enabled
 
     def onBtnAbort(self):
         self.rectPos = QtCore.QRect(0, 0, 0, 0)  # Markierungsrechteck wird verschoben
@@ -362,6 +361,7 @@ class NodeEdit(QMainWindow):
             self.ui.btnOk.setEnabled(False)
             self.ui.btnBin.setEnabled(False)
 
+
 # ---------------------------------------------------------------- #
 #                         Wizards
 # ---------------------------------------------------------------- #
@@ -381,6 +381,7 @@ class Wizard_1(QMainWindow):
     def passMain(self, mainWindow):
         self.win = mainWindow
 
+
 class Wizard_2(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self, None,
@@ -388,7 +389,7 @@ class Wizard_2(QMainWindow):
         self.ui = Ui_wizard_2()
         self.ui.setupUi(self)
         self.setWindowTitle("Sooper Dooper Wizard")
-        # self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard("3"))
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard("3"))
 
     def openNextWizard(self, i):
         print(i)
@@ -396,6 +397,7 @@ class Wizard_2(QMainWindow):
 
     def passMain(self, mainWindow):
         self.win = mainWindow
+
 
 class Wizard_3(QMainWindow):
     def __init__(self):
@@ -404,7 +406,7 @@ class Wizard_3(QMainWindow):
         self.ui = Ui_wizard_3()
         self.ui.setupUi(self)
         self.setWindowTitle("Sooper Dooper Wizard")
-        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard("3"))
 
     def openNextWizard(self, i):
         print(i)
@@ -413,6 +415,7 @@ class Wizard_3(QMainWindow):
     def passMain(self, mainWindow):
         self.win = mainWindow
 
+
 class Wizard_4(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self, None,
@@ -420,12 +423,12 @@ class Wizard_4(QMainWindow):
         self.ui = Ui_wizard_4()
         self.ui.setupUi(self)
         self.setWindowTitle("Sooper Dooper Wizard")
-        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+        self.ui.weiterButton.clicked.connect(lambda: self.finishWizard(""))
 
-
-    def openNextWizard(self, i):
+    def finishWizard(self, i):
         print(i)
-        self.win.switch_window.emit(str(i))
+        QMainWindow.close()
+
 
 # ---------------------------------------------------------------- #
 #                         Controller
@@ -470,18 +473,19 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.startWindow.switch_window.connect(self.showWizard_3)
         self.wizard.hide()
 
-
     def showWizard_3(self, i):
         self.wizard3 = Wizard_3()
+        self.wizard3.passMain(self.startWindow)
+        self.wizard3.show()
         self.startWindow.switch_window.disconnect()
         self.startWindow.switch_window.connect(self.showWizard_4)
-        self.wizard3.show()
         self.wizard2.hide()
 
     def showWizard_4(self, i):
-        self.wizard.hide()
         self.wizard = Wizard_4()
         self.wizard.show()
+        self.wizard3.hide()
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
