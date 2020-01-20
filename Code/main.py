@@ -362,8 +362,9 @@ class NodeEdit(QMainWindow):
             self.ui.btnOk.setEnabled(False)
             self.ui.btnBin.setEnabled(False)
 
-
-#TODO Ich habe versucht die nächsten Wizard Windows zu zeigen... klappt nicht.
+# ---------------------------------------------------------------- #
+#                         Wizards
+# ---------------------------------------------------------------- #
 class Wizard_1(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self, None,
@@ -371,11 +372,14 @@ class Wizard_1(QMainWindow):
         self.ui = Ui_wizard_1()
         self.ui.setupUi(self)
         self.setWindowTitle("Sooper Dooper Wizard")
-        self.ui.weiterButton.clicked.connect(lambda: self.win.switch_window.emit("2"))
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard("1"))
+
+    def openNextWizard(self, i):
+        print(i)
+        self.win.switch_window.emit(str(i))
 
     def passMain(self, mainWindow):
         self.win = mainWindow
-
 
 class Wizard_2(QMainWindow):
     def __init__(self):
@@ -384,45 +388,48 @@ class Wizard_2(QMainWindow):
         self.ui = Ui_wizard_2()
         self.ui.setupUi(self)
         self.setWindowTitle("Sooper Dooper Wizard")
+        # self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard("3"))
 
-# class Wizard(QWizard):
-#     restartflag = 0
-#     ParamPage = 0
-#     LeitwortPage = 1
-#     CauseConsequencePage = 2
-#     SafeguardPage = 3
-#     def __init__(self):
-#         QWizard.__init__(self, None,
-#                          QtCore.Qt.WindowStaysOnTopHint)  # Lässt den wizard immer im Vordergrund stehen
-#         self.ui = Ui_Wizard()
-#         self.ui.setupUi(self)
-#         self.setButtonText(QWizard.NextButton, 'Weiter')
-#         self.setButtonText(QWizard.BackButton, 'Zurück')
-#         self.setButtonText(QWizard.CancelButton, 'Abbrechen')
-#         self.setWindowTitle("Sooper Dooper Wizard")
-#         self.QWizard.NextButton.clicked.connect(lambda: self.setRestartFlag)
-#
-#     def setRestartFlag(self):
-#         self.restartflag = 0
-#
-#
-#     def nextId(self):
-#         id = self.currentId()
-#         if self.restartflag == 0:
-#             if id == self.ParamPage:
-#                 self.setStartId(self.LeitwortPage)
-#                 self.restartflag = 1
-#                 self.restart()
-#                 return self.LeitwortPage
-#             if id == self.LeitwortPage:
-#                 self.setStartId(self.LeitwortPage)
-#                 return self.CauseConsequencePage
-#             else:
-#                 return self.CauseConsequencePage
-#         else:
-#             return self.startId()
+    def openNextWizard(self, i):
+        print(i)
+        self.win.switch_window.emit(str(i))
+
+    def passMain(self, mainWindow):
+        self.win = mainWindow
+
+class Wizard_3(QMainWindow):
+    def __init__(self):
+        QMainWindow.__init__(self, None,
+                             QtCore.Qt.WindowStaysOnTopHint)  # Lässt den Wizard immer im Vordergrund stehen
+        self.ui = Ui_wizard_3()
+        self.ui.setupUi(self)
+        self.setWindowTitle("Sooper Dooper Wizard")
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+
+    def openNextWizard(self, i):
+        print(i)
+        self.win.switch_window.emit(str(i))
+
+    def passMain(self, mainWindow):
+        self.win = mainWindow
+
+class Wizard_4(QMainWindow):
+    def __init__(self):
+        QMainWindow.__init__(self, None,
+                             QtCore.Qt.WindowStaysOnTopHint)  # Lässt den Wizard immer im Vordergrund stehen
+        self.ui = Ui_wizard_4()
+        self.ui.setupUi(self)
+        self.setWindowTitle("Sooper Dooper Wizard")
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
 
 
+    def openNextWizard(self, i):
+        print(i)
+        self.win.switch_window.emit(str(i))
+
+# ---------------------------------------------------------------- #
+#                         Controller
+# ---------------------------------------------------------------- #
 class Controller:  # Verwaltet die verschiedenen Widgets
     def __init__(self):
         pass
@@ -456,9 +463,25 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.startWindow.nodeEdit.hide()
 
     def showWizard_2(self, i):
-        self.wizard = Wizard_2()
+        self.wizard2 = Wizard_2()
+        self.wizard2.passMain(self.startWindow)
+        self.wizard2.show()
+        self.startWindow.switch_window.disconnect()
+        self.startWindow.switch_window.connect(self.showWizard_3)
+        self.wizard.hide()
+
+
+    def showWizard_3(self, i):
+        self.wizard3 = Wizard_3()
+        self.startWindow.switch_window.disconnect()
+        self.startWindow.switch_window.connect(self.showWizard_4)
+        self.wizard3.show()
+        self.wizard2.hide()
+
+    def showWizard_4(self, i):
+        self.wizard.hide()
+        self.wizard = Wizard_4()
         self.wizard.show()
-        self.startWindow.nodeEdit.hide()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
