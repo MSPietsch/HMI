@@ -33,7 +33,7 @@
    <property name="frameShadow">
     <enum>QFrame::Plain</enum>
    </property>
-   <widget class="QLabel" name="label_9">
+   <widget class="QLabel" name="uberschriftLabel">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -91,7 +91,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_12">
+      <widget class="QLabel" name="abweichungLabel">
        <property name="font">
         <font>
          <pointsize>16</pointsize>
@@ -149,7 +149,7 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="zuruckButton">
        <property name="enabled">
         <bool>true</bool>
        </property>
@@ -162,7 +162,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="weiterButton">
        <property name="text">
         <string>Weiter</string>
        </property>

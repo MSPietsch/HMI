@@ -135,7 +135,7 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <widget class="QTextEdit" name="textEdit_3">
+      <widget class="QTextEdit" name="sg1textEdit">
        <property name="html">
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -159,7 +159,7 @@ p, li { white-space: pre-wrap; }
       </spacer>
      </item>
      <item>
-      <widget class="QTextEdit" name="textEdit_2">
+      <widget class="QTextEdit" name="sg2textEdit">
        <property name="html">
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -245,7 +245,7 @@ p, li { white-space: pre-wrap; }
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="zuruckButton">
        <property name="enabled">
         <bool>true</bool>
        </property>
@@ -258,14 +258,14 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_5">
+      <widget class="QPushButton" name="keineSafeguardsButton">
        <property name="text">
         <string>Keine Safeguards</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="weiterButton">
        <property name="text">
         <string>Weiter</string>
        </property>
@@ -273,7 +273,7 @@ p, li { white-space: pre-wrap; }
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="labelUberschrift">
     <property name="geometry">
      <rect>
       <x>15</x>
@@ -297,7 +297,7 @@ p, li { white-space: pre-wrap; }
    <zorder>horizontalLayoutWidget_3</zorder>
    <zorder>line_5</zorder>
    <zorder>horizontalLayoutWidget</zorder>
-   <zorder>label</zorder>
+   <zorder>labelUberschrift</zorder>
   </widget>
  </widget>
  <resources/>
