@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'wizard_2.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -37,6 +37,40 @@ class Ui_wizard_2(object):
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.textEdit = QtWidgets.QTextEdit(self.verticalLayoutWidget_2)
+        self.textEdit.setMaximumSize(QtCore.QSize(16777215, 32))
+        self.textEdit.setObjectName("textEdit")
+        self.verticalLayout_3.addWidget(self.textEdit)
+        self.scrollArea = QtWidgets.QScrollArea(self.verticalLayoutWidget_2)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 257, 208))
+        self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
+        self.verticalScrollBar = QtWidgets.QScrollBar(self.scrollAreaWidgetContents_2)
+        self.verticalScrollBar.setGeometry(QtCore.QRect(240, 0, 16, 211))
+        self.verticalScrollBar.setOrientation(QtCore.Qt.Vertical)
+        self.verticalScrollBar.setObjectName("verticalScrollBar")
+        self.pushButton = QtWidgets.QPushButton(self.scrollAreaWidgetContents_2)
+        self.pushButton.setGeometry(QtCore.QRect(0, 0, 241, 28))
+        self.pushButton.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.pushButton.setCheckable(True)
+        self.pushButton.setAutoExclusive(True)
+        self.pushButton.setDefault(False)
+        self.pushButton.setFlat(False)
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(self.scrollAreaWidgetContents_2)
+        self.pushButton_2.setGeometry(QtCore.QRect(0, 27, 241, 28))
+        self.pushButton_2.setCheckable(True)
+        self.pushButton_2.setAutoExclusive(True)
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_3 = QtWidgets.QPushButton(self.scrollAreaWidgetContents_2)
+        self.pushButton_3.setGeometry(QtCore.QRect(0, 54, 241, 28))
+        self.pushButton_3.setCheckable(True)
+        self.pushButton_3.setAutoExclusive(True)
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents_2)
+        self.verticalLayout_3.addWidget(self.scrollArea)
         self.gridLayoutWidget = QtWidgets.QWidget(self.frame_2)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(311, 111, 263, 251))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
@@ -163,6 +197,14 @@ class Ui_wizard_2(object):
         _translate = QtCore.QCoreApplication.translate
         wizard_2.setWindowTitle(_translate("wizard_2", "Form"))
         self.label_3.setText(_translate("wizard_2", "Definieren Sie die Leitworte für die Parameter."))
+        self.textEdit.setHtml(_translate("wizard_2", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-style:italic; color:#818181;\">Parameter suchen...</span></p></body></html>"))
+        self.pushButton.setText(_translate("wizard_2", "Druck"))
+        self.pushButton_2.setText(_translate("wizard_2", "Temperatur"))
+        self.pushButton_3.setText(_translate("wizard_2", "..."))
         self.checkBox_17.setText(_translate("wizard_2", "Danach"))
         self.checkBox_19.setText(_translate("wizard_2", "Langsamer"))
         self.checkBox_14.setText(_translate("wizard_2", "Früher"))
