@@ -115,14 +115,14 @@ class MainWindow(QMainWindow):
             x = msg.exec_()
         if info == "deleteNodes":
             msg.setWindowTitle("Knoten löschen")
-            msg.setText("Möchten Sie alle zu diesem Knoten gehörigen Knoten entfernen?")
+            msg.setText("Möchten Sie alle zu diesem Knoten gehörigen Elemente entfernen?")
             msg.setIcon(QMessageBox.Question)  # Fragezeichenlogo
             msg.setStandardButtons(
                 QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel)  # Yes/No/ Cancel- Buttons sollen erscheinen
             buttonY = msg.button(QMessageBox.Yes)
             buttonY.setText('Ja')
             buttonN = msg.button(QMessageBox.No)
-            buttonN.setText('Nein, nur diesen Knoten')
+            buttonN.setText('Nein, nur dieses Element')
             buttonC = msg.button(QMessageBox.Cancel)
             buttonC.setText('Abbrechen')
             msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
@@ -391,7 +391,6 @@ class Wizard_2(QtWidgets.QWidget):
     def openNextWizard(self, i):
         print(i)
         self.win.switch_window.emit(str(i))
-
 
     def passMain(self, mainWindow):
         self.win = mainWindow
