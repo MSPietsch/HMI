@@ -418,7 +418,6 @@ class Wizard_3(QtWidgets.QWidget):
         print(i)
         self.con.showWizard_4(i)
 
-
     def passController(self, controll):
         self.con = controll
 
@@ -439,7 +438,6 @@ class Wizard_4(QtWidgets.QWidget):
         print(i)
         self.con.showWizard_3(i)
 
-
     def openNextWizard(self, i):
         print(i)
         #self.con.switch_window.emit(str(i))
@@ -453,10 +451,7 @@ class Wizard_4(QtWidgets.QWidget):
 # ---------------------------------------------------------------- #
 class Controller:  # Verwaltet die verschiedenen Widgets
     def __init__(self):
-        self.wizard = Wizard_1()
-        self.wizard2 = Wizard_2()
-        self.wizard3 = Wizard_3()
-        self.wizard4 = Wizard_4()
+        pass
 
     def showStart(self):
         self.startWindow = MainWindow()
@@ -479,31 +474,35 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.startWindow.ui.actionAlle_Knoten_zeigen.triggered.connect(self.mainWidget.toggleRects)
 
     def showWizard(self, i):
+        self.wizard = Wizard_1()
         self.wizard.passController(self)
         self.wizard.show()
         self.startWindow.nodeEdit.hide()
        # self.wizard.ui.frame.show()
-        self.wizard2.hide()
+        #self.wizard2.hide()
         self.wizard.setCentralWidget(self.wizard.ui.frame)
 
     def showWizard_2(self, i):
+        self.wizard2 = Wizard_2()
         self.wizard2.passController(self)
-        self.wizard.ui.frame.hide()
-        self.wizard2.show()
-        self.wizard3.hide()
+       # self.wizard.ui.frame.hide()
+      #  self.wizard2.show()
+       # self.wizard3.hide()
         self.wizard.setCentralWidget(self.wizard2)
 
     def showWizard_3(self, i):
+        self.wizard3 = Wizard_3()
         self.wizard3.passController(self)
-        self.wizard2.hide()
-        self.wizard4.hide()
-        self.wizard3.show()
+      #  self.wizard2.hide()
+      #  self.wizard4.hide()
+       # self.wizard3.show()
         self.wizard.setCentralWidget(self.wizard3)
 
     def showWizard_4(self, i):
+        self.wizard4 = Wizard_4()
         self.wizard4.passController(self)
-        self.wizard3.hide()
-        self.wizard4.show()
+     #   self.wizard3.hide()
+      #  self.wizard4.show()
         self.wizard.setCentralWidget(self.wizard4)
 
 
