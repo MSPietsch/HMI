@@ -258,7 +258,8 @@ class MainWidget(QtWidgets.QWidget):
 
     def openWizard(self, i):
         print(i)
-        self.win.switch_window.emit(str(i))
+        if self.nodeList[i].done == False:
+            self.win.switch_window.emit(str(i))
 
 
 # ---------------------------------------------------------------- #
@@ -376,10 +377,9 @@ class Wizard_1(QMainWindow):
         self.ui = Ui_wizard_1()
         self.ui.setupUi(self)
         self.setWindowTitle("Sooper Dooper Wizard")
-        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard("2"))
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
 
     def openNextWizard(self, i):
-        print(i)
         self.con.showWizard_2(i)
 
     def passController(self, controll):
@@ -391,15 +391,13 @@ class Wizard_2(QtWidgets.QWidget):
         super(Wizard_2, self).__init__()
         self.ui = Ui_wizard_2()
         self.ui.setupUi(self)
-        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard("3"))
-        self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("1")))
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+        self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("")))
 
     def openNextWizard(self, i):
-        print(i)
         self.con.showWizard_3(i)
 
     def openPreviousWizard(self, i):
-        print(i)
         self.con.showWizard(i)
 
     def passController(self, controll):
@@ -411,18 +409,16 @@ class Wizard_3(QtWidgets.QWidget):
         super(Wizard_3, self).__init__()
         self.ui = Ui_wizard_3()
         self.ui.setupUi(self)
-        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard("4"))
-        self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("2")))
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+        self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("")))
 
     def openNextWizard(self, i):
-        print(i)
         self.con.showWizard_4(i)
 
     def passController(self, controll):
         self.con = controll
 
     def openPreviousWizard(self, i):
-        print(i)
         self.con.showWizard_2(i)
 
 
@@ -431,16 +427,15 @@ class Wizard_4(QtWidgets.QWidget):
         super(Wizard_4, self).__init__()
         self.ui = Ui_wizard_4()
         self.ui.setupUi(self)
-        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard("Ende"))
-        self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("3")))
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+        self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("")))
 
     def openPreviousWizard(self, i):
-        print(i)
         self.con.showWizard_3(i)
 
     def openNextWizard(self, i):
-        print(i)
-        #self.con.switch_window.emit(str(i))
+        print("Knoten "+self.con.i+" ist fertig bearbeitet.")
+        self.con.mainWidget.nodeList[int(self.con.i)].done = True     #Der Knoten ist nun fertig bearbeitet und beim erneuten Öffnen wird das gemeldet
 
     def passController(self, controll):
         self.con = controll
@@ -451,7 +446,7 @@ class Wizard_4(QtWidgets.QWidget):
 # ---------------------------------------------------------------- #
 class Controller:  # Verwaltet die verschiedenen Widgets
     def __init__(self):
-        pass
+        self.i = 0  #Knoten ID, welcher gerade im Wizard bearbeitet wird
 
     def showStart(self):
         self.startWindow = MainWindow()
@@ -476,34 +471,27 @@ class Controller:  # Verwaltet die verschiedenen Widgets
     def showWizard(self, i):
         self.wizard = Wizard_1()
         self.wizard.passController(self)
+        self.wizard.setWindowTitle("Hazop Creator | Knoten-ID: "+str(self.i))
         self.wizard.show()
         self.startWindow.nodeEdit.hide()
-       # self.wizard.ui.frame.show()
-        #self.wizard2.hide()
         self.wizard.setCentralWidget(self.wizard.ui.frame)
+        self.i = i
 
     def showWizard_2(self, i):
         self.wizard2 = Wizard_2()
         self.wizard2.passController(self)
-       # self.wizard.ui.frame.hide()
-      #  self.wizard2.show()
-       # self.wizard3.hide()
         self.wizard.setCentralWidget(self.wizard2)
 
     def showWizard_3(self, i):
         self.wizard3 = Wizard_3()
         self.wizard3.passController(self)
-      #  self.wizard2.hide()
-      #  self.wizard4.hide()
-       # self.wizard3.show()
         self.wizard.setCentralWidget(self.wizard3)
 
     def showWizard_4(self, i):
         self.wizard4 = Wizard_4()
         self.wizard4.passController(self)
-     #   self.wizard3.hide()
-      #  self.wizard4.show()
         self.wizard.setCentralWidget(self.wizard4)
+        print(self.i)
 
 
 if __name__ == "__main__":
