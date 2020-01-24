@@ -181,6 +181,7 @@ class MainWidget(QtWidgets.QWidget):
                 for rect in node.rect:
                     if rect.x() >= 0:  # Rechtecke nur malen, wenn sie nicht verkleinert sind
                         qp.drawRect(rect)  # Malt Rechtecke
+        self.ui.RILabel.setGeometry(QtCore.QRect(-2,-2, self.win.frameGeometry().width()-20, self.win.frameGeometry().height()-100))
 
     def mousePressEvent(self, event):
         if self.enableDrawNode:
@@ -191,6 +192,7 @@ class MainWidget(QtWidgets.QWidget):
         elif self.enableDrawNebennode:
             self.begin = event.pos()
             self.end = event.pos()
+
         self.update()
 
     def mouseMoveEvent(self, event):
@@ -238,8 +240,9 @@ class MainWidget(QtWidgets.QWidget):
             self.rectBtnList[i].setFlat(True)  # Macht den Button durchsichtig
             nodek = self.nodei
             self.rectBtnList[i].clicked.connect(lambda: self.openWizard(nodek))
+            self.rectBtnList[i].show()
             self.rectBtnList[
-                i].hide()  # Btn erstmal hiden und erst wenn Ok gedrückt wird shown, sonst crasht das Programm beim Malen
+                i].setEnabled(False)  # Btn erstmal hiden und erst wenn Ok gedrückt wird shown, sonst crasht das Programm beim Malen
             node.setIndizes(i)
 
     def toggleRects(self):  #Wird aufgerufen, wenn bei Rechteckezeigen ein Häkchen verändert wird
@@ -301,7 +304,7 @@ class NodeEdit(QMainWindow):
         self.widget.enableDeleteNode = False
         self.ui.btnBin.setEnabled(False)
         for btn in self.widget.rectBtnList:  # Alle Buttons während dem Malen disablen, damit das Programm nicht crasht
-            btn.hide()
+            btn.setEnabled(False)
 
     def onBtn2(self):
         print("2")
@@ -319,7 +322,7 @@ class NodeEdit(QMainWindow):
         self.widget.enableDrawNebenode = False
         self.widget.enableDeleteNode = True
         for btn in self.widget.rectBtnList:  # Alle Buttons disablen, damit die Buttons nicht gedrückt werden
-            btn.hide()
+            btn.setEnabled(False)
 
     def onBtnOk(self):
         self.widget.createRectBtn(self.widget.nodeList[self.widget.nodei])
@@ -335,7 +338,7 @@ class NodeEdit(QMainWindow):
         self.ui.btnBin.setEnabled(True)
         self.ui.btnOk.setEnabled(False)
         for btn in self.widget.rectBtnList:  # Schaltet jetzt erst die Buttons an, damit die beim Malen nicht geklickt werden -> Crash
-            btn.show()
+            btn.setEnabled(True)
         self.widget.recti = 0
         #self.onBtn1()  #Wenn Anwenden geklickt wird, dann wird sofort weiter gezeichent. Problem: BinBtn wird nie enabled
 
