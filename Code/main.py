@@ -127,6 +127,19 @@ class MainWindow(QMainWindow):
             buttonC.setText('Abbrechen')
             msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
             x = msg.exec_()
+        if info == "wizardDone":
+            msg.setWindowTitle("Hazop Creator")
+            msg.setText("Dieser Knoten wurde bereits bearbeitet. Möchten Sie ihn erneut bearbeiten?")
+            msg.setIcon(QMessageBox.Question)  # Fragezeichenlogo
+            msg.setStandardButtons(
+                QMessageBox.Yes | QMessageBox.Cancel)  # Yes/Cancel- Buttons sollen erscheinen
+            buttonY = msg.button(QMessageBox.Yes)
+            buttonY.setText('Ja')
+            buttonC = msg.button(QMessageBox.Cancel)
+            buttonC.setText('Abbrechen')
+            msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
+            x = msg.exec_()
+
 
 
 class PushButton(QtWidgets.QPushButton):
@@ -260,7 +273,8 @@ class MainWidget(QtWidgets.QWidget):
         print(i)
         if self.nodeList[i].done == False:
             self.win.switch_window.emit(str(i))
-
+        else:
+            self.win.showPopup("wizardDone")
 
 # ---------------------------------------------------------------- #
 #                         Node-Editor
