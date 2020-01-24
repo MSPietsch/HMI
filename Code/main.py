@@ -181,7 +181,7 @@ class MainWidget(QtWidgets.QWidget):
                 for rect in node.rect:
                     if rect.x() >= 0:  # Rechtecke nur malen, wenn sie nicht verkleinert sind
                         qp.drawRect(rect)  # Malt Rechtecke
-        self.ui.RILabel.setGeometry(QtCore.QRect(-2,-2, self.win.frameGeometry().width()-20, self.win.frameGeometry().height()-100))
+        self.ui.RILabel.setGeometry(QtCore.QRect(-2,-2, self.win.frameGeometry().width()-20, self.win.frameGeometry().height()-100))    #Passt das Fließbild an die Fenstergröße an
 
     def mousePressEvent(self, event):
         if self.enableDrawNode:
@@ -393,7 +393,11 @@ class Wizard_2(QtWidgets.QWidget):
 
     def openNextWizard(self, i):
         print(i)
-        self.win.switch_window.emit(str(i))
+        self.win.switch_window.emit(str(i)
+
+    def openPreviousWizard(self, i):
+        print(i)
+        self.con.showWizard("1")
 
     def passMain(self, mainWindow):
         self.win = mainWindow
@@ -409,6 +413,11 @@ class Wizard_3(QtWidgets.QWidget):
         print(i)
         self.win.switch_window.emit(str(i))
 
+    def openPreviousWizard(self, i):
+        print(i)
+        self.con.showWizard_2("1")
+
+
     def passMain(self, mainWindow):
         self.win = mainWindow
 
@@ -418,6 +427,10 @@ class Wizard_4(QtWidgets.QWidget):
         self.ui = Ui_wizard_4()
         self.ui.setupUi(self)
         self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+
+    def openPreviousWizard(self, i):
+        print(i)
+        self.con.showWizard_3("1")
 
 
     def openNextWizard(self, i):
