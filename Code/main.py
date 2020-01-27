@@ -303,13 +303,13 @@ class NodeEdit(QMainWindow):
         self.widget.enableDrawNode = True
         self.widget.enableDrawNebennode = False
         self.widget.enableDeleteNode = False
-        self.ui.btnBin.setEnabled(False)
+        self.ui.btnBin.setEnabled(True) # Löschbutton bleibt aktiv
         for btn in self.widget.rectBtnList:  # Alle Buttons während dem Malen disablen, damit das Programm nicht crasht
             btn.setEnabled(False)
 
     def onBtn2(self):
         print("2")
-        self.rectPos = QtCore.QRect(69, 74, 42, 42)
+        self.rectPos = QtCore .QRect(69, 74, 42, 42)
         self.update()
         pass
 
@@ -364,7 +364,7 @@ class NodeEdit(QMainWindow):
         else:
             self.ui.btn2.setEnabled(False)  # Buttons disablen, wenn es keine Rechtecke gibt
             self.ui.btnOk.setEnabled(False)
-            self.ui.btnBin.setEnabled(False)
+            self.ui.btnBin.setEnabled(True)
 
 
 # ---------------------------------------------------------------- #

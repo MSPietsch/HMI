@@ -175,7 +175,7 @@
       <x>10</x>
       <y>150</y>
       <width>631</width>
-      <height>41</height>
+      <height>61</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -330,45 +330,6 @@ p, li { white-space: pre-wrap; }
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>380</y>
-      <width>339</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QPushButton" name="zuruckButton">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="text">
-        <string>Zurück</string>
-       </property>
-       <property name="checkable">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="keineSafeguardsButton">
-       <property name="text">
-        <string>Keine Safeguards</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="weiterButton">
-       <property name="text">
-        <string>Weiter</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QLabel" name="labelUberschrift">
     <property name="geometry">
      <rect>
@@ -387,13 +348,60 @@ p, li { white-space: pre-wrap; }
      <string>Definieren Sie die Safeguards.</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="weiterButton">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>390</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Weiter</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="zuruckButton">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>390</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Zurück</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="weiterButton_2">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>390</y>
+      <width>131</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Keine Safguards</string>
+    </property>
+   </widget>
    <zorder>line_3</zorder>
    <zorder>line_4</zorder>
    <zorder>horizontalLayoutWidget_2</zorder>
    <zorder>horizontalLayoutWidget_3</zorder>
    <zorder>line_5</zorder>
-   <zorder>horizontalLayoutWidget</zorder>
    <zorder>labelUberschrift</zorder>
+   <zorder>weiterButton</zorder>
+   <zorder>zuruckButton</zorder>
+   <zorder>weiterButton_2</zorder>
   </widget>
  </widget>
  <resources/>
