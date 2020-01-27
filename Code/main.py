@@ -127,6 +127,19 @@ class MainWindow(QMainWindow):
             buttonC.setText('Abbrechen')
             msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
             x = msg.exec_()
+        if info == "wizardDone":
+            msg.setWindowTitle("Hazop Creator")
+            msg.setText("Dieser Knoten wurde bereits bearbeitet. Möchten Sie ihn erneut bearbeiten?")
+            msg.setIcon(QMessageBox.Question)  # Fragezeichenlogo
+            msg.setStandardButtons(
+                QMessageBox.Yes | QMessageBox.Cancel)  # Yes/Cancel- Buttons sollen erscheinen
+            buttonY = msg.button(QMessageBox.Yes)
+            buttonY.setText('Ja')
+            buttonC = msg.button(QMessageBox.Cancel)
+            buttonC.setText('Abbrechen')
+            msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
+            x = msg.exec_()
+
 
 
 class PushButton(QtWidgets.QPushButton):
@@ -222,7 +235,7 @@ class MainWidget(QtWidgets.QWidget):
                         node.hideRects()
                         for g in node.btnList:
                             self.rectBtnList[g].setGeometry(0, 0, 0, 0)
-                            self.rectBtnList[g].setEnabled(False)
+                            self.rectBtnList[g].hide()
                         break
                 else:
                     continue
@@ -260,7 +273,8 @@ class MainWidget(QtWidgets.QWidget):
         print(i)
         if self.nodeList[i].done == False:
             self.win.switch_window.emit(str(i))
-
+        else:
+            self.win.showPopup("wizardDone")
 
 # ---------------------------------------------------------------- #
 #                         Node-Editor
@@ -323,7 +337,7 @@ class NodeEdit(QMainWindow):
         self.widget.enableDrawNebenode = False
         self.widget.enableDeleteNode = True
         for btn in self.widget.rectBtnList:  # Alle Buttons disablen, damit die Buttons nicht gedrückt werden
-            btn.setEnabled(False)
+            btn.hide()
 
     def onBtnOk(self):
         self.widget.createRectBtn(self.widget.nodeList[self.widget.nodei])
