@@ -235,7 +235,7 @@ class MainWidget(QtWidgets.QWidget):
                         node.hideRects()
                         for g in node.btnList:
                             self.rectBtnList[g].setGeometry(0, 0, 0, 0)
-                            self.rectBtnList[g].setEnabled(False)
+                            self.rectBtnList[g].hide()
                         break
                 else:
                     continue
@@ -337,7 +337,7 @@ class NodeEdit(QMainWindow):
         self.widget.enableDrawNebenode = False
         self.widget.enableDeleteNode = True
         for btn in self.widget.rectBtnList:  # Alle Buttons disablen, damit die Buttons nicht gedrückt werden
-            btn.setEnabled(False)
+            btn.hide()
 
     def onBtnOk(self):
         self.widget.createRectBtn(self.widget.nodeList[self.widget.nodei])
