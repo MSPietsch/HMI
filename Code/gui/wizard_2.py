@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'wizard_2.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.1
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -14,8 +14,12 @@ class Ui_wizard_2(object):
     def setupUi(self, wizard_2):
         wizard_2.setObjectName("wizard_2")
         wizard_2.resize(650, 440)
+        wizard_2.setMinimumSize(QtCore.QSize(650, 440))
+        wizard_2.setMaximumSize(QtCore.QSize(650, 440))
         self.frame_2 = QtWidgets.QFrame(wizard_2)
         self.frame_2.setGeometry(QtCore.QRect(0, 0, 650, 440))
+        self.frame_2.setMinimumSize(QtCore.QSize(650, 440))
+        self.frame_2.setMaximumSize(QtCore.QSize(650, 440))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.frame_2.setFont(font)
@@ -72,7 +76,7 @@ class Ui_wizard_2(object):
         self.scrollArea.setWidget(self.scrollAreaWidgetContents_2)
         self.verticalLayout_3.addWidget(self.scrollArea)
         self.gridLayoutWidget = QtWidgets.QWidget(self.frame_2)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(311, 111, 263, 251))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(330, 110, 263, 251))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.gridLayoutWidget)
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -170,25 +174,19 @@ class Ui_wizard_2(object):
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.horizontalLayout_2.addWidget(self.label_5)
-        self.horizontalLayoutWidget_2 = QtWidgets.QWidget(self.frame_2)
-        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(380, 380, 260, 61))
-        self.horizontalLayoutWidget_2.setObjectName("horizontalLayoutWidget_2")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_2)
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.zuruckButton = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
-        self.zuruckButton.setEnabled(True)
-        self.zuruckButton.setCheckable(False)
-        self.zuruckButton.setObjectName("zuruckButton")
-        self.horizontalLayout_3.addWidget(self.zuruckButton)
-        self.weiterButton = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
-        self.weiterButton.setObjectName("weiterButton")
-        self.horizontalLayout_3.addWidget(self.weiterButton)
         self.line = QtWidgets.QFrame(self.frame_2)
         self.line.setGeometry(QtCore.QRect(0, 370, 650, 16))
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
+        self.zuruckButton = QtWidgets.QPushButton(self.frame_2)
+        self.zuruckButton.setEnabled(True)
+        self.zuruckButton.setGeometry(QtCore.QRect(380, 390, 120, 30))
+        self.zuruckButton.setCheckable(False)
+        self.zuruckButton.setObjectName("zuruckButton")
+        self.weiterButton = QtWidgets.QPushButton(self.frame_2)
+        self.weiterButton.setGeometry(QtCore.QRect(520, 390, 120, 30))
+        self.weiterButton.setObjectName("weiterButton")
 
         self.retranslateUi(wizard_2)
         QtCore.QMetaObject.connectSlotsByName(wizard_2)
