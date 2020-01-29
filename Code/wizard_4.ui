@@ -175,7 +175,7 @@
       <x>10</x>
       <y>150</y>
       <width>631</width>
-      <height>61</height>
+      <height>89</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -333,8 +333,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="labelUberschrift">
     <property name="geometry">
      <rect>
-      <x>15</x>
-      <y>15</y>
+      <x>17</x>
+      <y>10</y>
       <width>630</width>
       <height>31</height>
      </rect>
@@ -393,6 +393,19 @@ p, li { white-space: pre-wrap; }
      <string>Keine Safguards</string>
     </property>
    </widget>
+   <widget class="Line" name="line_6">
+    <property name="geometry">
+     <rect>
+      <x>-130</x>
+      <y>40</y>
+      <width>871</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
    <zorder>line_3</zorder>
    <zorder>line_4</zorder>
    <zorder>horizontalLayoutWidget_2</zorder>
@@ -402,6 +415,7 @@ p, li { white-space: pre-wrap; }
    <zorder>weiterButton</zorder>
    <zorder>zuruckButton</zorder>
    <zorder>weiterButton_2</zorder>
+   <zorder>line_6</zorder>
   </widget>
  </widget>
  <resources/>

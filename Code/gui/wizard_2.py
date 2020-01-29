@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'wizard_2.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -28,7 +28,7 @@ class Ui_wizard_2(object):
         self.frame_2.setObjectName("frame_2")
         self.label_3 = QtWidgets.QLabel(self.frame_2)
         self.label_3.setEnabled(True)
-        self.label_3.setGeometry(QtCore.QRect(15, 15, 591, 31))
+        self.label_3.setGeometry(QtCore.QRect(15, 10, 591, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(False)
@@ -187,6 +187,11 @@ class Ui_wizard_2(object):
         self.weiterButton = QtWidgets.QPushButton(self.frame_2)
         self.weiterButton.setGeometry(QtCore.QRect(520, 390, 120, 30))
         self.weiterButton.setObjectName("weiterButton")
+        self.line_6 = QtWidgets.QFrame(self.frame_2)
+        self.line_6.setGeometry(QtCore.QRect(-30, 40, 871, 20))
+        self.line_6.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_6.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_6.setObjectName("line_6")
 
         self.retranslateUi(wizard_2)
         QtCore.QMetaObject.connectSlotsByName(wizard_2)

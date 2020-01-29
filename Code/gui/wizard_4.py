@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'wizard_4.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -82,7 +82,7 @@ class Ui_wizard_4(object):
         self.label_8.setObjectName("label_8")
         self.horizontalLayout.addWidget(self.label_8)
         self.horizontalLayoutWidget_3 = QtWidgets.QWidget(self.frame_3)
-        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(10, 150, 631, 61))
+        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(10, 150, 631, 89))
         self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_3)
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -131,7 +131,7 @@ class Ui_wizard_4(object):
         self.line_5.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_5.setObjectName("line_5")
         self.labelUberschrift = QtWidgets.QLabel(self.frame_3)
-        self.labelUberschrift.setGeometry(QtCore.QRect(15, 15, 630, 31))
+        self.labelUberschrift.setGeometry(QtCore.QRect(17, 10, 630, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.labelUberschrift.setFont(font)
@@ -147,6 +147,11 @@ class Ui_wizard_4(object):
         self.weiterButton_2 = QtWidgets.QPushButton(self.frame_3)
         self.weiterButton_2.setGeometry(QtCore.QRect(370, 390, 131, 30))
         self.weiterButton_2.setObjectName("weiterButton_2")
+        self.line_6 = QtWidgets.QFrame(self.frame_3)
+        self.line_6.setGeometry(QtCore.QRect(-130, 40, 871, 20))
+        self.line_6.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_6.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_6.setObjectName("line_6")
         self.line_3.raise_()
         self.line_4.raise_()
         self.horizontalLayoutWidget_2.raise_()
@@ -156,6 +161,7 @@ class Ui_wizard_4(object):
         self.weiterButton.raise_()
         self.zuruckButton.raise_()
         self.weiterButton_2.raise_()
+        self.line_6.raise_()
 
         self.retranslateUi(wizard_4)
         QtCore.QMetaObject.connectSlotsByName(wizard_4)
