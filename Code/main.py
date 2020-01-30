@@ -43,6 +43,7 @@ class MainWindow(QMainWindow):
 
     def closeEvent(self, event):  # Überschreibt was passiert, wenn das Fenster geschlossen wird
         self.showPopup("saveBeforeExit")  # Fragt, ob gespeichert werden soll
+        self.nodeEdit.close()
 
 
     def openProject(self):  # Fragt nach einer PDF Datei zum öffnen und speicher den Pfad in path
@@ -186,11 +187,11 @@ class MainWidget(QtWidgets.QWidget):
         self.win = win
 
     def paintEvent(self,
-                   event):  # TODO: Wenn der Haken bei Alle Knoten anzeigen raus ist, dann sollen die Rechtecke trotzdem bei Mouseover sichtbar
+                   event):
         qp = QtGui.QPainter(
             self)  # TODO: Man soll die Rechtecke die man zeichnet auch sehen, wenn der Haken draußen ist
         for node in self.nodeList:  # Malt alle Rechtecke aus den Knoten aus der Liste
-            if node.show:
+            if node.show or node.painting:
                 qp.setBrush(
                     QtGui.QColor(node.rectColor[0], node.rectColor[1], node.rectColor[2],
                                  100))  # Setzt die Farbe des Rechtecks aus der rectColor Liste des Knotens
@@ -259,6 +260,7 @@ class MainWidget(QtWidgets.QWidget):
             self.rectBtnList[
                 i].setEnabled(False)  # Btn erstmal hiden und erst wenn Ok gedrückt wird shown, sonst crasht das Programm beim Malen
             node.setIndizes(i)
+            node.painting = False
 
     def toggleRects(self):  # Wird aufgerufen, wenn bei Rechteckezeigen ein Häkchen verändert wird
         if self.win.ui.actionAlle_Knoten_zeigen.isChecked():
@@ -355,6 +357,7 @@ class NodeEdit(QMainWindow):
         for btn in self.widget.rectBtnList:  # Schaltet jetzt erst die Buttons an, damit die beim Malen nicht geklickt werden -> Crash
             btn.setEnabled(True)
         self.widget.recti = 0
+        self.widget.repaint()
         # self.onBtn1()  #Wenn Anwenden geklickt wird, dann wird sofort weiter gezeichent. Problem: BinBtn wird nie enabled
 
     def onBtnAbort(self):

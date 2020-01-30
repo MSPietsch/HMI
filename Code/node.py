@@ -10,8 +10,9 @@ class Node():
         self.rect = []
         self.rect.append(QtCore.QRect(0, 0, 0, 0))
         self.rectColor = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
-        self.show = True
+        self.show = True    #Versteckt oder sichtbar (mouseover feature)
         self.done = False
+        self.painting = True    #Flag um zu zeigen, dass der knoten zu Ende gemalt wurde (mouseover feature) damit er auch gezeigt wird, auch wenn alle auf mouseover sind
 
     def hideRects(self):
         for rec in self.rect:
