@@ -25,6 +25,8 @@ class MainWindow(QMainWindow):
         self.nodeEdit = NodeEdit()  # Erzeugt einen Knoteneditor
         self.__connect_buttons()
         self.startFrame = self.ui.startFrame
+        self.last_width = self.width()  #Wird für resizing der Nodes gebraucht
+        self.last_height = self.height()
 
     def __connect_buttons(self):
         self.ui.btnNew.clicked.connect(self.newProject)
@@ -56,6 +58,29 @@ class MainWindow(QMainWindow):
             self.ui.actionSave.setEnabled(True)
             print(path)
             self.switch_window.emit(path)
+
+    def resizeEvent(self, event):
+        try:
+            self.nodeEdit.widget.ui.RILabel.setGeometry(QtCore.QRect(-2, -2, self.frameGeometry().width() - 20,
+                                                                     self.frameGeometry().height() - 100))  # Passt das Fließbild an die Fenstergröße an
+            for node in self.nodeEdit.widget.nodeList:
+                node.resize(self.nodeEdit.widget.width()/self.last_width, self.nodeEdit.widget.height()/self.last_height)
+                k = 0
+                for i in node.btnList:
+                    self.nodeEdit.widget.rectBtnList[i].resize(node.rect[k].width(), node.rect[k].height())  # passe die Buttongröße auf Rechtecksgröße an
+                    self.nodeEdit.widget.rectBtnList[i].move(node.rect[k].getCoords()[0],
+                                            node.rect[k].getCoords()[1])  # Bewege Button auf die Stelle des Rechtecks
+                    k = k + 1
+        except AttributeError:
+            pass
+
+        QMainWindow.resizeEvent(self, event)
+
+        try:
+            self.last_height = self.nodeEdit.widget.height()
+            self.last_width = self.nodeEdit.widget.width()
+        except AttributeError:
+            pass
 
     def newProject(self):
         Tk().withdraw()  # nur ein Fenster wird geöffnet
@@ -198,7 +223,7 @@ class MainWidget(QtWidgets.QWidget):
                 for rect in node.rect:
                     if rect.x() >= 0:  # Rechtecke nur malen, wenn sie nicht verkleinert sind
                         qp.drawRect(rect)  # Malt Rechtecke
-        self.ui.RILabel.setGeometry(QtCore.QRect(-2,-2, self.win.frameGeometry().width()-20, self.win.frameGeometry().height()-100))    #Passt das Fließbild an die Fenstergröße an
+
 
     def mousePressEvent(self, event):
         if self.enableDrawNode:
