@@ -273,7 +273,7 @@ p, li { white-space: pre-wrap; }
       <set>Qt::TextEditorInteraction</set>
      </property>
      <property name="placeholderText">
-      <string>  0, 1, 2...</string>
+      <string> D1, B2...</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
