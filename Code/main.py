@@ -508,7 +508,7 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.startWindow.switch_window.connect(self.showWizard)
         self.mainWidget.enableDrawNode = True
         self.startWindow.ui.actionAlle_Knoten_zeigen.triggered.connect(self.mainWidget.toggleRects)
-        self.startWindow.ui.actionExportieren_als_Tabelle.triggered.connect(self.openExcel())
+        self.startWindow.ui.actionExportieren_als_Tabelle.triggered.connect(lambda: self.openExcel())
 
     def openExcel(self):
         os.startfile('pHAZOP-Gesamt.xlsx')
