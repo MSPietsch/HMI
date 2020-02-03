@@ -56,7 +56,6 @@ class MainWindow(QMainWindow):
             self.ui.actionAlle_Knoten_zeigen.setEnabled(True)
             self.ui.actionKnoteneditor.setEnabled(True)
             self.ui.actionSave.setEnabled(True)
-            print(path)
             self.switch_window.emit(path)
 
     def resizeEvent(self, event):
@@ -213,8 +212,7 @@ class MainWidget(QtWidgets.QWidget):
 
     def paintEvent(self,
                    event):
-        qp = QtGui.QPainter(
-            self)  # TODO: Man soll die Rechtecke die man zeichnet auch sehen, wenn der Haken draußen ist
+        qp = QtGui.QPainter(self)
         for node in self.nodeList:  # Malt alle Rechtecke aus den Knoten aus der Liste
             if node.show or node.painting:
                 qp.setBrush(
@@ -244,8 +242,11 @@ class MainWidget(QtWidgets.QWidget):
         elif self.enableDrawNebennode:
             self.end = event.pos()
             self.nodeList[self.nodei].addRect(self.recti)
-            self.nodeList[self.nodei].rect[self.recti] = QtCore.QRect(self.begin,
+            try:
+                self.nodeList[self.nodei].rect[self.recti] = QtCore.QRect(self.begin,
                                                                       self.end)  # Updatet die Rechtecke in der RectListe
+            except IndexError:
+                pass
         self.update()
 
     def mouseReleaseEvent(self, event):
@@ -253,6 +254,8 @@ class MainWidget(QtWidgets.QWidget):
             self.recti = self.recti + 1
             self.win.nodeEdit.rectSignal.emit()  # schickt ein Signal an den NodeEdit
         if self.enableDeleteNode:
+            self.win.nodeEdit.onBtnBin()
+            self.win.nodeEdit.ui.btnOk.setEnabled(True)
             for node in self.nodeList[::-1]:  # Geht alle  Nodes durch
                 for rect in node.rect:  # Geht alle Rechtecke durch um zu prüfen, welches gelöscht werden soll
                     if rect.contains(event.pos()):
@@ -297,11 +300,11 @@ class MainWidget(QtWidgets.QWidget):
         self.repaint()
 
     def openWizard(self, i):
-        print(i)
         if self.nodeList[i].done == False:
             self.win.switch_window.emit(str(i))
         else:
             self.win.showPopup("wizardDone")
+            self.win.switch_window.emit(str(i))
 
 # ---------------------------------------------------------------- #
 #                         Node-Editor
@@ -349,7 +352,6 @@ class NodeEdit(QMainWindow):
             btn.setEnabled(False)
 
     def onBtn2(self):
-        print("2")
         self.rectPos = QtCore .QRect(69, 74, 42, 42)
         self.update()
         pass
@@ -357,7 +359,6 @@ class NodeEdit(QMainWindow):
     def onBtnBin(self):
         self.ui.btnOk.setEnabled(False)
         self.ui.btn2.setEnabled(False)
-        self.ui.btnOk.setEnabled(False)
         self.rectPos = QtCore.QRect(19, 159, 42, 42)
         self.update()
         self.widget.enableDrawNode = False
@@ -379,16 +380,16 @@ class NodeEdit(QMainWindow):
         self.ui.btn2.setEnabled(False)
         self.ui.btnBin.setEnabled(True)
         self.ui.btnOk.setEnabled(False)
-        for btn in self.widget.rectBtnList:  # Schaltet jetzt erst die Buttons an, damit die beim Malen nicht geklickt werden -> Crash
+        for btn in self.widget.rectBtnList:  # Schaltet jetzt erst die Buttons an, damit die beim Malen nicht geklickt werden
             btn.setEnabled(True)
         self.widget.recti = 0
         self.widget.repaint()
-        # self.onBtn1()  #Wenn Anwenden geklickt wird, dann wird sofort weiter gezeichent. Problem: BinBtn wird nie enabled
+        self.widget.win.ui.actionExportieren_als_Tabelle.setEnabled(True)
+
 
     def onBtnAbort(self):
         self.rectPos = QtCore.QRect(0, 0, 0, 0)  # Markierungsrechteck wird verschoben
         self.update()
-        print("Abbruch")
         self.hide()
 
     def passWidget(self, widget):
@@ -418,7 +419,6 @@ class Wizard_1(QMainWindow):
                              QtCore.Qt.WindowStaysOnTopHint)  # Lässt den Wizard immer im Vordergrund stehen
         self.ui = Ui_wizard_1()
         self.ui.setupUi(self)
-        self.setWindowTitle("Sooper Dooper Wizard")
         self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
 
     def openNextWizard(self, i):
@@ -434,7 +434,7 @@ class Wizard_2(QtWidgets.QWidget):
         self.ui = Ui_wizard_2()
         self.ui.setupUi(self)
         self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
-        self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("")))
+        self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard((self.con.i)))
 
     def openNextWizard(self, i):
         self.con.showWizard_3(i)
@@ -476,7 +476,6 @@ class Wizard_4(QtWidgets.QWidget):
         self.con.showWizard_3(i)
 
     def openNextWizard(self, i):
-        print("Knoten "+self.con.i+" ist fertig bearbeitet.")
         self.con.mainWidget.nodeList[int(self.con.i)].done = True     #Der Knoten ist nun fertig bearbeitet und beim erneuten Öffnen wird das gemeldet
 
     def passController(self, controll):
@@ -509,15 +508,20 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.startWindow.switch_window.connect(self.showWizard)
         self.mainWidget.enableDrawNode = True
         self.startWindow.ui.actionAlle_Knoten_zeigen.triggered.connect(self.mainWidget.toggleRects)
+        self.startWindow.ui.actionExportieren_als_Tabelle.triggered.connect(self.openExcel())
+
+    def openExcel(self):
+        os.startfile('pHAZOP-Gesamt.xlsx')
+        self.startWindow.nodeEdit.hide()
 
     def showWizard(self, i):
+        self.i = i
         self.wizard = Wizard_1()
         self.wizard.passController(self)
-        self.wizard.setWindowTitle("Hazop Creator | Knoten-ID: "+str(self.i))
+        self.wizard.setWindowTitle("Hazop Assistent | Knoten-ID: "+str(self.i))
         self.wizard.show()
         self.startWindow.nodeEdit.hide()
         self.wizard.setCentralWidget(self.wizard.ui.frame)
-        self.i = i
 
     def showWizard_2(self, i):
         self.wizard2 = Wizard_2()
@@ -533,7 +537,6 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.wizard4 = Wizard_4()
         self.wizard4.passController(self)
         self.wizard.setCentralWidget(self.wizard4)
-        print(self.i)
 
 
 if __name__ == "__main__":

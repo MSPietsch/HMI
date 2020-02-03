@@ -25,6 +25,6 @@ class Node():
     def setIndizes(self, i):
         self.btnList.append(i)
 
-    def resize(self, scale_w, scale_h):
+    def resize(self, scale_w, scale_h): #Scaling Factor ist noch nicht richtig, aber genügt erstmal
         for rect in self.rect:
             rect.adjust(rect.x()*(scale_w-1), rect.y() * (scale_h - 1), rect.right()*(scale_w - 1), rect.bottom() * (scale_h - 1))

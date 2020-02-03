@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'start.ui'
+# Form implementation generated from reading ui file 'Start.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -110,9 +110,14 @@ class Ui_MainWindow(object):
         self.actionKnoteneditor = QtWidgets.QAction(MainWindow)
         self.actionKnoteneditor.setEnabled(False)
         self.actionKnoteneditor.setObjectName("actionKnoteneditor")
+        self.actionExportieren_als_Tabelle = QtWidgets.QAction(MainWindow)
+        self.actionExportieren_als_Tabelle.setEnabled(False)
+        self.actionExportieren_als_Tabelle.setObjectName("actionExportieren_als_Tabelle")
         self.menuDatei.addAction(self.actionNew)
         self.menuDatei.addAction(self.actionOpen)
         self.menuDatei.addAction(self.actionSave)
+        self.menuDatei.addSeparator()
+        self.menuDatei.addAction(self.actionExportieren_als_Tabelle)
         self.menuDatei.addSeparator()
         self.menuDatei.addAction(self.actionClose)
         self.menuAnsicht.addAction(self.actionKnoteneditor)
@@ -126,7 +131,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Sooper Dooper HAZOP Tool"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Hazop-MANTool"))
         self.btnNew.setStatusTip(_translate("MainWindow", "Erstellt ein neues Projekt."))
         self.btnNew.setText(_translate("MainWindow", "    Neues Projekt Ctrl+N"))
         self.btnOpen.setStatusTip(_translate("MainWindow", "Öffnet ein Projekt."))
@@ -152,6 +157,8 @@ class Ui_MainWindow(object):
         self.actionKnoteneditor.setToolTip(_translate("MainWindow", "Knoteneditor"))
         self.actionKnoteneditor.setStatusTip(_translate("MainWindow", "Öffnet den Knoteneditor."))
         self.actionKnoteneditor.setShortcut(_translate("MainWindow", "Ctrl+E"))
+        self.actionExportieren_als_Tabelle.setText(_translate("MainWindow", "Exportieren als Tabelle"))
+        self.actionExportieren_als_Tabelle.setShortcut(_translate("MainWindow", "Ctrl+Shift+E"))
 
 
 if __name__ == "__main__":

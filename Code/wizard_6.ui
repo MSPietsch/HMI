@@ -168,7 +168,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -292,6 +292,9 @@
               </font>
              </property>
              <property name="text">
+              <string/>
+             </property>
+             <property name="placeholderText">
               <string>3. weitere...</string>
              </property>
             </widget>
@@ -308,7 +311,7 @@
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap>C:/Users/Tim/PycharmProjects/HMI/icons/Pfeil_transparent_small.png</pixmap>
+              <pixmap>../../../../../Tim/PycharmProjects/HMI/icons/Pfeil_transparent_small.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -366,7 +369,7 @@
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap>C:/Users/Tim/PycharmProjects/HMI/icons/Pfeil_transparent_small.png</pixmap>
+              <pixmap>../../../../../Tim/PycharmProjects/HMI/icons/Pfeil_transparent_small.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -417,7 +420,7 @@
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap>C:/Users/Tim/PycharmProjects/HMI/icons/Pfeil_transparent_small.png</pixmap>
+              <pixmap>../../../../../Tim/PycharmProjects/HMI/icons/Pfeil_transparent_small.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -624,6 +627,9 @@
               </font>
              </property>
              <property name="text">
+              <string/>
+             </property>
+             <property name="placeholderText">
               <string>3. weitere...</string>
              </property>
             </widget>
@@ -728,6 +734,9 @@
               <string/>
              </property>
              <property name="text">
+              <string/>
+             </property>
+             <property name="placeholderText">
               <string>3. weitere...</string>
              </property>
             </widget>
@@ -813,10 +822,13 @@
               </font>
              </property>
              <property name="text">
-              <string>3. weitere...</string>
+              <string/>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+             <property name="placeholderText">
+              <string>3. weitere...</string>
              </property>
             </widget>
            </item>

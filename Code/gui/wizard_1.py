@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'wizard_1.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -40,7 +40,7 @@ class Ui_wizard_1(object):
         self.weiterButton.setGeometry(QtCore.QRect(520, 390, 120, 30))
         self.weiterButton.setObjectName("weiterButton")
         self.layoutWidget = QtWidgets.QWidget(self.frame)
-        self.layoutWidget.setGeometry(QtCore.QRect(40, 80, 531, 303))
+        self.layoutWidget.setGeometry(QtCore.QRect(59, 71, 531, 286))
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -55,6 +55,7 @@ class Ui_wizard_1(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         self.checkBox_5.setFont(font)
+        self.checkBox_5.setChecked(True)
         self.checkBox_5.setObjectName("checkBox_5")
         self.verticalLayout.addWidget(self.checkBox_5)
         self.checkBox_3 = QtWidgets.QCheckBox(self.layoutWidget)
@@ -82,9 +83,15 @@ class Ui_wizard_1(object):
         self.checkBox.setFont(font)
         self.checkBox.setObjectName("checkBox")
         self.verticalLayout.addWidget(self.checkBox)
-        spacerItem = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        spacerItem = QtWidgets.QSpacerItem(20, 50, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         self.verticalLayout.addItem(spacerItem)
         self.textFeld = QtWidgets.QTextEdit(self.layoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.textFeld.sizePolicy().hasHeightForWidth())
+        self.textFeld.setSizePolicy(sizePolicy)
+        self.textFeld.setMaximumSize(QtCore.QSize(16777215, 35))
         self.textFeld.setObjectName("textFeld")
         self.verticalLayout.addWidget(self.textFeld)
         self.line_6 = QtWidgets.QFrame(self.frame)

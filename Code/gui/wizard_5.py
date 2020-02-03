@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'wizard_4.ui'
+# Form implementation generated from reading ui file 'wizard_5.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.1
 #
@@ -37,6 +37,7 @@ class Ui_wizard_4(object):
         self.label_7.setMaximumSize(QtCore.QSize(120, 16777215))
         self.label_7.setFrameShape(QtWidgets.QFrame.Panel)
         self.label_7.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_7.setWordWrap(True)
         self.label_7.setObjectName("label_7")
         self.horizontalLayout.addWidget(self.label_7)
         self.line = QtWidgets.QFrame(self.horizontalLayoutWidget_2)
@@ -82,7 +83,7 @@ class Ui_wizard_4(object):
         self.label_8.setObjectName("label_8")
         self.horizontalLayout.addWidget(self.label_8)
         self.horizontalLayoutWidget_3 = QtWidgets.QWidget(self.frame_3)
-        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(10, 150, 631, 71))
+        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(10, 150, 631, 73))
         self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_3)
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -196,15 +197,14 @@ class Ui_wizard_4(object):
     def retranslateUi(self, wizard_4):
         _translate = QtCore.QCoreApplication.translate
         wizard_4.setWindowTitle(_translate("wizard_4", "Form"))
-        self.label_7.setText(_translate("wizard_4", "zu viel Fluss"))
+        self.label_7.setText(_translate("wizard_4", "zu hohe Temperatur"))
         self.label_6.setText(_translate("wizard_4", "mehr Druck"))
-        self.label_8.setText(_translate("wizard_4", "Schaden am Ventil V1"))
+        self.label_8.setText(_translate("wizard_4", "Schaden am Sensor K2"))
         self.sg1textEdit.setHtml(_translate("wizard_4", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:11pt;\">Ventil V3</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:11pt;\"><br /></span></p></body></html>"))
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:11pt;\">Temperatur- begrenzer</span></p></body></html>"))
         self.sg2textEdit.setHtml(_translate("wizard_4", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
