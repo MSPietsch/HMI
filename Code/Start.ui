@@ -43,80 +43,6 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QWidget" name="gridLayoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>290</x>
-       <y>0</y>
-       <width>451</width>
-       <height>391</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="2" column="1">
-       <widget class="QPushButton" name="btnNew">
-        <property name="font">
-         <font>
-          <family>Myriad CAD</family>
-          <pointsize>12</pointsize>
-          <underline>false</underline>
-         </font>
-        </property>
-        <property name="statusTip">
-         <string>Erstellt ein neues Projekt.</string>
-        </property>
-        <property name="text">
-         <string>    Neues Projekt Ctrl+N</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../icons/new_project_icon.png</normaloff>../icons/new_project_icon.png</iconset>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QPushButton" name="btnOpen">
-        <property name="font">
-         <font>
-          <family>Myriad CAD</family>
-          <pointsize>12</pointsize>
-          <underline>false</underline>
-         </font>
-        </property>
-        <property name="statusTip">
-         <string>Öffnet ein Projekt.</string>
-        </property>
-        <property name="text">
-         <string>    Projekt Öffnen Ctrl+O</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../icons/Open_project_icon.png</normaloff>../icons/Open_project_icon.png</iconset>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLabel" name="labelUber">
-        <property name="font">
-         <font>
-          <family>Myriad CAD</family>
-          <pointsize>14</pointsize>
-          <underline>true</underline>
-         </font>
-        </property>
-        <property name="toolTip">
-         <string/>
-        </property>
-        <property name="whatsThis">
-         <string/>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
@@ -136,8 +62,60 @@
       <bool>true</bool>
      </property>
     </widget>
-    <zorder>label</zorder>
-    <zorder>gridLayoutWidget</zorder>
+    <widget class="QPushButton" name="btnOpen">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>370</y>
+       <width>449</width>
+       <height>59</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Myriad CAD</family>
+       <pointsize>12</pointsize>
+       <underline>false</underline>
+      </font>
+     </property>
+     <property name="statusTip">
+      <string>Öffnet ein Projekt.</string>
+     </property>
+     <property name="text">
+      <string>    Projekt Öffnen Ctrl+O</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../icons/Open_project_icon.png</normaloff>../icons/Open_project_icon.png</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnNew">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>310</y>
+       <width>449</width>
+       <height>59</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Myriad CAD</family>
+       <pointsize>12</pointsize>
+       <underline>false</underline>
+      </font>
+     </property>
+     <property name="statusTip">
+      <string>Erstellt ein neues Projekt.</string>
+     </property>
+     <property name="text">
+      <string>    Neues Projekt Ctrl+N</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../icons/new_project_icon.png</normaloff>../icons/new_project_icon.png</iconset>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -269,6 +247,10 @@
   <action name="actionExportieren_als_Tabelle">
    <property name="enabled">
     <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../icons/export_icon.png</normaloff>../icons/export_icon.png</iconset>
    </property>
    <property name="text">
     <string>Exportieren als Tabelle</string>
