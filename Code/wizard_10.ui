@@ -49,7 +49,6 @@
    <property name="font">
     <font>
      <pointsize>10</pointsize>
-     <strikeout>false</strikeout>
     </font>
    </property>
    <property name="frameShape">
@@ -75,7 +74,6 @@
       <pointsize>12</pointsize>
       <weight>50</weight>
       <bold>false</bold>
-      <strikeout>false</strikeout>
      </font>
     </property>
     <property name="text">
@@ -175,7 +173,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Weiter</string>
+        <string>Simulation beenden</string>
        </property>
       </widget>
      </item>
@@ -211,14 +209,13 @@
       <pointsize>15</pointsize>
       <weight>75</weight>
       <bold>true</bold>
-      <strikeout>false</strikeout>
      </font>
     </property>
     <property name="frameShape">
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string>Druck</string>
+     <string>Temperatur</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -239,7 +236,6 @@
        <property name="font">
         <font>
          <pointsize>10</pointsize>
-         <strikeout>false</strikeout>
         </font>
        </property>
        <property name="text">
@@ -252,7 +248,6 @@
        <property name="font">
         <font>
          <pointsize>10</pointsize>
-         <strikeout>false</strikeout>
         </font>
        </property>
        <property name="text">
@@ -271,7 +266,6 @@
        <property name="font">
         <font>
          <pointsize>10</pointsize>
-         <strikeout>false</strikeout>
         </font>
        </property>
        <property name="text">
@@ -287,7 +281,6 @@
        <property name="font">
         <font>
          <pointsize>10</pointsize>
-         <strikeout>false</strikeout>
         </font>
        </property>
        <property name="text">
@@ -300,7 +293,6 @@
        <property name="font">
         <font>
          <pointsize>10</pointsize>
-         <strikeout>false</strikeout>
         </font>
        </property>
        <property name="text">
@@ -313,7 +305,6 @@
        <property name="font">
         <font>
          <pointsize>10</pointsize>
-         <strikeout>false</strikeout>
         </font>
        </property>
        <property name="text">
@@ -326,7 +317,6 @@
        <property name="font">
         <font>
          <pointsize>10</pointsize>
-         <strikeout>false</strikeout>
         </font>
        </property>
        <property name="text">
@@ -339,7 +329,6 @@
        <property name="font">
         <font>
          <pointsize>10</pointsize>
-         <strikeout>false</strikeout>
         </font>
        </property>
        <property name="text">
@@ -352,7 +341,6 @@
        <property name="font">
         <font>
          <pointsize>10</pointsize>
-         <strikeout>false</strikeout>
         </font>
        </property>
        <property name="text">
@@ -365,7 +353,6 @@
        <property name="font">
         <font>
          <pointsize>10</pointsize>
-         <strikeout>false</strikeout>
         </font>
        </property>
        <property name="text">
@@ -378,7 +365,6 @@
        <property name="font">
         <font>
          <pointsize>10</pointsize>
-         <strikeout>false</strikeout>
         </font>
        </property>
        <property name="text">
@@ -391,7 +377,6 @@
        <property name="font">
         <font>
          <pointsize>10</pointsize>
-         <strikeout>false</strikeout>
         </font>
        </property>
        <property name="text">
@@ -404,7 +389,6 @@
        <property name="font">
         <font>
          <pointsize>10</pointsize>
-         <strikeout>false</strikeout>
         </font>
        </property>
        <property name="text">
@@ -426,13 +410,6 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLabel" name="label_4">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-         <underline>false</underline>
-         <strikeout>false</strikeout>
-        </font>
-       </property>
        <property name="text">
         <string>Alle Parameter:</string>
        </property>
@@ -446,9 +423,9 @@
           <colorrole role="WindowText">
            <brush brushstyle="SolidPattern">
             <color alpha="255">
-             <red>0</red>
-             <green>0</green>
-             <blue>0</blue>
+             <red>163</red>
+             <green>163</green>
+             <blue>163</blue>
             </color>
            </brush>
           </colorrole>
@@ -457,9 +434,9 @@
           <colorrole role="WindowText">
            <brush brushstyle="SolidPattern">
             <color alpha="255">
-             <red>0</red>
-             <green>0</green>
-             <blue>0</blue>
+             <red>163</red>
+             <green>163</green>
+             <blue>163</blue>
             </color>
            </brush>
           </colorrole>
@@ -479,14 +456,12 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <strikeout>false</strikeout>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="text">
-        <string>Druck</string>
+        <string>Druck ✓ </string>
        </property>
       </widget>
      </item>
@@ -534,7 +509,6 @@
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
-         <strikeout>false</strikeout>
         </font>
        </property>
        <property name="text">
@@ -582,14 +556,13 @@
     <property name="font">
      <font>
       <pointsize>10</pointsize>
-      <strikeout>false</strikeout>
      </font>
     </property>
     <property name="text">
      <string>Leitwörter auswählen:</string>
     </property>
    </widget>
-   <widget class="QGroupBox" name="groupBox_2">
+   <widget class="QGroupBox" name="groupBox_4">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -601,19 +574,6 @@
     <property name="title">
      <string/>
     </property>
-    <widget class="QGroupBox" name="groupBox_3">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>231</width>
-       <height>40</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string/>
-     </property>
-    </widget>
    </widget>
   </widget>
  </widget>

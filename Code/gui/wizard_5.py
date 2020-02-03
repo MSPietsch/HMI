@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'wizard_5.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.1
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -36,7 +36,7 @@ class Ui_wizard_4(object):
         self.label_7.setSizePolicy(sizePolicy)
         self.label_7.setMaximumSize(QtCore.QSize(120, 16777215))
         self.label_7.setFrameShape(QtWidgets.QFrame.Panel)
-        self.label_7.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_7.setAlignment(QtCore.Qt.AlignCenter)
         self.label_7.setWordWrap(True)
         self.label_7.setObjectName("label_7")
         self.horizontalLayout.addWidget(self.label_7)
@@ -209,8 +209,8 @@ class Ui_wizard_4(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-style:italic; color:#a7a7a7;\">Safeguard 2</span></p></body></html>"))
-        self.sg2textEdit.setPlaceholderText(_translate("wizard_4", "Safeguard 2"))
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\';\"><br /></p></body></html>"))
+        self.sg2textEdit.setPlaceholderText(_translate("wizard_4", "  Safeguard 2"))
         self.labelUberschrift.setText(_translate("wizard_4", "Definieren Sie die Safeguards."))
         self.zuruckButton.setText(_translate("wizard_4", "Zurück"))
         self.zuruckButton_2.setText(_translate("wizard_4", "Keine Safeguards"))
