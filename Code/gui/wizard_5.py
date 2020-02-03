@@ -210,6 +210,7 @@ class Ui_wizard_4(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-style:italic; color:#a7a7a7;\">Safeguard 2</span></p></body></html>"))
+        self.sg2textEdit.setPlaceholderText(_translate("wizard_4", "Safeguard 2"))
         self.labelUberschrift.setText(_translate("wizard_4", "Definieren Sie die Safeguards."))
         self.zuruckButton.setText(_translate("wizard_4", "Zurück"))
         self.zuruckButton_2.setText(_translate("wizard_4", "Keine Safeguards"))

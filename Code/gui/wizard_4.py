@@ -82,7 +82,7 @@ class Ui_wizard_4(object):
         self.label_8.setObjectName("label_8")
         self.horizontalLayout.addWidget(self.label_8)
         self.horizontalLayoutWidget_3 = QtWidgets.QWidget(self.frame_3)
-        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(10, 150, 631, 71))
+        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(10, 150, 631, 73))
         self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_3)
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -209,7 +209,8 @@ class Ui_wizard_4(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-style:italic; color:#a7a7a7;\">Safeguard 2</span></p></body></html>"))
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\';\"><br /></p></body></html>"))
+        self.sg2textEdit.setPlaceholderText(_translate("wizard_4", "Safeguard 2"))
         self.labelUberschrift.setText(_translate("wizard_4", "Definieren Sie die Safeguards."))
         self.zuruckButton.setText(_translate("wizard_4", "Zurück"))
         self.zuruckButton_2.setText(_translate("wizard_4", "Keine Safeguards"))
