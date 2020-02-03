@@ -9,6 +9,12 @@ from gui.wizard_1 import Ui_wizard_1
 from gui.wizard_2 import Ui_wizard_2
 from gui.wizard_3 import Ui_wizard_3
 from gui.wizard_4 import Ui_wizard_4
+from gui.wizard_5 import Ui_wizard_5
+from gui.wizard_6 import Ui_wizard_6
+from gui.wizard_7 import Ui_wizard_7
+from gui.wizard_8 import Ui_wizard_8
+from gui.wizard_9 import Ui_wizard_9
+from gui.wizard_10 import Ui_wizard_10
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QMessageBox, QFileDialog
 from node import Node
@@ -476,10 +482,113 @@ class Wizard_4(QtWidgets.QWidget):
         self.con.showWizard_3(i)
 
     def openNextWizard(self, i):
-        self.con.mainWidget.nodeList[int(self.con.i)].done = True     #Der Knoten ist nun fertig bearbeitet und beim erneuten Öffnen wird das gemeldet
+        self.con.showWizard_5(i)
 
     def passController(self, controll):
         self.con = controll
+
+class Wizard_5(QtWidgets.QWidget):
+    def __init__(self):
+        super(Wizard_5, self).__init__()
+        self.ui = Ui_wizard_5()
+        self.ui.setupUi(self)
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+        self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("")))
+
+    def openNextWizard(self, i):
+        self.con.showWizard_6(i)
+
+    def passController(self, controll):
+        self.con = controll
+
+    def openPreviousWizard(self, i):
+        self.con.showWizard_4(i)
+
+class Wizard_6(QtWidgets.QWidget):
+    def __init__(self):
+        super(Wizard_6, self).__init__()
+        self.ui = Ui_wizard_6()
+        self.ui.setupUi(self)
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+        self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("")))
+
+    def openNextWizard(self, i):
+        self.con.showWizard_7(i)
+
+    def passController(self, controll):
+        self.con = controll
+
+    def openPreviousWizard(self, i):
+        self.con.showWizard_5(i)
+
+class Wizard_7(QtWidgets.QWidget):
+    def __init__(self):
+        super(Wizard_7, self).__init__()
+        self.ui = Ui_wizard_7()
+        self.ui.setupUi(self)
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+        self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("")))
+
+    def openNextWizard(self, i):
+        self.con.showWizard_8(i)
+
+    def passController(self, controll):
+        self.con = controll
+
+    def openPreviousWizard(self, i):
+        self.con.showWizard_6(i)
+
+class Wizard_8(QtWidgets.QWidget):
+    def __init__(self):
+        super(Wizard_8, self).__init__()
+        self.ui = Ui_wizard_8()
+        self.ui.setupUi(self)
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+        self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("")))
+
+    def openNextWizard(self, i):
+        self.con.showWizard_9(i)
+
+    def passController(self, controll):
+        self.con = controll
+
+    def openPreviousWizard(self, i):
+        self.con.showWizard_7(i)
+
+class Wizard_9(QtWidgets.QWidget):
+    def __init__(self):
+        super(Wizard_9, self).__init__()
+        self.ui = Ui_wizard_9()
+        self.ui.setupUi(self)
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+        self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("")))
+
+    def openNextWizard(self, i):
+        self.con.showWizard_10(i)
+
+    def passController(self, controll):
+        self.con = controll
+
+    def openPreviousWizard(self, i):
+        self.con.showWizard_8(i)
+
+class Wizard_10(QtWidgets.QWidget):
+    def __init__(self):
+        super(Wizard_10, self).__init__()
+        self.ui = Ui_wizard_10()
+        self.ui.setupUi(self)
+        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+        self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("")))
+
+    def openNextWizard(self, i):
+        self.con.mainWidget.nodeList[int(self.con.i)].done = True     #Der Knoten ist nun fertig bearbeitet und beim erneuten Öffnen wird das gemeldet
+        self.con.wizard.close()
+
+    def passController(self, controll):
+        self.con = controll
+
+    def openPreviousWizard(self, i):
+        self.con.showWizard_9(i)
 
 
 # ---------------------------------------------------------------- #
@@ -537,6 +646,36 @@ class Controller:  # Verwaltet die verschiedenen Widgets
         self.wizard4 = Wizard_4()
         self.wizard4.passController(self)
         self.wizard.setCentralWidget(self.wizard4)
+
+    def showWizard_5(self, i):
+        self.wizard5 = Wizard_5()
+        self.wizard5.passController(self)
+        self.wizard.setCentralWidget(self.wizard5)
+
+    def showWizard_6(self, i):
+        self.wizard6 = Wizard_6()
+        self.wizard6.passController(self)
+        self.wizard.setCentralWidget(self.wizard6)
+
+    def showWizard_7(self, i):
+        self.wizard7 = Wizard_7()
+        self.wizard7.passController(self)
+        self.wizard.setCentralWidget(self.wizard7)
+
+    def showWizard_8(self, i):
+        self.wizard8 = Wizard_8()
+        self.wizard8.passController(self)
+        self.wizard.setCentralWidget(self.wizard8)
+
+    def showWizard_9(self, i):
+        self.wizard9 = Wizard_9()
+        self.wizard9.passController(self)
+        self.wizard.setCentralWidget(self.wizard9)
+
+    def showWizard_10(self, i):
+        self.wizard10 = Wizard_10()
+        self.wizard10.passController(self)
+        self.wizard.setCentralWidget(self.wizard10)
 
 
 if __name__ == "__main__":

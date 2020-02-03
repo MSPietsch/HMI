@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'wizard_5.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -10,11 +10,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_wizard_4(object):
-    def setupUi(self, wizard_4):
-        wizard_4.setObjectName("wizard_4")
-        wizard_4.resize(650, 440)
-        self.frame_3 = QtWidgets.QFrame(wizard_4)
+class Ui_wizard_5(object):
+    def setupUi(self, wizard_5):
+        wizard_5.setObjectName("wizard_5")
+        wizard_5.resize(650, 440)
+        self.frame_3 = QtWidgets.QFrame(wizard_5)
         self.frame_3.setGeometry(QtCore.QRect(0, 0, 650, 440))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -191,37 +191,37 @@ class Ui_wizard_4(object):
         self.line_6.raise_()
         self.horizontalLayoutWidget_4.raise_()
 
-        self.retranslateUi(wizard_4)
-        QtCore.QMetaObject.connectSlotsByName(wizard_4)
+        self.retranslateUi(wizard_5)
+        QtCore.QMetaObject.connectSlotsByName(wizard_5)
 
-    def retranslateUi(self, wizard_4):
+    def retranslateUi(self, wizard_5):
         _translate = QtCore.QCoreApplication.translate
-        wizard_4.setWindowTitle(_translate("wizard_4", "Form"))
-        self.label_7.setText(_translate("wizard_4", "zu hohe Temperatur"))
-        self.label_6.setText(_translate("wizard_4", "mehr Druck"))
-        self.label_8.setText(_translate("wizard_4", "Schaden am Sensor K2"))
-        self.sg1textEdit.setHtml(_translate("wizard_4", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        wizard_5.setWindowTitle(_translate("wizard_5", "Form"))
+        self.label_7.setText(_translate("wizard_5", "zu hohe Temperatur"))
+        self.label_6.setText(_translate("wizard_5", "mehr Druck"))
+        self.label_8.setText(_translate("wizard_5", "Schaden am Sensor K2"))
+        self.sg1textEdit.setHtml(_translate("wizard_5", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:11pt;\">Temperatur- begrenzer</span></p></body></html>"))
-        self.sg2textEdit.setHtml(_translate("wizard_4", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.sg2textEdit.setHtml(_translate("wizard_5", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\';\"><br /></p></body></html>"))
-        self.sg2textEdit.setPlaceholderText(_translate("wizard_4", "  Safeguard 2"))
-        self.labelUberschrift.setText(_translate("wizard_4", "Definieren Sie die Safeguards."))
-        self.zuruckButton.setText(_translate("wizard_4", "Zurück"))
-        self.zuruckButton_2.setText(_translate("wizard_4", "Keine Safeguards"))
-        self.weiterButton.setText(_translate("wizard_4", "Weiter"))
+        self.sg2textEdit.setPlaceholderText(_translate("wizard_5", "  Safeguard 2"))
+        self.labelUberschrift.setText(_translate("wizard_5", "Definieren Sie die Safeguards."))
+        self.zuruckButton.setText(_translate("wizard_5", "Zurück"))
+        self.zuruckButton_2.setText(_translate("wizard_5", "Keine Safeguards"))
+        self.weiterButton.setText(_translate("wizard_5", "Weiter"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    wizard_4 = QtWidgets.QWidget()
-    ui = Ui_wizard_4()
-    ui.setupUi(wizard_4)
-    wizard_4.show()
+    wizard_5 = QtWidgets.QWidget()
+    ui = Ui_wizard_5()
+    ui.setupUi(wizard_5)
+    wizard_5.show()
     sys.exit(app.exec_())

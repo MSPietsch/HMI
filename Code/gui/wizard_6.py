@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'wizard_6.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -10,13 +10,13 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_wizard_3(object):
-    def setupUi(self, wizard_3):
-        wizard_3.setObjectName("wizard_3")
-        wizard_3.resize(650, 440)
-        wizard_3.setMinimumSize(QtCore.QSize(650, 440))
-        wizard_3.setMaximumSize(QtCore.QSize(650, 440))
-        self.frame_4 = QtWidgets.QFrame(wizard_3)
+class Ui_wizard_6(object):
+    def setupUi(self, wizard_6):
+        wizard_6.setObjectName("wizard_6")
+        wizard_6.resize(650, 440)
+        wizard_6.setMinimumSize(QtCore.QSize(650, 440))
+        wizard_6.setMaximumSize(QtCore.QSize(650, 440))
+        self.frame_4 = QtWidgets.QFrame(wizard_6)
         self.frame_4.setGeometry(QtCore.QRect(0, 0, 650, 440))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -64,11 +64,6 @@ class Ui_wizard_3(object):
         self.gridLayout_4 = QtWidgets.QGridLayout(self.layoutWidget)
         self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_4.setObjectName("gridLayout_4")
-        self.line = QtWidgets.QFrame(self.layoutWidget)
-        self.line.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line.setObjectName("line")
-        self.gridLayout_4.addWidget(self.line, 2, 0, 1, 1)
         self.gridLayout_3 = QtWidgets.QGridLayout()
         self.gridLayout_3.setSpacing(0)
         self.gridLayout_3.setObjectName("gridLayout_3")
@@ -337,35 +332,40 @@ class Ui_wizard_3(object):
         self.horizontalLayout_2.addItem(spacerItem15)
         self.gridLayout_3.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
         self.gridLayout_4.addLayout(self.gridLayout_3, 1, 0, 1, 1)
+        self.line = QtWidgets.QFrame(wizard_6)
+        self.line.setGeometry(QtCore.QRect(0, 380, 649, 3))
+        self.line.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setObjectName("line")
 
-        self.retranslateUi(wizard_3)
-        QtCore.QMetaObject.connectSlotsByName(wizard_3)
+        self.retranslateUi(wizard_6)
+        QtCore.QMetaObject.connectSlotsByName(wizard_6)
 
-    def retranslateUi(self, wizard_3):
+    def retranslateUi(self, wizard_6):
         _translate = QtCore.QCoreApplication.translate
-        wizard_3.setWindowTitle(_translate("wizard_3", "Form"))
-        self.uberschriftLabel.setText(_translate("wizard_3", "Abweichenung \"weniger Druck\" in Knoten Nr. D-1"))
-        self.zuruckButton.setText(_translate("wizard_3", "Zurück"))
-        self.weiterButton.setText(_translate("wizard_3", "Weiter"))
-        self.label.setText(_translate("wizard_3", "2. zu wenig Temperatur"))
-        self.lineEdit_6.setPlaceholderText(_translate("wizard_3", "3. Weitere..."))
-        self.lineEdit_3.setPlaceholderText(_translate("wizard_3", "Weitere..."))
-        self.label_4.setText(_translate("wizard_3", "- keine Reaktionen"))
-        self.label_7.setText(_translate("wizard_3", "- Ablagerungen"))
-        self.lineEdit_5.setPlaceholderText(_translate("wizard_3", "Weitere..."))
-        self.label_3.setText(_translate("wizard_3", "1. zu wenig Fluss"))
-        self.lineEdit_4.setPlaceholderText(_translate("wizard_3", "Weitere..."))
-        self.label_8.setText(_translate("wizard_3", "- keine Reaktionen"))
-        self.label_2.setText(_translate("wizard_3", "Ursache"))
-        self.label_6.setText(_translate("wizard_3", "weniger Druck"))
-        self.label_5.setText(_translate("wizard_3", "Konsequenz"))
+        wizard_6.setWindowTitle(_translate("wizard_6", "Form"))
+        self.uberschriftLabel.setText(_translate("wizard_6", "Abweichenung \"weniger Druck\" in Knoten Nr. D-1"))
+        self.zuruckButton.setText(_translate("wizard_6", "Zurück"))
+        self.weiterButton.setText(_translate("wizard_6", "Weiter"))
+        self.label.setText(_translate("wizard_6", "2. zu wenig Temperatur"))
+        self.lineEdit_6.setPlaceholderText(_translate("wizard_6", "3. Weitere..."))
+        self.lineEdit_3.setPlaceholderText(_translate("wizard_6", "Weitere..."))
+        self.label_4.setText(_translate("wizard_6", "- keine Reaktionen"))
+        self.label_7.setText(_translate("wizard_6", "- Ablagerungen"))
+        self.lineEdit_5.setPlaceholderText(_translate("wizard_6", "Weitere..."))
+        self.label_3.setText(_translate("wizard_6", "1. zu wenig Fluss"))
+        self.lineEdit_4.setPlaceholderText(_translate("wizard_6", "Weitere..."))
+        self.label_8.setText(_translate("wizard_6", "- keine Reaktionen"))
+        self.label_2.setText(_translate("wizard_6", "Ursache"))
+        self.label_6.setText(_translate("wizard_6", "weniger Druck"))
+        self.label_5.setText(_translate("wizard_6", "Konsequenz"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    wizard_3 = QtWidgets.QWidget()
-    ui = Ui_wizard_3()
-    ui.setupUi(wizard_3)
-    wizard_3.show()
+    wizard_6 = QtWidgets.QWidget()
+    ui = Ui_wizard_6()
+    ui.setupUi(wizard_6)
+    wizard_6.show()
     sys.exit(app.exec_())

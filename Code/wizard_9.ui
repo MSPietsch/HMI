@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>wizard_4</class>
- <widget class="QWidget" name="wizard_4">
+ <class>wizard_9</class>
+ <widget class="QWidget" name="wizard_9">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -477,7 +477,7 @@ p, li { white-space: pre-wrap; }
      <item>
       <widget class="QPushButton" name="weiterButton">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="minimumSize">
         <size>

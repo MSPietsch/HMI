@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'wizard_10.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -10,13 +10,13 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_wizard_2(object):
-    def setupUi(self, wizard_2):
-        wizard_2.setObjectName("wizard_2")
-        wizard_2.resize(650, 440)
-        wizard_2.setMinimumSize(QtCore.QSize(650, 440))
-        wizard_2.setMaximumSize(QtCore.QSize(650, 440))
-        self.frame_2 = QtWidgets.QFrame(wizard_2)
+class Ui_wizard_10(object):
+    def setupUi(self, wizard_10):
+        wizard_10.setObjectName("wizard_10")
+        wizard_10.resize(650, 440)
+        wizard_10.setMinimumSize(QtCore.QSize(650, 440))
+        wizard_10.setMaximumSize(QtCore.QSize(650, 440))
+        self.frame_2 = QtWidgets.QFrame(wizard_10)
         self.frame_2.setGeometry(QtCore.QRect(0, 0, 650, 440))
         self.frame_2.setMinimumSize(QtCore.QSize(650, 440))
         self.frame_2.setMaximumSize(QtCore.QSize(650, 440))
@@ -224,41 +224,41 @@ class Ui_wizard_2(object):
         self.groupBox_4.setTitle("")
         self.groupBox_4.setObjectName("groupBox_4")
 
-        self.retranslateUi(wizard_2)
-        QtCore.QMetaObject.connectSlotsByName(wizard_2)
+        self.retranslateUi(wizard_10)
+        QtCore.QMetaObject.connectSlotsByName(wizard_10)
 
-    def retranslateUi(self, wizard_2):
+    def retranslateUi(self, wizard_10):
         _translate = QtCore.QCoreApplication.translate
-        wizard_2.setWindowTitle(_translate("wizard_2", "Form"))
-        self.label_3.setText(_translate("wizard_2", "Definieren Sie die Leitwörter."))
-        self.zuruckButton.setText(_translate("wizard_2", "Zurück"))
-        self.weiterButton.setText(_translate("wizard_2", "Simulation beenden"))
-        self.label_2.setText(_translate("wizard_2", "Temperatur"))
-        self.checkBox_20.setText(_translate("wizard_2", "Nein, nicht"))
-        self.checkBox_10.setText(_translate("wizard_2", "Mehr"))
-        self.checkBox_11.setText(_translate("wizard_2", "Weniger"))
-        self.checkBox_8.setText(_translate("wizard_2", "Sowohl als auch"))
-        self.checkBox_9.setText(_translate("wizard_2", "Teilweise"))
-        self.checkBox_12.setText(_translate("wizard_2", "Umkehrung"))
-        self.checkBox_13.setText(_translate("wizard_2", "Anders als"))
-        self.checkBox_14.setText(_translate("wizard_2", "Früher"))
-        self.checkBox_16.setText(_translate("wizard_2", "Später"))
-        self.checkBox_15.setText(_translate("wizard_2", "Zuvor"))
-        self.checkBox_17.setText(_translate("wizard_2", "Danach"))
-        self.checkBox_18.setText(_translate("wizard_2", "Schneller"))
-        self.checkBox_19.setText(_translate("wizard_2", "Langsamer"))
-        self.label_4.setText(_translate("wizard_2", "Alle Parameter:"))
-        self.label_7.setText(_translate("wizard_2", "Druck ✓ "))
-        self.label_13.setText(_translate("wizard_2", "Temperatur"))
-        self.label.setText(_translate("wizard_2", "Aktueller Parameter:"))
-        self.label_5.setText(_translate("wizard_2", "Leitwörter auswählen:"))
+        wizard_10.setWindowTitle(_translate("wizard_10", "Form"))
+        self.label_3.setText(_translate("wizard_10", "Definieren Sie die Leitwörter."))
+        self.zuruckButton.setText(_translate("wizard_10", "Zurück"))
+        self.weiterButton.setText(_translate("wizard_10", "Simulation beenden"))
+        self.label_2.setText(_translate("wizard_10", "Temperatur"))
+        self.checkBox_20.setText(_translate("wizard_10", "Nein, nicht"))
+        self.checkBox_10.setText(_translate("wizard_10", "Mehr"))
+        self.checkBox_11.setText(_translate("wizard_10", "Weniger"))
+        self.checkBox_8.setText(_translate("wizard_10", "Sowohl als auch"))
+        self.checkBox_9.setText(_translate("wizard_10", "Teilweise"))
+        self.checkBox_12.setText(_translate("wizard_10", "Umkehrung"))
+        self.checkBox_13.setText(_translate("wizard_10", "Anders als"))
+        self.checkBox_14.setText(_translate("wizard_10", "Früher"))
+        self.checkBox_16.setText(_translate("wizard_10", "Später"))
+        self.checkBox_15.setText(_translate("wizard_10", "Zuvor"))
+        self.checkBox_17.setText(_translate("wizard_10", "Danach"))
+        self.checkBox_18.setText(_translate("wizard_10", "Schneller"))
+        self.checkBox_19.setText(_translate("wizard_10", "Langsamer"))
+        self.label_4.setText(_translate("wizard_10", "Alle Parameter:"))
+        self.label_7.setText(_translate("wizard_10", "Druck ✓ "))
+        self.label_13.setText(_translate("wizard_10", "Temperatur"))
+        self.label.setText(_translate("wizard_10", "Aktueller Parameter:"))
+        self.label_5.setText(_translate("wizard_10", "Leitwörter auswählen:"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    wizard_2 = QtWidgets.QWidget()
-    ui = Ui_wizard_2()
-    ui.setupUi(wizard_2)
-    wizard_2.show()
+    wizard_10 = QtWidgets.QWidget()
+    ui = Ui_wizard_10()
+    ui.setupUi(wizard_10)
+    wizard_10.show()
     sys.exit(app.exec_())

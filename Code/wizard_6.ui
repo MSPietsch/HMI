@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>wizard_3</class>
- <widget class="QWidget" name="wizard_3">
+ <class>wizard_6</class>
+ <widget class="QWidget" name="wizard_6">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -178,13 +178,6 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_4">
-     <item row="2" column="0">
-      <widget class="Line" name="line">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="0">
       <layout class="QGridLayout" name="gridLayout_3">
        <property name="spacing">
@@ -1024,6 +1017,19 @@
      </item>
     </layout>
    </widget>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>380</y>
+     <width>649</width>
+     <height>3</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
   </widget>
  </widget>
  <resources/>
