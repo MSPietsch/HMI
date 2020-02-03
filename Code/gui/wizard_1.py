@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'wizard_1.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.1
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -40,7 +40,7 @@ class Ui_wizard_1(object):
         self.weiterButton.setGeometry(QtCore.QRect(520, 390, 120, 30))
         self.weiterButton.setObjectName("weiterButton")
         self.layoutWidget = QtWidgets.QWidget(self.frame)
-        self.layoutWidget.setGeometry(QtCore.QRect(40, 70, 531, 281))
+        self.layoutWidget.setGeometry(QtCore.QRect(40, 80, 531, 303))
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -82,6 +82,8 @@ class Ui_wizard_1(object):
         self.checkBox.setFont(font)
         self.checkBox.setObjectName("checkBox")
         self.verticalLayout.addWidget(self.checkBox)
+        spacerItem = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem)
         self.textFeld = QtWidgets.QTextEdit(self.layoutWidget)
         self.textFeld.setObjectName("textFeld")
         self.verticalLayout.addWidget(self.textFeld)

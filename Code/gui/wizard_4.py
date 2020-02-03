@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'wizard_4.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.1
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -82,7 +82,7 @@ class Ui_wizard_4(object):
         self.label_8.setObjectName("label_8")
         self.horizontalLayout.addWidget(self.label_8)
         self.horizontalLayoutWidget_3 = QtWidgets.QWidget(self.frame_3)
-        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(10, 150, 631, 89))
+        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(10, 150, 631, 61))
         self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_3)
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -136,32 +136,41 @@ class Ui_wizard_4(object):
         font.setPointSize(12)
         self.labelUberschrift.setFont(font)
         self.labelUberschrift.setObjectName("labelUberschrift")
-        self.weiterButton = QtWidgets.QPushButton(self.frame_3)
-        self.weiterButton.setGeometry(QtCore.QRect(520, 390, 120, 30))
-        self.weiterButton.setObjectName("weiterButton")
-        self.zuruckButton = QtWidgets.QPushButton(self.frame_3)
-        self.zuruckButton.setEnabled(True)
-        self.zuruckButton.setGeometry(QtCore.QRect(230, 390, 120, 30))
-        self.zuruckButton.setCheckable(False)
-        self.zuruckButton.setObjectName("zuruckButton")
-        self.weiterButton_2 = QtWidgets.QPushButton(self.frame_3)
-        self.weiterButton_2.setGeometry(QtCore.QRect(370, 390, 131, 30))
-        self.weiterButton_2.setObjectName("weiterButton_2")
         self.line_6 = QtWidgets.QFrame(self.frame_3)
         self.line_6.setGeometry(QtCore.QRect(-130, 40, 871, 20))
         self.line_6.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_6.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_6.setObjectName("line_6")
+        self.horizontalLayoutWidget_4 = QtWidgets.QWidget(self.frame_3)
+        self.horizontalLayoutWidget_4.setGeometry(QtCore.QRect(-1, 375, 651, 61))
+        self.horizontalLayoutWidget_4.setObjectName("horizontalLayoutWidget_4")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_4)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem3)
+        self.zuruckButton = QtWidgets.QPushButton(self.horizontalLayoutWidget_4)
+        self.zuruckButton.setEnabled(True)
+        self.zuruckButton.setMinimumSize(QtCore.QSize(115, 0))
+        self.zuruckButton.setCheckable(False)
+        self.zuruckButton.setObjectName("zuruckButton")
+        self.horizontalLayout_2.addWidget(self.zuruckButton)
+        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.horizontalLayout_2.addItem(spacerItem4)
+        self.weiterButton = QtWidgets.QPushButton(self.horizontalLayoutWidget_4)
+        self.weiterButton.setMinimumSize(QtCore.QSize(115, 0))
+        self.weiterButton.setObjectName("weiterButton")
+        self.horizontalLayout_2.addWidget(self.weiterButton)
+        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.horizontalLayout_2.addItem(spacerItem5)
         self.line_3.raise_()
         self.line_4.raise_()
         self.horizontalLayoutWidget_2.raise_()
         self.horizontalLayoutWidget_3.raise_()
         self.line_5.raise_()
         self.labelUberschrift.raise_()
-        self.weiterButton.raise_()
-        self.zuruckButton.raise_()
-        self.weiterButton_2.raise_()
         self.line_6.raise_()
+        self.horizontalLayoutWidget_4.raise_()
 
         self.retranslateUi(wizard_4)
         QtCore.QMetaObject.connectSlotsByName(wizard_4)
@@ -184,9 +193,8 @@ class Ui_wizard_4(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-style:italic; color:#a7a7a7;\">Safeguard 2</span></p></body></html>"))
         self.labelUberschrift.setText(_translate("wizard_4", "Definieren Sie die Safeguards."))
-        self.weiterButton.setText(_translate("wizard_4", "Weiter"))
         self.zuruckButton.setText(_translate("wizard_4", "Zurück"))
-        self.weiterButton_2.setText(_translate("wizard_4", "Keine Safguards"))
+        self.weiterButton.setText(_translate("wizard_4", "Weiter"))
 
 
 if __name__ == "__main__":
