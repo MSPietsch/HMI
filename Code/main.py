@@ -159,7 +159,7 @@ class MainWindow(QMainWindow):
             msg.setDefaultButton(buttonY)  # Wenn Enter gedrückt wird, wird ButtonC gewählt
             x = msg.exec_()
         if info == "wizardDone":
-            msg.setWindowTitle("Hazop Creator")
+            msg.setWindowTitle("Hazop Assistent")
             msg.setText("Dieser Knoten wurde bereits bearbeitet. Möchten Sie ihn erneut bearbeiten?")
             msg.setIcon(QMessageBox.Question)  # Fragezeichenlogo
             msg.setStandardButtons(
@@ -543,7 +543,7 @@ class Wizard_8(QtWidgets.QWidget):
         super(Wizard_8, self).__init__()
         self.ui = Ui_wizard_8()
         self.ui.setupUi(self)
-        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+        self.ui.keineSafeguards.clicked.connect(lambda: self.openNextWizard(""))
         self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("")))
 
     def openNextWizard(self, i):
@@ -560,7 +560,7 @@ class Wizard_9(QtWidgets.QWidget):
         super(Wizard_9, self).__init__()
         self.ui = Ui_wizard_9()
         self.ui.setupUi(self)
-        self.ui.weiterButton.clicked.connect(lambda: self.openNextWizard(""))
+        self.ui.keineSafguards.clicked.connect(lambda: self.openNextWizard(""))
         self.ui.zuruckButton.clicked.connect(lambda: self.openPreviousWizard(("")))
 
     def openNextWizard(self, i):

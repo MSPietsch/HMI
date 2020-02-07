@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'wizard_7.ui'
+# Form implementation generated from reading ui file 'wizard_4.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -10,11 +10,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_wizard_7(object):
-    def setupUi(self, wizard_7):
-        wizard_7.setObjectName("wizard_7")
-        wizard_7.resize(650, 440)
-        self.frame_3 = QtWidgets.QFrame(wizard_7)
+class Ui_wizard_4(object):
+    def setupUi(self, wizard_4):
+        wizard_4.setObjectName("wizard_4")
+        wizard_4.resize(650, 440)
+        self.frame_3 = QtWidgets.QFrame(wizard_4)
         self.frame_3.setGeometry(QtCore.QRect(0, 0, 650, 440))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -36,7 +36,7 @@ class Ui_wizard_7(object):
         self.label_7.setSizePolicy(sizePolicy)
         self.label_7.setMaximumSize(QtCore.QSize(120, 16777215))
         self.label_7.setFrameShape(QtWidgets.QFrame.Panel)
-        self.label_7.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_7.setAlignment(QtCore.Qt.AlignCenter)
         self.label_7.setObjectName("label_7")
         self.horizontalLayout.addWidget(self.label_7)
         self.line = QtWidgets.QFrame(self.horizontalLayoutWidget_2)
@@ -89,19 +89,19 @@ class Ui_wizard_7(object):
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         spacerItem = QtWidgets.QSpacerItem(120, 71, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem)
-        self.sg1textEdit_2 = QtWidgets.QTextEdit(self.horizontalLayoutWidget_3)
+        self.sg1textEdit = QtWidgets.QTextEdit(self.horizontalLayoutWidget_3)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.sg1textEdit_2.sizePolicy().hasHeightForWidth())
-        self.sg1textEdit_2.setSizePolicy(sizePolicy)
-        self.sg1textEdit_2.setMaximumSize(QtCore.QSize(120, 60))
-        self.sg1textEdit_2.setLayoutDirection(QtCore.Qt.RightToLeft)
-        self.sg1textEdit_2.setInputMethodHints(QtCore.Qt.ImhMultiLine|QtCore.Qt.ImhPreferUppercase)
-        self.sg1textEdit_2.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.sg1textEdit_2.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.sg1textEdit_2.setObjectName("sg1textEdit_2")
-        self.horizontalLayout_3.addWidget(self.sg1textEdit_2)
+        sizePolicy.setHeightForWidth(self.sg1textEdit.sizePolicy().hasHeightForWidth())
+        self.sg1textEdit.setSizePolicy(sizePolicy)
+        self.sg1textEdit.setMaximumSize(QtCore.QSize(120, 60))
+        self.sg1textEdit.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.sg1textEdit.setInputMethodHints(QtCore.Qt.ImhMultiLine|QtCore.Qt.ImhPreferUppercase)
+        self.sg1textEdit.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.sg1textEdit.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.sg1textEdit.setObjectName("sg1textEdit")
+        self.horizontalLayout_3.addWidget(self.sg1textEdit)
         spacerItem1 = QtWidgets.QSpacerItem(40, 30, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem1)
         self.sg2textEdit = QtWidgets.QTextEdit(self.horizontalLayoutWidget_3)
@@ -176,7 +176,6 @@ class Ui_wizard_7(object):
         spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         self.horizontalLayout_2.addItem(spacerItem5)
         self.weiterButton = QtWidgets.QPushButton(self.horizontalLayoutWidget_4)
-        self.weiterButton.setEnabled(True)
         self.weiterButton.setMinimumSize(QtCore.QSize(115, 0))
         self.weiterButton.setObjectName("weiterButton")
         self.horizontalLayout_2.addWidget(self.weiterButton)
@@ -191,38 +190,38 @@ class Ui_wizard_7(object):
         self.line_6.raise_()
         self.horizontalLayoutWidget_4.raise_()
 
-        self.retranslateUi(wizard_7)
-        QtCore.QMetaObject.connectSlotsByName(wizard_7)
+        self.retranslateUi(wizard_4)
+        QtCore.QMetaObject.connectSlotsByName(wizard_4)
 
-    def retranslateUi(self, wizard_7):
+    def retranslateUi(self, wizard_4):
         _translate = QtCore.QCoreApplication.translate
-        wizard_7.setWindowTitle(_translate("wizard_7", "Form"))
-        self.label_7.setText(_translate("wizard_7", "zu wenig Fluss"))
-        self.label_6.setText(_translate("wizard_7", "weniger Druck"))
-        self.label_8.setText(_translate("wizard_7", "keine Reaktion"))
-        self.sg1textEdit_2.setHtml(_translate("wizard_7", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        wizard_4.setWindowTitle(_translate("wizard_4", "Form"))
+        self.label_7.setText(_translate("wizard_4", "zu viel Fluss"))
+        self.label_6.setText(_translate("wizard_4", "mehr Druck"))
+        self.label_8.setText(_translate("wizard_4", "Schaden am Ventil V1"))
+        self.sg1textEdit.setHtml(_translate("wizard_4", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\';\">Pumpenleis- tung steigern</span></p></body></html>"))
-        self.sg1textEdit_2.setPlaceholderText(_translate("wizard_7", "  Safeguard 1"))
-        self.sg2textEdit.setHtml(_translate("wizard_7", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:11pt;\">Ventil V3</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:11pt;\"><br /></span></p></body></html>"))
+        self.sg2textEdit.setHtml(_translate("wizard_4", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\';\"><br /></p></body></html>"))
-        self.sg2textEdit.setPlaceholderText(_translate("wizard_7", "  Safeguard 2"))
-        self.labelUberschrift.setText(_translate("wizard_7", "Definieren Sie die Safeguards."))
-        self.zuruckButton.setText(_translate("wizard_7", "Zurück"))
-        self.zuruckButton_2.setText(_translate("wizard_7", "Keine Safeguards"))
-        self.weiterButton.setText(_translate("wizard_7", "Weiter"))
+        self.sg2textEdit.setPlaceholderText(_translate("wizard_4", "  Safeguard 2"))
+        self.labelUberschrift.setText(_translate("wizard_4", "Definieren Sie die Safeguards."))
+        self.zuruckButton.setText(_translate("wizard_4", "Zurück"))
+        self.zuruckButton_2.setText(_translate("wizard_4", "Keine Safeguards"))
+        self.weiterButton.setText(_translate("wizard_4", "Weiter"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    wizard_7 = QtWidgets.QWidget()
-    ui = Ui_wizard_7()
-    ui.setupUi(wizard_7)
-    wizard_7.show()
+    wizard_4 = QtWidgets.QWidget()
+    ui = Ui_wizard_4()
+    ui.setupUi(wizard_4)
+    wizard_4.show()
     sys.exit(app.exec_())

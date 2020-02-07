@@ -173,12 +173,12 @@
         </size>
        </property>
        <property name="text">
-        <string>Simulation beenden</string>
+        <string>Weiter</string>
        </property>
       </widget>
      </item>
      <item>
-      <spacer name="verticalSpacer_2">
+      <spacer name="verticalSpacer_4">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -199,7 +199,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>100</y>
+      <y>97</y>
       <width>231</width>
       <height>59</height>
      </rect>
@@ -401,10 +401,10 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>39</x>
       <y>169</y>
       <width>231</width>
-      <height>181</height>
+      <height>141</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -563,6 +563,9 @@
     </property>
    </widget>
    <widget class="QGroupBox" name="groupBox_4">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -572,6 +575,38 @@
      </rect>
     </property>
     <property name="title">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>74</x>
+      <y>324</y>
+      <width>162</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Parameter entfernen</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>47</x>
+      <y>329</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
      <string/>
     </property>
    </widget>

@@ -151,7 +151,7 @@
       </widget>
      </item>
      <item>
-      <spacer name="verticalSpacer">
+      <spacer name="verticalSpacer_4">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -420,7 +420,7 @@
       <x>40</x>
       <y>169</y>
       <width>231</width>
-      <height>181</height>
+      <height>141</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -614,6 +614,35 @@
       <string/>
      </property>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>86</x>
+      <y>327</y>
+      <width>162</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Parameter entfernen</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>331</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
  </widget>

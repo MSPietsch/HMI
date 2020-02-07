@@ -60,7 +60,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Abweichenung &quot;mehr Druck&quot; in Knoten Nr. D-1</string>
+     <string>Abweichung &quot;mehr Druck&quot; in Knoten Nr. D-1</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -208,94 +208,6 @@
             <widget class="QLabel" name="label_9">
              <property name="text">
               <string>2. Schaden an Sensor K2</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="QLineEdit" name="lineEdit">
-             <property name="maximumSize">
-              <size>
-               <width>170</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="Text">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>150</red>
-                   <green>150</green>
-                   <blue>150</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-                <colorrole role="PlaceholderText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="128">
-                   <red>150</red>
-                   <green>150</green>
-                   <blue>150</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="Text">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>150</red>
-                   <green>150</green>
-                   <blue>150</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-                <colorrole role="PlaceholderText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="128">
-                   <red>150</red>
-                   <green>150</green>
-                   <blue>150</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="Text">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-                <colorrole role="PlaceholderText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="128">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <italic>true</italic>
-               <bold>false</bold>
-               <kerning>false</kerning>
-              </font>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="placeholderText">
-              <string>3. weitere...</string>
              </property>
             </widget>
            </item>
@@ -546,94 +458,6 @@
              </property>
             </spacer>
            </item>
-           <item row="6" column="5">
-            <widget class="QLineEdit" name="lineEdit_4">
-             <property name="maximumSize">
-              <size>
-               <width>180</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="Text">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>150</red>
-                   <green>150</green>
-                   <blue>150</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-                <colorrole role="PlaceholderText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="128">
-                   <red>150</red>
-                   <green>150</green>
-                   <blue>150</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="Text">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>150</red>
-                   <green>150</green>
-                   <blue>150</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-                <colorrole role="PlaceholderText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="128">
-                   <red>150</red>
-                   <green>150</green>
-                   <blue>150</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="Text">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-                <colorrole role="PlaceholderText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="128">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <italic>true</italic>
-               <bold>false</bold>
-               <kerning>false</kerning>
-              </font>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="placeholderText">
-              <string>3. weitere...</string>
-             </property>
-            </widget>
-           </item>
            <item row="1" column="3">
             <spacer name="verticalSpacer">
              <property name="orientation">
@@ -650,99 +474,21 @@
              </property>
             </spacer>
            </item>
-           <item row="1" column="5">
-            <widget class="QLineEdit" name="lineEdit_3">
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_3">
              <property name="maximumSize">
               <size>
                <width>180</width>
                <height>16777215</height>
               </size>
              </property>
-             <property name="palette">
-              <palette>
-               <active>
-                <colorrole role="Text">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>150</red>
-                   <green>150</green>
-                   <blue>150</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-                <colorrole role="PlaceholderText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="128">
-                   <red>150</red>
-                   <green>150</green>
-                   <blue>150</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </active>
-               <inactive>
-                <colorrole role="Text">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>150</red>
-                   <green>150</green>
-                   <blue>150</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-                <colorrole role="PlaceholderText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="128">
-                   <red>150</red>
-                   <green>150</green>
-                   <blue>150</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </inactive>
-               <disabled>
-                <colorrole role="Text">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="255">
-                   <red>120</red>
-                   <green>120</green>
-                   <blue>120</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-                <colorrole role="PlaceholderText">
-                 <brush brushstyle="SolidPattern">
-                  <color alpha="128">
-                   <red>0</red>
-                   <green>0</green>
-                   <blue>0</blue>
-                  </color>
-                 </brush>
-                </colorrole>
-               </disabled>
-              </palette>
-             </property>
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <italic>true</italic>
-               <bold>false</bold>
-               <kerning>false</kerning>
-              </font>
-             </property>
-             <property name="statusTip">
-              <string/>
-             </property>
              <property name="text">
-              <string/>
-             </property>
-             <property name="placeholderText">
-              <string>3. weitere...</string>
+              <string>1. zu viel Fluss</string>
              </property>
             </widget>
            </item>
-           <item row="4" column="5">
-            <widget class="QLineEdit" name="lineEdit_2">
+           <item row="1" column="5">
+            <widget class="QLineEdit" name="lineEdit_5">
              <property name="maximumSize">
               <size>
                <width>180</width>
@@ -755,9 +501,9 @@
                 <colorrole role="Text">
                  <brush brushstyle="SolidPattern">
                   <color alpha="255">
-                   <red>150</red>
-                   <green>150</green>
-                   <blue>150</blue>
+                   <red>0</red>
+                   <green>0</green>
+                   <blue>0</blue>
                   </color>
                  </brush>
                 </colorrole>
@@ -775,9 +521,9 @@
                 <colorrole role="Text">
                  <brush brushstyle="SolidPattern">
                   <color alpha="255">
-                   <red>150</red>
-                   <green>150</green>
-                   <blue>150</blue>
+                   <red>0</red>
+                   <green>0</green>
+                   <blue>0</blue>
                   </color>
                  </brush>
                 </colorrole>
@@ -816,7 +562,7 @@
              <property name="font">
               <font>
                <weight>50</weight>
-               <italic>true</italic>
+               <italic>false</italic>
                <bold>false</bold>
                <kerning>false</kerning>
               </font>
@@ -828,20 +574,280 @@
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
              <property name="placeholderText">
-              <string>3. weitere...</string>
+              <string>Weitere...</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
-            <widget class="QLabel" name="label_3">
+           <item row="4" column="5">
+            <widget class="QLineEdit" name="lineEdit_6">
              <property name="maximumSize">
               <size>
                <width>180</width>
                <height>16777215</height>
               </size>
              </property>
+             <property name="palette">
+              <palette>
+               <active>
+                <colorrole role="Text">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>0</red>
+                   <green>0</green>
+                   <blue>0</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="PlaceholderText">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="128">
+                   <red>150</red>
+                   <green>150</green>
+                   <blue>150</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </active>
+               <inactive>
+                <colorrole role="Text">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>0</red>
+                   <green>0</green>
+                   <blue>0</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="PlaceholderText">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="128">
+                   <red>150</red>
+                   <green>150</green>
+                   <blue>150</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </inactive>
+               <disabled>
+                <colorrole role="Text">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>120</red>
+                   <green>120</green>
+                   <blue>120</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="PlaceholderText">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="128">
+                   <red>0</red>
+                   <green>0</green>
+                   <blue>0</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </disabled>
+              </palette>
+             </property>
+             <property name="font">
+              <font>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+               <kerning>false</kerning>
+              </font>
+             </property>
              <property name="text">
-              <string>1. zu viel Fluss</string>
+              <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+             <property name="placeholderText">
+              <string>Weitere...</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="5">
+            <widget class="QLineEdit" name="lineEdit_4">
+             <property name="maximumSize">
+              <size>
+               <width>180</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="palette">
+              <palette>
+               <active>
+                <colorrole role="Text">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>0</red>
+                   <green>0</green>
+                   <blue>0</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="PlaceholderText">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="128">
+                   <red>150</red>
+                   <green>150</green>
+                   <blue>150</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </active>
+               <inactive>
+                <colorrole role="Text">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>0</red>
+                   <green>0</green>
+                   <blue>0</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="PlaceholderText">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="128">
+                   <red>150</red>
+                   <green>150</green>
+                   <blue>150</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </inactive>
+               <disabled>
+                <colorrole role="Text">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>120</red>
+                   <green>120</green>
+                   <blue>120</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="PlaceholderText">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="128">
+                   <red>0</red>
+                   <green>0</green>
+                   <blue>0</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </disabled>
+              </palette>
+             </property>
+             <property name="font">
+              <font>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+               <kerning>false</kerning>
+              </font>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+             <property name="placeholderText">
+              <string>Weitere...</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QLineEdit" name="lineEdit_7">
+             <property name="maximumSize">
+              <size>
+               <width>180</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="palette">
+              <palette>
+               <active>
+                <colorrole role="Text">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>0</red>
+                   <green>0</green>
+                   <blue>0</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="PlaceholderText">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="128">
+                   <red>150</red>
+                   <green>150</green>
+                   <blue>150</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </active>
+               <inactive>
+                <colorrole role="Text">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>0</red>
+                   <green>0</green>
+                   <blue>0</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="PlaceholderText">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="128">
+                   <red>150</red>
+                   <green>150</green>
+                   <blue>150</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </inactive>
+               <disabled>
+                <colorrole role="Text">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>120</red>
+                   <green>120</green>
+                   <blue>120</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+                <colorrole role="PlaceholderText">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="128">
+                   <red>0</red>
+                   <green>0</green>
+                   <blue>0</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </disabled>
+              </palette>
+             </property>
+             <property name="font">
+              <font>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+               <kerning>false</kerning>
+              </font>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+             <property name="placeholderText">
+              <string>Weitere...</string>
              </property>
             </widget>
            </item>

@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'NodeEdit.ui'
+        # Form implementation generated from reading ui file 'NodeEdit.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.1
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -89,7 +88,10 @@ class Ui_nodeEdit(object):
         self.nodeNameEdit = QtWidgets.QTextEdit(self.widget)
         self.nodeNameEdit.setEnabled(True)
         self.nodeNameEdit.setGeometry(QtCore.QRect(20, 153, 71, 26))
+        self.nodeNameEdit.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.nodeNameEdit.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.nodeNameEdit.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.nodeNameEdit.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.nodeNameEdit.setTabChangesFocus(True)
         self.nodeNameEdit.setReadOnly(False)
         self.nodeNameEdit.setOverwriteMode(False)
@@ -138,14 +140,14 @@ class Ui_nodeEdit(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\';\"><br /></p></body></html>"))
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\';\"><br /></p></body></html>"))
         self.nodeNameEdit.setPlaceholderText(_translate("nodeEdit", " D1, B2..."))
         self.label_4.setText(_translate("nodeEdit", "Nebenknoten markieren"))
         self.nodeNameEdit_2.setHtml(_translate("nodeEdit", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\';\"><br /></p></body></html>"))
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\';\"><br /></p></body></html>"))
         self.nodeNameEdit_2.setPlaceholderText(_translate("nodeEdit", " Tank, Ventil, Leitung..."))
         self.label_5.setText(_translate("nodeEdit", "-"))
         self.label_6.setText(_translate("nodeEdit", "       ID:                  Bezeichnung:"))

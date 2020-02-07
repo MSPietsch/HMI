@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'wizard_8.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.1
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -168,16 +168,16 @@ class Ui_wizard_8(object):
         self.horizontalLayout_2.addWidget(self.zuruckButton)
         spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         self.horizontalLayout_2.addItem(spacerItem4)
-        self.zuruckButton_2 = QtWidgets.QPushButton(self.horizontalLayoutWidget_4)
-        self.zuruckButton_2.setEnabled(True)
-        self.zuruckButton_2.setMinimumSize(QtCore.QSize(115, 0))
-        self.zuruckButton_2.setCheckable(False)
-        self.zuruckButton_2.setObjectName("zuruckButton_2")
-        self.horizontalLayout_2.addWidget(self.zuruckButton_2)
+        self.keineSafeguards = QtWidgets.QPushButton(self.horizontalLayoutWidget_4)
+        self.keineSafeguards.setEnabled(True)
+        self.keineSafeguards.setMinimumSize(QtCore.QSize(115, 0))
+        self.keineSafeguards.setCheckable(False)
+        self.keineSafeguards.setObjectName("keineSafeguards")
+        self.horizontalLayout_2.addWidget(self.keineSafeguards)
         spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         self.horizontalLayout_2.addItem(spacerItem5)
         self.weiterButton = QtWidgets.QPushButton(self.horizontalLayoutWidget_4)
-        self.weiterButton.setEnabled(True)
+        self.weiterButton.setEnabled(False)
         self.weiterButton.setMinimumSize(QtCore.QSize(115, 0))
         self.weiterButton.setObjectName("weiterButton")
         self.horizontalLayout_2.addWidget(self.weiterButton)
@@ -215,7 +215,7 @@ class Ui_wizard_8(object):
         self.sg2textEdit.setPlaceholderText(_translate("wizard_8", "  Safeguard 2"))
         self.labelUberschrift.setText(_translate("wizard_8", "Definieren Sie die Safeguards."))
         self.zuruckButton.setText(_translate("wizard_8", "Zurück"))
-        self.zuruckButton_2.setText(_translate("wizard_8", "Keine Safeguards"))
+        self.keineSafeguards.setText(_translate("wizard_8", "Keine Safeguards"))
         self.weiterButton.setText(_translate("wizard_8", "Weiter"))
 
 
