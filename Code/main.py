@@ -365,7 +365,7 @@ class NodeEdit(QMainWindow):
     def onBtnBin(self):
         self.ui.btnOk.setEnabled(False)
         self.ui.btn2.setEnabled(False)
-        self.rectPos = QtCore.QRect(19, 159, 42, 42)
+        self.rectPos = QtCore.QRect(19, 204, 42, 42)
         self.update()
         self.widget.enableDrawNode = False
         self.widget.enableDrawNebenode = False
